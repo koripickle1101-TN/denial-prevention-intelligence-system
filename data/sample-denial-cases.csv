@@ -1,0 +1,6 @@
+case_id,service_date,payer,service_type,denial_risk_score,claim_readiness_status,root_cause_category,prevention_action,patient_access_risk,revenue_risk_level
+DPI-001,2026-05-15,Example Plan A,Advanced Imaging,72,Not Ready,Authorization mismatch,Verify authorization-service match before submission,Red,Critical
+DPI-002,2026-05-16,Example Plan B,Specialty Procedure,64,At Risk,Documentation gap,Obtain medical necessity support,Orange,High
+DPI-003,2026-05-17,Example Plan C,Office Visit,28,Ready,Eligibility conflict,Recheck coverage and member identifiers,Yellow,Moderate
+DPI-004,2026-05-18,Example Plan D,Physical Therapy,45,At Risk,Payer rule conflict,Review payer-specific rule library,Orange,High
+DPI-005,2026-05-19,Example Plan B,Procedure,18,Ready,None,Normal claim review,Green,Low
