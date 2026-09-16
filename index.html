@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denial Prevention Intelligence System</title>
+  <title>DPIS | Denial Prevention Intelligence System</title>
+  <meta name="description" content="Student-developed healthcare operations project by Kori Pickle exploring upstream denial risk, claim readiness, root-cause review, and patient impact using synthetic no-PHI data.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="site-header">
   <nav class="nav-shell">
-    <div class="brand-mark">DPIS 1.0</div>
+    <div class="brand-mark">DPIS</div>
     <div class="nav-links">
-      <a href="#quick-read">Quick Read</a>
-      <a href="#dashboard">Dashboard</a>
-      <a href="#roles">Roles</a>
+      <a href="#why">Why DPIS</a>
+      <a href="#cases">Synthetic Cases</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#learning">What I Learned</a>
+      <a href="#roles">Career Alignment</a>
       <a href="#artifacts">Artifacts</a>
-      <a href="denial-risk-calculator.html">Calculator</a>
       <a href="https://github.com/koripickle1101-TN/denial-prevention-intelligence-system" target="_blank" rel="noreferrer">GitHub</a>
     </div>
   </nav>
@@ -23,65 +25,144 @@
 
 <main>
   <section class="hero-section">
-    <div class="eyebrow">Healthcare Revenue Cycle Intelligence</div>
+    <div class="eyebrow">Healthcare Operations Intelligence Engine™ · Student Portfolio</div>
     <h1>Denial Prevention Intelligence System</h1>
-    <p class="hero-subtitle">A healthcare revenue cycle portfolio project for identifying upstream denial risk before claims are submitted.</p>
-    <p class="hero-subtitle">Built by Kori Pickle to demonstrate denial prevention thinking, claim readiness review, revenue cycle workflow analysis, and remote-ready healthcare operations documentation.</p>
+    <p class="hero-subtitle">I built DPIS to study what may happen before a denial becomes visible. Instead of starting only with the denied claim, I use the project to ask what earlier eligibility, authorization, documentation, payer-rule, or claim-readiness issue may have made that downstream problem possible.</p>
+    <p class="hero-subtitle">As I work toward my Bachelor's of Science degree in Healthcare Administration, I use simulated projects like this one to practice revenue-cycle workflow analysis without presenting student work as professional healthcare employment or real-world deployment.</p>
     <div class="hero-actions">
-      <a class="primary-button" href="#quick-read">Recruiter Quick Read</a>
-      <a class="secondary-button" href="denial-prevention-dashboard.html">View Dashboard</a>
+      <a class="primary-button" href="#why">Why I Built DPIS</a>
+      <a class="secondary-button" href="denial-prevention-dashboard.html">View Simulated Dashboard</a>
     </div>
   </section>
 
   <section class="content-section">
     <div class="content-card accent-card">
-      <h2>No PHI / Synthetic Data Notice</h2>
-      <p>All data shown in this project is synthetic and created for portfolio demonstration purposes. No patient information, protected health information, or real payer case data is used.</p>
+      <h2>Student-developed. Simulated. No PHI.</h2>
+      <p>All cases and values in this project are synthetic. No protected health information, real patient records, payer case data, employer data, EHR data, real claims, or financial results are used.</p>
     </div>
     <div class="content-card statement-card">
-      <h2>Core Revenue Cycle Insight</h2>
-      <p>Denials do not begin at claim follow-up. Many denials are born upstream in eligibility, documentation, authorization, coding readiness, and claim preparation.</p>
+      <h2>Patient-to-Professional Perspective</h2>
+      <p>A denial may look like a billing problem once it becomes visible, but patients experience the result rather than the internal workflow label. That can mean another phone call, a confusing bill, delayed resolution, uncertainty about coverage, or being pulled into an administrative problem they did not create.</p>
     </div>
   </section>
 
-  <section id="quick-read" class="section">
-    <div class="section-intro"><span class="section-number">00</span><h2>Recruiter Quick Read</h2><p>A 60-second overview of who built this, what it solves, and what it proves.</p></div>
+  <section id="why" class="section">
+    <div class="section-intro"><span class="section-number">01</span><h2>Why I Built DPIS</h2><p>I wanted to practice looking upstream instead of treating denial work as something that begins only after a claim has already failed.</p></div>
     <div class="grid">
-      <div><strong>Who built this?</strong><p>Kori Pickle, Healthcare Administration student focused on revenue cycle workflow analysis, denial prevention, patient access risk, and healthcare operations.</p></div>
-      <div><strong>What problem does it solve?</strong><p>DPIS identifies upstream denial risk before claims are submitted and before preventable defects become rework, delayed reimbursement, or revenue leakage.</p></div>
-      <div><strong>What skills does it prove?</strong><p>Root-cause analysis, KPI design, claim readiness review, denial risk scoring, executive reporting, synthetic data design, and workflow documentation.</p></div>
-      <div><strong>What roles does it support?</strong><p>Denials Analyst, Revenue Cycle Analyst, Revenue Integrity Analyst, Patient Access Analyst, Claims Follow-Up Representative, and Healthcare Operations Analyst roles.</p></div>
+      <div><strong>The visible signal</strong><p>A denial, claim problem, or payer response becomes the point where the issue is finally obvious.</p></div>
+      <div><strong>The question behind it</strong><p>Was there an earlier eligibility conflict, authorization mismatch, documentation gap, payer-rule issue, or claim-readiness problem that should have been reviewed sooner?</p></div>
+      <div><strong>What I am practicing</strong><p>Separating the downstream signal from the upstream condition and documenting that reasoning without assuming every denial has the same cause.</p></div>
+      <div><strong>Why it matters</strong><p>The earlier the workflow problem is understood, the easier it is to see how administrative decisions can affect staff rework, revenue-cycle burden, and the patient's experience.</p></div>
     </div>
   </section>
 
-  <section id="dashboard" class="dashboard-section">
-    <div class="section-intro"><span class="section-number">01</span><h2>Executive Dashboard Preview</h2><p>A command view for denial risk, claim readiness, documentation defects, payer patterns, and preventable revenue leakage.</p></div>
-    <div class="dashboard-shell"><div class="dashboard-kpis"><div class="dash-kpi critical"><span>18%</span><p>Sample denial risk exposure</p></div><div class="dash-kpi"><span>74%</span><p>Claim readiness rate</p></div><div class="dash-kpi"><span>12</span><p>Documentation defects</p></div><div class="dash-kpi"><span>5</span><p>High-risk payer patterns</p></div></div></div>
+  <section id="cases" class="dashboard-section">
+    <div class="section-intro"><span class="section-number">02</span><h2>Synthetic Case Set</h2><p>The current project uses five fictional cases to practice claim-readiness and root-cause review. These counts describe only this small educational dataset.</p></div>
+    <div class="dashboard-shell">
+      <div class="dashboard-kpis">
+        <div class="dash-kpi"><span>5</span><p>Total synthetic cases</p></div>
+        <div class="dash-kpi critical"><span>3</span><p>High or Critical revenue-risk cases</p></div>
+        <div class="dash-kpi"><span>3</span><p>At Risk or Not Ready cases</p></div>
+        <div class="dash-kpi"><span>4</span><p>Cases with a modeled upstream issue</p></div>
+      </div>
+    </div>
+    <div class="content-card statement-card">
+      <p><strong>Interpretation boundary:</strong> These are synthetic design values, not healthcare benchmarks, employer results, payer outcomes, denial rates, reimbursement forecasts, or predictions of real-world performance.</p>
+    </div>
+  </section>
+
+  <section id="workflow" class="section">
+    <div class="section-intro"><span class="section-number">03</span><h2>How I Think About Denial Prevention</h2><p>I use DPIS to trace the workflow backward from the point where the problem becomes visible.</p></div>
+    <div class="grid">
+      <div><strong>1. Eligibility + Intake</strong><p>Was coverage information consistent and ready for the next step?</p></div>
+      <div><strong>2. Authorization Alignment</strong><p>Did the authorization details match the planned service?</p></div>
+      <div><strong>3. Documentation + Payer Requirements</strong><p>Was the supporting information complete and were payer-specific requirements considered?</p></div>
+      <div><strong>4. Claim Readiness</strong><p>Was the case actually ready to move downstream, or was an unresolved issue still present?</p></div>
+      <div><strong>5. Denial / Claim Signal</strong><p>If a problem appears later, what earlier condition may explain it?</p></div>
+    </div>
+    <div class="content-card statement-card">
+      <h2>Question I Keep Coming Back To</h2>
+      <p><strong>What upstream condition made this denial risk possible, and where could the workflow have been reviewed sooner?</strong></p>
+    </div>
+  </section>
+
+  <section id="learning" class="section">
+    <div class="section-intro"><span class="section-number">04</span><h2>What I Learned</h2><p>A denial code or payer response may be the signal, but it is not automatically the full root cause.</p></div>
+    <div class="content-card statement-card">
+      <p>Building DPIS pushed me to stop at the point where a denial becomes visible and then work backward. That means asking what information, requirement, ownership decision, or handoff existed earlier instead of assuming the downstream response tells the whole story.</p>
+      <p>That distinction matters to me because patients usually do not see the eligibility checks, authorization reviews, documentation requirements, claim edits, or handoffs behind the scenes. They experience the result. Learning to connect those two perspectives is part of how I am moving from lived patient experience toward healthcare operations work.</p>
+    </div>
   </section>
 
   <section class="section">
-    <div class="section-intro"><span class="section-number">02</span><h2>Before / After Denial Prevention Scorecard</h2><p>DPIS moves denial work from downstream repair to upstream prevention.</p></div>
-    <div class="dashboard-kpis"><div class="dash-kpi"><span>4.0/10</span><p>Reactive denial follow-up workflow</p></div><div class="dash-kpi critical"><span>7.8/10</span><p>DPIS prevention model</p></div><div class="dash-kpi"><span>+3.8</span><p>Readiness improvement</p></div><div class="dash-kpi"><span>Early</span><p>Risk visibility stage</p></div></div>
-  </section>
-
-  <section class="section">
-    <div class="section-intro"><span class="section-number">03</span><h2>What This Project Demonstrates</h2><p>Portfolio proof for remote revenue cycle and healthcare operations roles.</p></div>
-    <div class="proof-grid"><div>Denial prevention thinking</div><div>Revenue cycle workflow analysis</div><div>Root-cause denial mapping</div><div>Claim readiness review</div><div>KPI design</div><div>Executive reporting</div><div>Synthetic data design</div><div>Remote-ready documentation</div><div>Revenue integrity awareness</div><div>Payer pattern analysis</div></div>
+    <div class="section-intro"><span class="section-number">05</span><h2>What I Practice Through DPIS</h2><p>This project is evidence of student-level practice and reasoning, not prior professional employment.</p></div>
+    <div class="proof-grid">
+      <div>Denial-prevention thinking</div>
+      <div>Revenue-cycle workflow analysis</div>
+      <div>Claim-readiness review</div>
+      <div>Root-cause classification</div>
+      <div>Eligibility and authorization risk awareness</div>
+      <div>Documentation-readiness review</div>
+      <div>Payer-rule awareness</div>
+      <div>Patient-access and revenue-risk interpretation</div>
+      <div>KPI and dashboard design</div>
+      <div>Synthetic data analysis</div>
+      <div>Operational reporting</div>
+      <div>Clear evidence boundaries</div>
+    </div>
   </section>
 
   <section id="roles" class="section">
-    <div class="section-intro"><span class="section-number">04</span><h2>Role Alignment</h2><p>DPIS is designed to support remote healthcare operations and revenue cycle roles.</p></div>
-    <div class="content-card"><table class="branded-table"><tr><th>Role</th><th>Why DPIS Fits</th></tr><tr><td>Denials Analyst</td><td>Shows denial root-cause mapping, trend reporting, and prevention logic.</td></tr><tr><td>Revenue Cycle Analyst</td><td>Shows KPI tracking, claim readiness review, payer patterns, and revenue risk reporting.</td></tr><tr><td>Revenue Integrity Analyst</td><td>Shows upstream defect detection before claim submission.</td></tr><tr><td>Patient Access Analyst</td><td>Shows eligibility, authorization, and service readiness risk awareness.</td></tr><tr><td>Claims Follow-Up Representative</td><td>Shows understanding of claim defects, payer response patterns, and rework prevention.</td></tr><tr><td>Healthcare Operations Analyst</td><td>Shows workflow mapping, process controls, dashboards, and executive communication.</td></tr></table></div>
+    <div class="section-intro"><span class="section-number">06</span><h2>Career Alignment</h2><p>These are areas I am preparing for. The project shows practice and operational reasoning, not previous employment in these roles.</p></div>
+    <div class="content-card">
+      <table class="branded-table">
+        <tr><th>Career Area</th><th>What I Practice in DPIS</th></tr>
+        <tr><td>Denials / Revenue Cycle Support</td><td>Root-cause review, claim-readiness thinking, payer-response interpretation, and prevention-oriented workflow analysis.</td></tr>
+        <tr><td>Revenue Integrity Support</td><td>Looking for upstream defects before claim submission and separating risk signals from proven outcomes.</td></tr>
+        <tr><td>Patient Access Support</td><td>Connecting eligibility and authorization conditions to later claim and patient-facing consequences.</td></tr>
+        <tr><td>Claims Follow-Up Support</td><td>Understanding how unresolved upstream issues can create downstream rework and payer follow-up needs.</td></tr>
+        <tr><td>Healthcare Operations Analysis</td><td>Workflow mapping, synthetic KPIs, root-cause classification, dashboards, and operational communication.</td></tr>
+      </table>
+    </div>
   </section>
 
-  <section class="section">
-    <div class="section-intro"><span class="section-number">05</span><h2>Remote Work Readiness</h2><p>This project demonstrates remote-ready healthcare operations behaviors.</p></div>
-    <div class="proof-grid"><div>Clear written documentation</div><div>Structured handoff logic</div><div>Source-of-truth thinking</div><div>Asynchronous review path</div><div>No-PHI portfolio standards</div><div>Executive-style reporting</div><div>KPI-based work visibility</div><div>Case triage and prioritization</div><div>Escalation clarity</div><div>Repeatable workflow templates</div></div>
+  <section id="artifacts" class="artifacts-section">
+    <span class="section-number">07</span>
+    <h2>Portfolio Evidence</h2>
+    <p>These artifacts show the different ways I am practicing denial-risk review and workflow documentation.</p>
+    <div class="grid">
+      <div><a href="denial-risk-scorecard.html">Denial Risk Scorecard</a></div>
+      <div><a href="root-cause-denial-map.html">Root Cause Denial Map</a></div>
+      <div><a href="claim-readiness-checklist.html">Claim Readiness Checklist</a></div>
+      <div><a href="denial-prevention-dashboard.html">Denial Prevention Dashboard</a></div>
+      <div><a href="monthly-denial-trend-report.html">Monthly Denial Trend Report</a></div>
+      <div><a href="sample-denial-cases.html">Sample Denial Cases</a></div>
+      <div><a href="denial-risk-calculator.html">Denial Risk Calculator</a></div>
+    </div>
   </section>
 
-  <section id="artifacts" class="artifacts-section"><span class="section-number">06</span><h2>Portfolio Artifacts</h2><div class="grid"><div><a href="denial-risk-scorecard.html">Denial Risk Scorecard</a></div><div><a href="root-cause-denial-map.html">Root Cause Denial Map</a></div><div><a href="claim-readiness-checklist.html">Claim Readiness Checklist</a></div><div><a href="denial-prevention-dashboard.html">Denial Prevention Dashboard</a></div><div><a href="monthly-denial-trend-report.html">Monthly Denial Trend Report</a></div><div><a href="sample-denial-cases.html">Sample Denial Cases</a></div><div><a href="denial-risk-calculator.html">Denial Risk Calculator</a></div></div></section>
+  <section class="content-section">
+    <div class="content-card accent-card">
+      <h2>What DPIS Is — and Is Not</h2>
+      <p>DPIS is a student-developed educational project using synthetic data. It has not been deployed in a healthcare organization and does not make coverage, coding, clinical, medical-necessity, or payer decisions. I do not claim that it has reduced real denials, increased reimbursement, improved productivity, or changed patient outcomes.</p>
+    </div>
+    <div class="content-card statement-card">
+      <h2>Portfolio Path</h2>
+      <p><strong>EVIS → PARCS → DPIS → SBI → Habit Audit</strong></p>
+      <p>DPIS sits after eligibility and prior authorization in the portfolio because it asks what upstream conditions may become claim-readiness or denial risk later in the workflow.</p>
+    </div>
+  </section>
 </main>
 
-<footer class="site-footer"><p>Denial Prevention Intelligence System</p><p>Created by Kori Pickle</p><p class="signature">Kori Pickle</p><div class="hero-actions"><a class="primary-button" href="https://github.com/koripickle1101-TN/denial-prevention-intelligence-system" target="_blank" rel="noreferrer">View GitHub Repository</a><a class="secondary-button" href="https://www.linkedin.com/in/kori-p-865jct" target="_blank" rel="noreferrer">Connect on LinkedIn</a></div></footer>
+<footer class="site-footer">
+  <p>DPIS — Denial Prevention Intelligence System</p>
+  <p>Created by Kori Pickle</p>
+  <p>Student-developed · Synthetic data only · No PHI</p>
+  <p class="signature">Kori Pickle</p>
+  <div class="hero-actions">
+    <a class="primary-button" href="https://healthcare-operations-portfolio-hub.vercel.app/" target="_blank" rel="noreferrer">Portfolio Hub</a>
+    <a class="secondary-button" href="https://www.linkedin.com/in/kori-pickle" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
+  </div>
+</footer>
 </body>
 </html>
