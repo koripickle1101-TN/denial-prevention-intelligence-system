@@ -1,22 +1,22 @@
-# Resume Bullets: DPIS 1.0
+# Resume Bullets: DPIS — Denial Prevention Intelligence System™
 
 ## Project Entry
 
-**DPIS 1.0: Denial Prevention Intelligence System**  
-Healthcare Revenue Cycle Portfolio Project | Created by Kori Pickle
+**DPIS — Denial Prevention Intelligence System™**  
+Student-Developed Healthcare Operations Portfolio Project | Synthetic Data Only | No PHI
 
 ## Resume Bullet Options
 
-- Designed a healthcare revenue cycle portfolio project focused on upstream denial prevention, claim readiness, root-cause denial mapping, and revenue integrity risk visibility.
+- Built a student-developed healthcare operations project using synthetic cases to practice tracing denial and claim-readiness risk back to earlier eligibility, authorization, documentation, payer-requirement, and handoff conditions.
 
-- Built a denial risk scoring model using synthetic case data to identify eligibility conflicts, authorization mismatches, documentation gaps, payer rule conflicts, and claim readiness issues before submission.
+- Modeled a fictional review-priority framework to organize eligibility conflicts, authorization-service alignment issues, documentation-readiness flags, payer-requirement scenarios, and unresolved claim-readiness concerns without presenting the model as a validated prediction tool.
 
-- Created executive-style artifacts including a denial prevention dashboard, denial risk scorecard, root-cause denial map, claim readiness checklist, monthly denial trend report, and sample denial case dataset.
+- Created simulated portfolio artifacts including a denial-risk scorecard, root-cause review map, claim-readiness checklist, dashboard, reporting summary, case set, and interactive review-priority calculator.
 
-- Developed remote-ready healthcare operations documentation using no-PHI synthetic data and clear workflow logic for revenue cycle, denials, patient access, and revenue integrity roles.
+- Documented clear project boundaries: no real claims, PHI, payer data, employer data, EHR data, coding authority, medical-necessity determinations, or real-world denial-reduction claims.
 
 ## Short Version
 
-Designed DPIS 1.0, a healthcare revenue cycle portfolio project focused on upstream denial prevention, claim readiness, denial-risk scoring, root-cause analysis, and executive reporting using no-PHI synthetic data.
+Built DPIS, a student-developed, simulated healthcare operations project using synthetic data to practice upstream denial-risk review, claim-readiness thinking, root-cause analysis, workflow controls, and operational reporting without claiming professional denials or revenue-cycle experience.
 
 Created by Kori Pickle
