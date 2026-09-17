@@ -1,9 +1,9 @@
 # LinkedIn Featured Description
 
-DPIS 1.0 is a healthcare revenue cycle portfolio project I designed to identify upstream denial risk before claims are submitted.
+DPIS — Denial Prevention Intelligence System™ is a student-developed, simulated, no-PHI healthcare operations project I built to practice tracing denial and claim-readiness risk back to earlier workflow conditions.
 
-The project focuses on denial prevention, claim readiness, root-cause denial mapping, eligibility conflicts, authorization mismatches, documentation defects, payer rule risk, and preventable revenue leakage.
+The project uses fictional cases and synthetic data to explore eligibility conflicts, authorization-service alignment, documentation-readiness flags, payer-requirement awareness, claim-readiness review, exception ownership, and upstream workflow controls.
 
-This project demonstrates my ability to analyze healthcare workflow breakdowns, organize denial-risk factors, design KPI logic, build executive-style artifacts, and communicate revenue cycle improvement opportunities in a clear, remote-ready format.
+DPIS does not represent professional healthcare employment, real claims work, coding authority, medical-necessity review, payer decision-making, or a validated denial-prediction tool. It shows how I am learning to organize workflow evidence, ask root-cause questions, build simulated KPI/reporting artifacts, and connect administrative risk to patient experience.
 
 Created by Kori Pickle
