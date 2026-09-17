@@ -1,15 +1,15 @@
 # LinkedIn Launch Post
 
-I built DPIS 1.0 to explore a revenue cycle question that matters before claims ever reach follow-up:
+I built DPIS — Denial Prevention Intelligence System™ to explore a question I keep coming back to as I study healthcare operations:
 
-What if many denials are not just payer problems, but upstream workflow defects that could be identified earlier?
+When a denial or claim problem becomes visible downstream, what earlier workflow condition may have contributed to it?
 
-DPIS 1.0 is a healthcare revenue cycle portfolio project focused on denial prevention, claim readiness, root-cause denial mapping, documentation defects, authorization mismatches, payer rule conflicts, and preventable revenue leakage.
+DPIS is a student-developed, simulated, no-PHI portfolio project. I use fictional cases to practice tracing claim-readiness risk across eligibility, authorization-service alignment, documentation readiness, payer-requirement awareness, exception ownership, and handoffs.
 
-The project uses synthetic data only. No patient information, protected health information, or real payer case data is used.
+The project does not use real claims, patient information, payer data, employer data, EHR data, or financial results. It is not a coding tool, medical-necessity tool, payer decision system, or validated denial-prediction model.
 
-This project demonstrates revenue cycle workflow analysis, denial prevention thinking, KPI design, root-cause mapping, executive reporting, and remote-ready healthcare operations documentation.
+As I work toward my Bachelor's of Science degree in Healthcare Administration, DPIS helps me practice asking a more useful operational question:
 
-Created by Kori Pickle
+Where did the workflow first lose control before the downstream problem became visible?
 
-#RevenueCycle #DenialPrevention #HealthcareOperations #RevenueIntegrity #HealthcareAdministration
+#HealthcareOperations #RevenueCycle #DenialPrevention #PatientAccess #HealthcareAdministration
