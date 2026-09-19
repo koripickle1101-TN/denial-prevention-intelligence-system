@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DPIS | Denial Prevention Intelligence System</title>
-  <meta name="description" content="Student-developed healthcare operations project by Kori Pickle exploring upstream denial risk, claim readiness, root-cause review, and patient impact using synthetic no-PHI data.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DPIS | Denial Prevention Intelligence System™</title>
+  <meta name="description" content="Student-developed, simulated, no-PHI healthcare operations portfolio project by Kori Pickle. Career-style denial-prevention workflow simulation using synthetic cases.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,193 +12,132 @@
   <nav class="nav-shell">
     <div class="brand-mark">DPIS</div>
     <div class="nav-links">
-      <a href="#why">Why DPIS</a>
-      <a href="#cases">Synthetic Cases</a>
-      <a href="#workflow">Workflow</a>
-      <a href="#learning">What I Learned</a>
-      <a href="#roles">Career Alignment</a>
-      <a href="#artifacts">Artifacts</a><a href="work-queue.html">Work Queue</a>
-      <a href="https://github.com/koripickle1101-TN/denial-prevention-intelligence-system" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="#workspace">Workspace</a>
+      <a href="denial-prevention-dashboard.html">Dashboard</a>
+      <a href="sample-denial-cases.html">Cases</a>
+      <a href="claim-readiness-checklist.html">Readiness</a>
+      <a href="root-cause-denial-map.html">Traceback</a>
+      <a href="denial-risk-scorecard.html">Scorecard</a>
+      <a href="#about">About</a>
     </div>
   </nav>
 </header>
 
 <main>
   <section class="hero-section">
-    <div class="eyebrow">Healthcare Operations Intelligence Engine™ · Student Portfolio</div>
-    <h1>Denial Prevention Intelligence System</h1>
-    <p class="hero-subtitle">I built DPIS to study what may happen before a denial becomes visible. Instead of starting only with the denied claim, I use the project to trace the visible signal backward, review earlier checkpoints, separate evidence from hypothesis, assign ownership, verify closure, and watch for recurrence.</p>
-    <p class="hero-subtitle">As I work toward my Bachelor's of Science degree in Healthcare Administration, I use simulated projects like this one to practice revenue-cycle workflow analysis without presenting student work as professional healthcare employment, coding authority, payer authority, or real-world deployment.</p>
+    <div class="eyebrow">Healthcare Operations Intelligence Engine™ · Career-Style Student Simulation</div>
+    <h1>Denial Prevention Intelligence System™</h1>
+    <p class="hero-subtitle">A simulated denial-prevention workspace designed to practice the operational habits I am preparing to use in healthcare: work a queue, review a case, trace the visible signal backward, document what the evidence supports, assign the next action, escalate when needed, verify closure, and watch for recurrence.</p>
+    <p class="hero-subtitle"><strong>Student-developed · Simulated · Synthetic data only · No PHI</strong></p>
     <div class="hero-actions">
-      <a class="primary-button" href="#why">Why I Built DPIS</a>
-      <a class="secondary-button" href="denial-prevention-dashboard.html">View Simulated Dashboard</a><a class="secondary-button" href="work-queue.html">Open Work Queue Simulator</a>
+      <a class="primary-button" href="#workspace">Open Operational Workspace</a>
+      <a class="secondary-button" href="denial-prevention-dashboard.html">View Dashboard</a>
     </div>
   </section>
 
-  <section class="content-section">
+  <section id="workspace" class="section">
+    <div class="section-intro">
+      <span class="section-number">01</span>
+      <h2>Operational Workspace</h2>
+      <p>This is the working side of DPIS. Start in the queue, select a synthetic case, then document and move the case through the modeled workflow.</p>
+    </div>
+
+    <div class="workspace-launch-grid">
+      <a class="workspace-card primary-workspace" href="work-queue.html">
+        <span class="mini-label">Start here</span>
+        <h3>Work Queue</h3>
+        <p>Filter cases, open a case, assign ownership, choose the next action, set follow-up timing, document work, escalate, and verify closure.</p>
+        <strong>Open Work Queue →</strong>
+      </a>
+      <a class="workspace-card" href="denial-prevention-dashboard.html">
+        <span class="mini-label">Monitor</span>
+        <h3>Dashboard</h3>
+        <p>Move from portfolio-level measures into individual synthetic cases and inspect the underlying workflow signal.</p>
+        <strong>Open Dashboard →</strong>
+      </a>
+      <a class="workspace-card" href="claim-readiness-checklist.html">
+        <span class="mini-label">Control gate</span>
+        <h3>Claim Readiness</h3>
+        <p>Confirm whether required educational checkpoints are complete before a modeled case can advance.</p>
+        <strong>Open Readiness Review →</strong>
+      </a>
+      <a class="workspace-card" href="root-cause-denial-map.html">
+        <span class="mini-label">Trace backward</span>
+        <h3>Denial Traceback</h3>
+        <p>Select a downstream signal and review the earlier condition, control question, routing path, and evidence boundary.</p>
+        <strong>Open Traceback Review →</strong>
+      </a>
+      <a class="workspace-card" href="sample-denial-cases.html">
+        <span class="mini-label">Case evidence</span>
+        <h3>Synthetic Cases</h3>
+        <p>Compare five fictional cases and inspect their downstream signals, earlier supported conditions, recurrence flags, and patient-facing effects.</p>
+        <strong>Open Case Explorer →</strong>
+      </a>
+      <a class="workspace-card" href="denial-risk-scorecard.html">
+        <span class="mini-label">Prioritize</span>
+        <h3>Review Priority</h3>
+        <p>Apply student-designed flags to change modeled review priority without treating the score as a real denial probability.</p>
+        <strong>Open Scorecard →</strong>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-intro">
+      <span class="section-number">02</span>
+      <h2>How the Simulated Work Moves</h2>
+    </div>
+    <div class="workflow-strip">
+      <div><strong>1</strong><span>Queue</span></div>
+      <div><strong>2</strong><span>Open case</span></div>
+      <div><strong>3</strong><span>Review evidence</span></div>
+      <div><strong>4</strong><span>Trace upstream</span></div>
+      <div><strong>5</strong><span>Assign owner</span></div>
+      <div><strong>6</strong><span>Next action</span></div>
+      <div><strong>7</strong><span>Follow-up / escalate</span></div>
+      <div><strong>8</strong><span>Verify closure</span></div>
+      <div><strong>9</strong><span>Review recurrence</span></div>
+    </div>
     <div class="content-card accent-card">
-      <h2>Student-developed. Simulated. No PHI.</h2>
-      <p>All cases, scores, labels, and values in this project are synthetic. No protected health information, real patient records, payer case data, employer data, EHR data, real claims, or financial results are used.</p>
+      <h2>Core Operating Rule</h2>
+      <p><strong>A visible denial signal does not prove where the workflow first lost control.</strong> DPIS requires backward review, evidence-based reasoning, ownership, and closure verification before the case is treated as resolved.</p>
     </div>
-    <div class="content-card statement-card">
+  </section>
+
+  <section class="section">
+    <div class="section-intro">
+      <span class="section-number">03</span>
       <h2>Patient-to-Professional Perspective</h2>
-      <p>A denial may look like a billing problem once it becomes visible, but patients experience the result rather than the internal workflow label. That can mean another phone call, a confusing bill, delayed resolution, uncertainty about coverage, or being pulled into an administrative problem they did not create.</p>
-    </div>
-  </section>
-
-  <section id="why" class="section">
-    <div class="section-intro"><span class="section-number">01</span><h2>Why I Built DPIS</h2><p>I wanted to practice looking upstream instead of treating denial work as something that begins only after a claim has already failed.</p></div>
-    <div class="grid">
-      <div><strong>The visible signal</strong><p>A denial, rejection, claim problem, or payer response can be the point where an issue becomes visible.</p></div>
-      <div><strong>The question behind it</strong><p>Was there an earlier eligibility conflict, authorization-service alignment issue, documentation-readiness flag, payer-requirement issue, ownership gap, or other unresolved condition that should have been reviewed sooner?</p></div>
-      <div><strong>What I am practicing</strong><p>Separating the downstream signal from possible upstream conditions and documenting that reasoning without assuming every denial has the same cause.</p></div>
-      <div><strong>Why it matters</strong><p>Looking earlier in the workflow helps me see how administrative conditions can contribute to staff rework, revenue-cycle burden, and patient confusion without claiming that a student model can prove causation.</p></div>
-    </div>
-  </section>
-
-  <section id="cases" class="dashboard-section">
-    <div class="section-intro"><span class="section-number">02</span><h2>Synthetic Case Set</h2><p>The current project uses five fictional cases to practice claim-readiness and root-cause review. These counts describe only this small educational dataset.</p></div>
-    <div class="dashboard-shell">
-      <div class="dashboard-kpis">
-        <div class="dash-kpi"><span>5</span><p>Total synthetic cases</p></div>
-        <div class="dash-kpi critical"><span>3</span><p>High or Critical modeled revenue-risk cases</p></div>
-        <div class="dash-kpi"><span>3</span><p>At Risk or Not Ready cases</p></div>
-        <div class="dash-kpi"><span>4</span><p>Cases with a modeled upstream issue</p></div>
-      </div>
     </div>
     <div class="content-card statement-card">
-      <p><strong>Interpretation boundary:</strong> These are synthetic design values, not healthcare benchmarks, employer results, payer outcomes, denial rates, reimbursement forecasts, or predictions of real-world performance.</p>
+      <p>Patients do not experience “authorization-service alignment,” “documentation readiness,” or “claim routing.” They experience another phone call, a delay, uncertainty about coverage, a confusing bill, or being asked to help untangle an administrative problem they did not create.</p>
+      <p>DPIS helps me practice connecting that patient-facing result to the earlier operational checkpoints that may need review.</p>
     </div>
   </section>
 
-  <section id="workflow" class="section">
-    <div class="section-intro"><span class="section-number">03</span><h2>How I Think About Denial Prevention</h2><p>I use DPIS to trace the workflow backward from the point where the problem becomes visible.</p></div>
-    <div class="grid">
-      <div><strong>1. Eligibility + Intake</strong><p>Was the fictional coverage and member information reviewed, and were obvious inconsistencies resolved?</p></div>
-      <div><strong>2. Authorization Alignment</strong><p>Were authorization requirements and service/date alignment reviewed in the simulation?</p></div>
-      <div><strong>3. Documentation + Payer Requirements</strong><p>Were documentation-readiness flags identified and relevant current payer requirements routed for appropriate review?</p></div>
-      <div><strong>4. Claim Readiness</strong><p>Was the fictional case ready to move downstream, or was an unresolved administrative issue still present?</p></div>
-      <div><strong>5. Denial / Claim Signal</strong><p>If a problem appears later, what earlier condition should be investigated rather than assumed?</p></div>
-    </div>
-    <div class="content-card statement-card">
-      <h2>Question I Keep Coming Back To</h2>
-      <p><strong>What upstream condition made this denial risk possible, and where could the workflow have been reviewed sooner?</strong></p>
-    </div>
-    <div class="interactive-panel">
-      <h2>Try the DPIS Case Explorer</h2>
-      <p>Select a fictional case to see how the project moves from a visible downstream signal to evidence, an earliest supported condition, ownership, closure evidence, recurrence review, and a potential patient-facing effect.</p>
-      <div id="caseButtons" class="case-buttons"></div>
-      <div id="caseExplorer"></div>
+  <section id="about" class="section">
+    <div class="section-intro">
+      <span class="section-number">04</span>
+      <h2>About This Portfolio Project</h2>
     </div>
     <div class="content-card">
-      <h2>Denial Traceback Review™</h2>
-      <p>For each synthetic case, DPIS practices a repeatable review path:</p>
-      <table class="branded-table">
-        <tr><th>Review Field</th><th>Student Practice Question</th></tr>
-        <tr><td>Downstream Signal</td><td>What became visible?</td></tr>
-        <tr><td>Detection Point</td><td>Where in the workflow did the issue appear?</td></tr>
-        <tr><td>Earlier Checkpoints Reviewed</td><td>Which upstream steps need review?</td></tr>
-        <tr><td>Evidence Available</td><td>What does the synthetic record actually support?</td></tr>
-        <tr><td>Earliest Supported Condition</td><td>What is the earliest condition justified for investigation?</td></tr>
-        <tr><td>Root-Cause Hypothesis</td><td>What remains a hypothesis rather than a proven conclusion?</td></tr>
-        <tr><td>Specialist Review Needed</td><td>Does the issue require coding, clinical, payer, or other qualified review?</td></tr>
-        <tr><td>Preventive Control + Owner</td><td>What modeled control and ownership step could prevent premature advancement?</td></tr>
-        <tr><td>Closure Evidence</td><td>What would show the issue was actually resolved?</td></tr>
-        <tr><td>Recurrence Flag</td><td>Is this an isolated synthetic case or part of a repeated pattern?</td></tr>
-        <tr><td>Potential Patient-Facing Effect</td><td>What might the patient experience if the issue remains unresolved?</td></tr>
-      </table>
+      <p>DPIS is a student-developed educational simulation built by Kori Pickle while working toward a Bachelor's of Science degree in Healthcare Administration. It uses fictional cases and synthetic values only.</p>
+      <p>It does not access an EHR, submit claims, determine coding accuracy, determine medical necessity, make coverage or payer decisions, calculate reimbursement, or represent employer deployment.</p>
     </div>
     <div class="content-card accent-card">
       <h2>Operational Distinctions</h2>
       <p><strong>Corrected claim ≠ corrected workflow.</strong></p>
       <p><strong>Denial reason ≠ proven root cause.</strong></p>
+      <p><strong>Detection ≠ resolution.</strong></p>
       <p><strong>Recurrence is a signal for deeper review, not proof of a systemic cause.</strong></p>
-    </div>
-  </section>
-
-  <section id="learning" class="section">
-    <div class="section-intro"><span class="section-number">04</span><h2>What I Learned</h2><p>A denial code or payer response may be a signal, but it is not automatically the full root cause.</p></div>
-    <div class="content-card statement-card">
-      <p>Building DPIS pushed me to stop at the point where a denial becomes visible and then work backward. That means asking what information, requirement, ownership decision, or handoff existed earlier instead of assuming the downstream response tells the whole story.</p>
-      <p>That distinction matters to me because patients usually do not see the eligibility checks, authorization reviews, documentation requirements, claim edits, or handoffs behind the scenes. They experience the result. Learning to connect those two perspectives is part of how I am moving from lived patient experience toward healthcare operations work.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-intro"><span class="section-number">05</span><h2>What I Practice Through DPIS</h2><p>This project is evidence of student-level practice and reasoning, not prior professional employment.</p></div>
-    <div class="proof-grid">
-      <div>Denial-prevention thinking</div>
-      <div>Revenue-cycle workflow analysis</div>
-      <div>Claim-readiness review</div>
-      <div>Root-cause hypothesis development</div>
-      <div>Denial Traceback Review™</div>
-      <div>Correction Recurrence Review™</div>
-      <div>Information Request Routing Review™</div>
-      <div>Encounter-context integrity review</div>
-      <div>Eligibility and authorization risk awareness</div>
-      <div>Documentation-readiness review</div>
-      <div>Payer-requirement awareness</div>
-      <div>Exception ownership and escalation thinking</div>
-      <div>Patient-access and revenue-risk interpretation</div>
-      <div>KPI and dashboard design</div>
-      <div>Synthetic data analysis</div>
-      <div>Operational reporting</div>
-      <div>Clear evidence boundaries</div>
-    </div>
-  </section>
-
-  <section id="roles" class="section">
-    <div class="section-intro"><span class="section-number">06</span><h2>Career Alignment</h2><p>These are areas I am preparing for. The project shows practice and operational reasoning, not previous employment in these roles.</p></div>
-    <div class="content-card">
-      <table class="branded-table">
-        <tr><th>Career Area</th><th>What I Practice in DPIS</th></tr>
-        <tr><td>Denials / Revenue Cycle Support</td><td>Root-cause review concepts, claim-readiness thinking, simulated payer-response categories, and prevention-oriented workflow analysis.</td></tr>
-        <tr><td>Revenue Integrity Support</td><td>Looking for modeled upstream risk signals before a fictional case moves downstream and separating hypotheses from proven outcomes.</td></tr>
-        <tr><td>Patient Access Support</td><td>Connecting eligibility and authorization conditions to later claim and patient-facing consequences.</td></tr>
-        <tr><td>Claims Follow-Up Support</td><td>Understanding how unresolved upstream issues can create downstream rework and follow-up needs.</td></tr>
-        <tr><td>Healthcare Operations Analysis</td><td>Workflow mapping, synthetic KPIs, root-cause hypotheses, dashboards, and operational communication.</td></tr>
-      </table>
-    </div>
-  </section>
-
-  <section id="artifacts" class="artifacts-section">
-    <span class="section-number">07</span>
-    <h2>Portfolio Evidence</h2>
-    <p>These artifacts show the different ways I am practicing denial-risk review and workflow documentation.</p>
-    <div class="grid">
-      <div><a href="denial-risk-scorecard.html">Denial-Risk Review Scorecard</a></div>
-      <div><a href="root-cause-denial-map.html">Denial Signal Root-Cause Review Map</a></div>
-      <div><a href="claim-readiness-checklist.html">Claim Readiness Review Checklist</a></div>
-      <div><a href="denial-prevention-dashboard.html">Denial Prevention Dashboard</a></div>
-      <div><a href="monthly-denial-trend-report.html">Simulated Denial-Risk Review Summary</a></div>
-      <div><a href="sample-denial-cases.html">Sample Denial-Risk Cases</a></div>
-      <div><a href="denial-risk-calculator.html">DPIS Review Priority Calculator</a></div>
-    </div>
-  </section>
-
-  <section class="content-section">
-    <div class="content-card accent-card">
-      <h2>What DPIS Is — and Is Not</h2>
-      <p>DPIS is a student-developed educational project using synthetic data. It has not been deployed in a healthcare organization and does not make coverage, coding, clinical, medical-necessity, compliance, or payer decisions. I do not claim that it has reduced real denials, increased reimbursement, improved productivity, or changed patient outcomes.</p>
-      <p>Healthcare coding, coverage, billing, and payer requirements can change. DPIS does not replace current payer policies, CMS guidance, coding resources, organizational procedures, or qualified professional review.</p>
-    </div>
-    <div class="content-card statement-card">
-      <h2>Portfolio Path</h2>
-      <p><strong>EVIS → PARCS → DPIS → SBI → Habit Audit</strong></p>
-      <p>DPIS sits after eligibility and prior authorization in the portfolio because it asks what upstream conditions may become claim-readiness or denial risk later in the workflow.</p>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
-  <p>DPIS — Denial Prevention Intelligence System</p>
   <p>Created by Kori Pickle</p>
-  <p>Student-developed · Synthetic data only · No PHI</p>
-  <p class="signature">Kori Pickle</p>
-  <div class="hero-actions">
-    <a class="primary-button" href="https://healthcare-operations-portfolio-hub.vercel.app/" target="_blank" rel="noreferrer">Portfolio Hub</a>
-    <a class="secondary-button" href="https://www.linkedin.com/in/kori-pickle" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
-  </div>
+  <p>Healthcare Operations Intelligence Engine™</p>
+  <p>Student-developed · Simulated · Synthetic data only · No PHI</p>
 </footer>
-<script src="dpis-interactions.js"></script></body>
+</body>
 </html>
