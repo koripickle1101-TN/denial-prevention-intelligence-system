@@ -6,7 +6,7 @@ As I work toward my Bachelor's of Science degree in Healthcare Administration at
 
 From the patient side, those internal workflow labels can turn into something much more concrete: a confusing bill, another phone call, delayed resolution, uncertainty about coverage, or being asked to help untangle an administrative problem they did not create.
 
-DPIS gives me a way to practice working backward from the downstream signal and asking where the workflow first became vulnerable.
+DPIS gives me a way to practice working backward from the downstream signal and asking where the workflow first became vulnerable. I now use a structured **Denial Traceback Review™** to separate what became visible from what the synthetic evidence actually supports.
 
 ## Why I Built DPIS
 
@@ -39,6 +39,23 @@ DPIS uses synthetic examples to explore denial-prevention and claim-readiness co
 - and how patient-access and revenue risk can be considered together.
 
 The project is not intended to predict actual payer decisions. It is a learning environment for practicing upstream workflow analysis before a downstream denial or rejection becomes the only thing anyone can see.
+
+## New Review Controls
+
+DPIS now includes four additional student-practice controls:
+
+- **Denial Traceback Review™** — traces a visible downstream signal through detection point, earlier checkpoints, available evidence, earliest supported condition, root-cause hypothesis, specialist review, preventive control, ownership, closure evidence, recurrence, and patient-facing effect.
+- **Information Request Routing Review™** — asks what information is missing, who owns the next step, where it must be submitted, when it is due, and what proves closure.
+- **Correction Recurrence Review™** — distinguishes an isolated synthetic correction from a repeated pattern that may justify deeper upstream review.
+- **Encounter-Context Review** — checks whether supporting documentation belongs to the correct encounter, not only the correct patient.
+
+Key operating distinctions:
+
+> **Denial reason ≠ proven root cause.**
+
+> **Corrected claim ≠ corrected workflow.**
+
+> **Recurrence is a signal for investigation, not proof of a systemic cause.**
 
 ## Synthetic Case Set
 
