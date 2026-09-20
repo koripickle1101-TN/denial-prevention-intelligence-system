@@ -20,7 +20,8 @@ With DPIS, I wanted to move beyond treating denial work as something that starts
 - payer-requirement differences,
 - claim-readiness problems,
 - unclear ownership or handoffs,
-- and patterns that may create downstream rework.
+- patterns that may create downstream rework,
+- and post-payment recovery or adjustment signals that still require reconciliation.
 
 The question I keep coming back to is:
 
@@ -40,6 +41,30 @@ DPIS uses synthetic examples to explore denial-prevention and claim-readiness co
 
 The project is not intended to predict actual payer decisions. It is a learning environment for practicing upstream workflow analysis before a downstream denial or rejection becomes the only thing anyone can see.
 
+## Payment Recovery Reconciliation Review™
+
+DPIS now includes a student-developed post-payment workflow control for practicing how a reduced payment, offset, adjustment, reversal, or recovery signal can be traced back to the original transaction before the account is treated as reconciled.
+
+Core workflow:
+
+**Recovery signal → trace original transaction → review evidence → reconcile amount → route exception → document action → verify closure**
+
+Key distinctions:
+
+- **Paid ≠ correctly reconciled**
+- **Reduced payment ≠ explanation of the underlying recovery**
+- **Adjusted balance ≠ reconciled account**
+
+Control question:
+
+> **If a later payment is reduced because of an earlier account, what evidence should connect the recovery to the original transaction before the adjustment is treated as fully reconciled?**
+
+Patient-to-professional insight:
+
+> **The patient sees the balance. The operations team has to understand the chain of transactions that produced it.**
+
+This is an educational workflow simulation only. It does not determine payer liability, contract correctness, coding accuracy, refund obligations, reimbursement, or legal requirements.
+
 ## New Review Controls
 
 DPIS now includes four additional student-practice controls:
@@ -48,6 +73,7 @@ DPIS now includes four additional student-practice controls:
 - **Information Request Routing Review™** — asks what information is missing, who owns the next step, where it must be submitted, when it is due, and what proves closure.
 - **Correction Recurrence Review™** — distinguishes an isolated synthetic correction from a repeated pattern that may justify deeper upstream review.
 - **Encounter-Context Review** — checks whether supporting documentation belongs to the correct encounter, not only the correct patient.
+- **Payment Recovery Reconciliation Review™** — traces a post-payment financial signal to the original transaction, available remittance evidence, ownership, remaining balance, and closure.
 
 Key operating distinctions:
 
