@@ -41,6 +41,56 @@ DPIS uses synthetic examples to explore denial-prevention and claim-readiness co
 
 The project is not intended to predict actual payer decisions. It is a learning environment for practicing upstream workflow analysis before a downstream denial or rejection becomes the only thing anyone can see.
 
+## Pre-Submission Claim Readiness Control™
+
+DPIS now includes an interactive control gate that treats claim readiness as the point where multiple upstream operational workflows converge.
+
+The control reviews whether the following modeled areas are complete:
+
+- Patient / Member Data Reviewed
+- Eligibility / Coverage Reviewed
+- COB / Other Insurance Reviewed
+- Payer Information Validated
+- Provider / Service Context Reviewed
+- Authorization / Referral Status Reviewed
+- Documentation Readiness Reviewed
+- Coding-Related Flag Present?
+- Qualified Coding Review Required?
+- Service / Date / Location Alignment Reviewed
+- Required Attachments / Information Reviewed
+- Payer-Specific Requirement Source Reviewed
+- Open Exception?
+- Current Owner
+- Next Required Action
+- Closure Evidence
+- Ready to Advance?
+
+The core rule is:
+
+> **A claim should not be treated as ready in the simulation merely because available fields are populated. Any required unresolved exception must have visible ownership, a defined next action, and verified closure before modeled advancement.**
+
+Key operational distinctions:
+
+- **Claim populated ≠ claim ready**
+- **Correct data element ≠ complete workflow readiness**
+- **Detection ≠ resolution**
+- **Handoff ≠ ownership**
+
+The interactive gate can return different modeled states, including **Not ready to advance**, **Qualified review required**, **Exception lacks controlled ownership**, **Evidence trail incomplete**, **Exception active — not closed**, and **Modeled claim ready to advance**.
+
+The control also makes the portfolio architecture visible:
+
+- **EVIS** contributes patient/member, eligibility, coverage, payer, and COB readiness.
+- **PARCS** contributes authorization/referral, payer/program source, active-movement, and closure readiness.
+- **HIM & Coding Data Integrity Risk Map™** contributes documentation, encounter-context, and qualified-review concepts.
+- **DPIS** is where those streams converge into a pre-submission readiness decision.
+
+Patient-to-professional insight:
+
+> **The patient sees the billing outcome. Healthcare operations has to understand the chain of data, decisions, and controls that produced it.**
+
+This control does not submit claims, select codes or modifiers, determine coding accuracy, decide medical necessity or coverage, interpret payer contracts, calculate reimbursement, or establish whether a real claim should be paid.
+
 ## Payment Recovery Reconciliation Review™
 
 DPIS now includes a student-developed post-payment workflow control for practicing how a reduced payment, offset, adjustment, reversal, or recovery signal can be traced back to the original transaction before the account is treated as reconciled.
@@ -67,8 +117,9 @@ This is an educational workflow simulation only. It does not determine payer lia
 
 ## New Review Controls
 
-DPIS now includes four additional student-practice controls:
+DPIS now includes six additional student-practice controls:
 
+- **Pre-Submission Claim Readiness Control™** — brings upstream data, eligibility, COB, authorization, documentation, payer-specific review, qualified-review routing, ownership, and closure together before modeled claim advancement.
 - **Denial Traceback Review™** — traces a visible downstream signal through detection point, earlier checkpoints, available evidence, earliest supported condition, root-cause hypothesis, specialist review, preventive control, ownership, closure evidence, recurrence, and patient-facing effect.
 - **Information Request Routing Review™** — asks what information is missing, who owns the next step, where it must be submitted, when it is due, and what proves closure.
 - **Correction Recurrence Review™** — distinguishes an isolated synthetic correction from a repeated pattern that may justify deeper upstream review.
@@ -80,6 +131,10 @@ Key operating distinctions:
 > **Denial reason ≠ proven root cause.**
 
 > **Corrected claim ≠ corrected workflow.**
+
+> **Claim populated ≠ claim ready.**
+
+> **Correct data element ≠ complete workflow readiness.**
 
 > **Recurrence is a signal for investigation, not proof of a systemic cause.**
 
@@ -145,7 +200,7 @@ This repository includes:
 - `index.html` — DPIS project overview
 - `denial-risk-scorecard.html` — student-designed denial-risk review scorecard
 - `root-cause-denial-map.html` — denial-signal root-cause review map
-- `claim-readiness-checklist.html` — claim-readiness review checklist
+- `claim-readiness-checklist.html` — interactive Pre-Submission Claim Readiness Control™
 - `denial-prevention-dashboard.html` — simulated dashboard aligned to the five-case dataset
 - `monthly-denial-trend-report.html` — simulated denial-risk review summary
 - `sample-denial-cases.html` — synthetic case examples
@@ -159,6 +214,8 @@ Through this project, I am practicing:
 - Denial-prevention thinking
 - Revenue-cycle workflow analysis
 - Claim-readiness review
+- Pre-submission claim readiness control
+- Upstream workflow convergence review
 - Root-cause hypothesis development
 - Eligibility and authorization risk awareness
 - Documentation-readiness review
