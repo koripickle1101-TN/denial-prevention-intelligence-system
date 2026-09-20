@@ -1,1 +1,378 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claim Readiness Review Checklist</title><link rel="stylesheet" href="style.css"></head><body><header class="site-header"><nav class="nav-shell"><div class="brand-mark">DPIS</div><div class="nav-links"><a href="index.html">Home</a><a href="denial-prevention-dashboard.html">Dashboard</a><a href="root-cause-denial-map.html">Traceback Map</a></div></nav></header><main><section class="page-hero"><div class="eyebrow">Interactive Student Workflow Tool · Synthetic Only · No PHI</div><h1>Claim Readiness Review Checklist</h1><p class="hero-subtitle">Use the checkboxes to model whether a fictional case is ready to advance. A passed checkpoint does not make the entire case ready while another required review remains open.</p></section><section class="content-section"><div class="interactive-panel"><form id="readinessForm"><div class="checklist-grid"><label class="check-item"><input type="checkbox" value="1"><span>Eligibility reviewed</span></label><label class="check-item"><input type="checkbox" value="2"><span>Authorization/service alignment reviewed</span></label><label class="check-item"><input type="checkbox" value="3"><span>Documentation-readiness flag routed appropriately</span></label><label class="check-item"><input type="checkbox" value="4"><span>Coding-related flag routed to qualified review</span></label><label class="check-item"><input type="checkbox" value="5"><span>Demographic/member data checked</span></label><label class="check-item"><input type="checkbox" value="6"><span>Relevant payer requirement identified for review</span></label><label class="check-item"><input type="checkbox" value="7"><span>Encounter context verified</span></label><label class="check-item"><input type="checkbox" value="8"><span>Next-action owner visible</span></label><label class="check-item"><input type="checkbox" value="9"><span>Closure evidence documented</span></label><label class="check-item"><input type="checkbox" value="10"><span>Recurrence reviewed</span></label><label class="check-item"><input type="checkbox" value="11"><span>Final workflow gate cleared</span></label></div></form><div class="progress-track"><div id="readinessBar" class="progress-bar"></div></div><div id="readinessStatus" class="status-box" aria-live="polite"></div><div class="control-actions"><button id="resetChecklist" class="secondary-button" type="button">Reset checklist</button></div></div><div class="content-card accent-card"><h2>Readiness Rule</h2><p><strong>Detection ≠ Resolution.</strong> A fictional case should not advance while a required educational review remains unresolved.</p></div><div class="content-card"><h2>Scope Boundary</h2><p>This checklist does not determine coding accuracy, medical necessity, coverage, compliance, payment, or payer policy. It is an educational workflow-review artifact only.</p></div></section></main><footer class="site-footer"><p>Created by Kori Pickle</p><p>Student-developed · Synthetic data only · No PHI</p></footer><script src="dpis-interactions.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DPIS | Pre-Submission Claim Readiness Control™</title>
+  <meta name="description" content="Student-developed, simulated, no-PHI pre-submission claim readiness control for practicing how upstream healthcare operations workflows converge before modeled claim advancement.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav-shell">
+    <div class="brand-mark">DPIS</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="work-queue.html">Work Queue</a>
+      <a href="denial-prevention-dashboard.html">Dashboard</a>
+      <a href="root-cause-denial-map.html">Traceback</a>
+      <a href="payment-recovery-reconciliation.html">Reconciliation</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="eyebrow">Healthcare Operations Intelligence Engine™ · Career-Style Student Simulation</div>
+    <h1>Pre-Submission Claim Readiness Control™</h1>
+    <p class="hero-subtitle">A simulated control gate for practicing how patient/member data, eligibility, COB, payer information, authorization, documentation, service context, qualified coding review, attachments, ownership, and exception closure converge before a modeled claim is allowed to advance.</p>
+    <p class="hero-subtitle"><strong>Student-developed · Simulated · Synthetic data only · No PHI</strong></p>
+  </section>
+
+  <section class="content-section">
+    <div class="content-card accent-card">
+      <span class="mini-label">Core operating rule</span>
+      <h2>Claim populated ≠ claim ready.</h2>
+      <p>A fictional claim should not be treated as ready merely because available fields are populated. Any required unresolved exception must have visible ownership, a defined next action, and verified closure before modeled advancement.</p>
+      <div class="distinction-grid">
+        <div><strong>Claim populated</strong><span>≠ claim ready</span></div>
+        <div><strong>Correct data element</strong><span>≠ complete workflow readiness</span></div>
+        <div><strong>Detection</strong><span>≠ resolution</span></div>
+        <div><strong>Handoff</strong><span>≠ ownership</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">01</span>
+      <h2>Where Claim Readiness Comes From</h2>
+      <p>DPIS treats pre-submission readiness as the point where multiple upstream operational controls have to agree.</p>
+    </div>
+
+    <div class="convergence-grid">
+      <a class="convergence-card" href="https://eligibility-verification-intelligen.vercel.app/" target="_blank" rel="noreferrer">
+        <span class="mini-label">EVIS input</span>
+        <h3>Patient / Insurance / COB Integrity</h3>
+        <p>Patient/member data, eligibility, coverage, payer information, COB, and unresolved eligibility exceptions.</p>
+      </a>
+      <a class="convergence-card" href="https://parcs-prior-authorization-command-s.vercel.app/" target="_blank" rel="noreferrer">
+        <span class="mini-label">PARCS input</span>
+        <h3>Authorization / Referral Readiness</h3>
+        <p>Requirement identification, payer/program source review, authorization-service alignment, active movement, and closure.</p>
+      </a>
+      <div class="convergence-card">
+        <span class="mini-label">Data integrity input</span>
+        <h3>Documentation / Encounter Context</h3>
+        <p>Documentation readiness, patient-to-encounter integrity, required information, and qualified-review routing.</p>
+      </div>
+      <div class="convergence-card primary-convergence">
+        <span class="mini-label">DPIS convergence</span>
+        <h3>Pre-Submission Control Gate</h3>
+        <p>DPIS checks whether required upstream evidence is complete, exceptions are controlled, qualified review is routed, and closure is verified before modeled advancement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" id="workbench">
+    <div class="section-intro">
+      <span class="section-number">02</span>
+      <h2>Interactive Claim Readiness Workbench</h2>
+      <p>Use fictional information only. This workbench is designed to make the operational reasoning visible rather than simulate a real payer, clearinghouse, coding, or EHR system.</p>
+    </div>
+
+    <div class="interactive-panel">
+      <div class="workbench-grid">
+        <label>Fictional case
+          <select id="caseSelect">
+            <option value="CR-001">CR-001 · Eligibility / COB exception</option>
+            <option value="CR-002">CR-002 · Authorization alignment exception</option>
+            <option value="CR-003">CR-003 · Documentation / encounter-context exception</option>
+            <option value="CR-004">CR-004 · Coding-related review flag</option>
+            <option value="CR-005">CR-005 · Payer-specific information / attachment exception</option>
+          </select>
+        </label>
+        <label>Modeled workflow state
+          <select id="workflowState">
+            <option>Pre-submission review</option>
+            <option>Exception review</option>
+            <option>Qualified specialist review</option>
+            <option>Closure verification</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="caseSummary" class="status-box"></div>
+
+      <form id="readinessForm">
+        <div class="form-section">
+          <span class="mini-label">A · Patient, coverage, and payer data</span>
+          <div class="checklist-grid">
+            <label class="check-item"><input id="patientMember" type="checkbox"><span>Patient / member data reviewed</span></label>
+            <label class="check-item"><input id="eligibility" type="checkbox"><span>Eligibility / coverage reviewed</span></label>
+            <label class="check-item"><input id="cob" type="checkbox"><span>COB / other insurance reviewed</span></label>
+            <label class="check-item"><input id="payerInfo" type="checkbox"><span>Payer information validated</span></label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">B · Service, authorization, and documentation</span>
+          <div class="checklist-grid">
+            <label class="check-item"><input id="providerService" type="checkbox"><span>Provider / service context reviewed</span></label>
+            <label class="check-item"><input id="authReferral" type="checkbox"><span>Authorization / referral status reviewed</span></label>
+            <label class="check-item"><input id="documentation" type="checkbox"><span>Documentation readiness reviewed</span></label>
+            <label class="check-item"><input id="serviceAlignment" type="checkbox"><span>Service / date / location alignment reviewed</span></label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">C · Qualified review and payer-specific readiness</span>
+          <div class="workbench-grid">
+            <label>Coding-related flag present?
+              <select id="codingFlag">
+                <option>No</option>
+                <option>Yes — qualified review required</option>
+              </select>
+            </label>
+            <label>Qualified coding review status
+              <select id="codingReview">
+                <option>Not required</option>
+                <option>Required — not yet routed</option>
+                <option>Routed / pending</option>
+                <option>Qualified review completed</option>
+              </select>
+            </label>
+          </div>
+          <div class="checklist-grid">
+            <label class="check-item"><input id="attachments" type="checkbox"><span>Required attachments / information reviewed</span></label>
+            <label class="check-item"><input id="payerSource" type="checkbox"><span>Payer-specific requirement source reviewed</span></label>
+          </div>
+          <div class="boundary-note">
+            <strong>Boundary:</strong> DPIS can flag a coding-related issue for qualified review. It does not select codes, modifiers, diagnosis pointers, determine coding accuracy, or make medical-necessity decisions.
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">D · Exception ownership and closure</span>
+          <div class="workbench-grid">
+            <label>Open exception?
+              <select id="openException">
+                <option>No open exception</option>
+                <option>Yes — unresolved</option>
+                <option>Yes — action in progress</option>
+                <option>Closure verification pending</option>
+              </select>
+            </label>
+            <label>Current owner
+              <select id="owner">
+                <option>Unassigned</option>
+                <option>Patient Access</option>
+                <option>Eligibility / Financial Clearance</option>
+                <option>Prior Authorization Support</option>
+                <option>Documentation / HIM Support</option>
+                <option>Qualified Coding Review</option>
+                <option>Claims / Revenue Cycle Support</option>
+                <option>Payer Follow-Up</option>
+              </select>
+            </label>
+            <label>Next required action
+              <select id="nextAction">
+                <option>None selected</option>
+                <option>Resolve patient / member data discrepancy</option>
+                <option>Resolve COB / other insurance exception</option>
+                <option>Verify payer information</option>
+                <option>Complete authorization / referral follow-up</option>
+                <option>Route documentation exception</option>
+                <option>Route qualified coding review</option>
+                <option>Review payer-specific requirement</option>
+                <option>Verify required attachment / information</option>
+                <option>Document closure evidence</option>
+              </select>
+            </label>
+            <label>Exception closure status
+              <select id="closureStatus">
+                <option>Not established</option>
+                <option>Open</option>
+                <option>Action completed — verification pending</option>
+                <option>Closure verified</option>
+              </select>
+            </label>
+          </div>
+
+          <label>Evidence / work note
+            <textarea id="evidenceNote" rows="4" placeholder="Document what the synthetic record supports, what remains unresolved, what was routed, and what evidence was reviewed."></textarea>
+          </label>
+
+          <label>Closure evidence
+            <textarea id="closureEvidence" rows="4" placeholder="Synthetic example: discrepancy corrected, source rechecked, authorization/documentation status confirmed, qualified review completed if needed, and no required exception remains open."></textarea>
+          </label>
+        </div>
+
+        <div class="control-actions">
+          <button class="action-button" type="submit">Evaluate Readiness Gate</button>
+          <button id="resetChecklist" class="secondary-button" type="button">Reset</button>
+        </div>
+      </form>
+
+      <div class="progress-track"><div id="readinessBar" class="progress-bar"></div></div>
+      <div id="readinessStatus" class="gate-result" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">03</span>
+      <h2>Pre-Submission Control Logic</h2>
+    </div>
+    <div class="workflow-control-strip">
+      <div><strong>1</strong><span>Review upstream data</span></div>
+      <div><strong>2</strong><span>Identify exception</span></div>
+      <div><strong>3</strong><span>Review evidence</span></div>
+      <div><strong>4</strong><span>Route qualified review</span></div>
+      <div><strong>5</strong><span>Assign owner</span></div>
+      <div><strong>6</strong><span>Complete next action</span></div>
+      <div><strong>7</strong><span>Verify closure</span></div>
+      <div><strong>8</strong><span>Advance only when ready</span></div>
+    </div>
+
+    <div class="content-card statement-card">
+      <span class="mini-label">Control question</span>
+      <p>Before a modeled claim advances, what evidence proves that required upstream information is not only present, but sufficiently reviewed, routed, owned, and closed?</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">04</span>
+      <h2>Patient-to-Professional Perspective</h2>
+    </div>
+    <div class="content-card">
+      <p class="patient-insight"><strong>The patient sees the billing outcome. Healthcare operations has to understand the chain of data, decisions, and controls that produced it.</strong></p>
+      <p>A patient usually does not see member data validation, COB review, payer routing, authorization status, documentation readiness, qualified coding review, claim edits, or exception ownership. The patient may experience a rejected claim, a delayed resolution, a confusing bill, or another call asking for information.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="content-card accent-card">
+      <span class="mini-label">Educational boundary</span>
+      <h2>What this control does not decide</h2>
+      <p>This simulation does not submit claims, determine coding accuracy, select diagnosis/procedure codes or modifiers, determine medical necessity, decide coverage, interpret payer contracts, calculate reimbursement, or establish whether a real claim should be paid. It practices operational readiness, routing, ownership, and closure using synthetic information.</p>
+    </div>
+  </section>
+
+  <section class="signature-lockup" aria-label="Kori Pickle signature">
+    <div class="signature-name">Kori Pickle</div>
+    <div class="signature-rule"></div>
+    <div class="signature-note">Patient-to-professional healthcare operations portfolio</div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p><strong>DPIS — Denial Prevention Intelligence System™</strong></p>
+  <p>Created by Kori Pickle</p>
+  <p>Healthcare Operations Intelligence Engine™</p>
+  <p>Student-developed · Simulated · Synthetic data only · No PHI</p>
+</footer>
+
+<script>
+const cases={
+  "CR-001":{signal:"Eligibility / COB exception before submission",condition:"Coverage, member data, or other-insurance information requires resolution",patient:"Potential claim rejection, delayed resolution, or confusing balance"},
+  "CR-002":{signal:"Authorization / referral readiness exception",condition:"Authorization requirement or service alignment remains unresolved",patient:"Potential denial, delay, or coverage uncertainty"},
+  "CR-003":{signal:"Documentation / encounter-context exception",condition:"Supporting information may be incomplete or attached to the wrong encounter context",patient:"Potential repeated records request, delay, or billing confusion"},
+  "CR-004":{signal:"Coding-related review flag",condition:"A coding-related issue requires qualified review before modeled advancement",patient:"Potential claim delay, rejection, or corrected-bill experience"},
+  "CR-005":{signal:"Payer-specific information / attachment exception",condition:"Required payer-specific information, attachment, or source review remains incomplete",patient:"Potential claim delay, additional request, or follow-up"}
+};
+
+const q=s=>document.querySelector(s);
+const checks=["patientMember","eligibility","cob","payerInfo","providerService","authReferral","documentation","serviceAlignment","attachments","payerSource"];
+
+function updateCase(){
+  const c=cases[q("#caseSelect").value];
+  q("#caseSummary").innerHTML="<strong>"+q("#caseSelect").value+"</strong><br>"+c.signal+"<br><span><strong>Earlier condition to review:</strong> "+c.condition+"</span><br><span><strong>Potential patient-facing effect:</strong> "+c.patient+"</span>";
+  if(q("#caseSelect").value==="CR-004"){
+    q("#codingFlag").value="Yes — qualified review required";
+    q("#codingReview").value="Required — not yet routed";
+  }
+  evaluate(false);
+}
+
+function evaluate(scroll=true){
+  const completed=checks.filter(id=>q("#"+id).checked).length;
+  const codingFlag=q("#codingFlag").value;
+  const codingReview=q("#codingReview").value;
+  const exception=q("#openException").value;
+  const owner=q("#owner").value;
+  const action=q("#nextAction").value;
+  const closure=q("#closureStatus").value;
+  const closureEvidence=q("#closureEvidence").value.trim();
+  const evidenceNote=q("#evidenceNote").value.trim();
+
+  const baseComplete=completed===checks.length;
+  const codingComplete=codingFlag==="No" || codingReview==="Qualified review completed";
+  const exceptionOpen=exception!=="No open exception";
+  const ownershipComplete=!exceptionOpen || (owner!=="Unassigned" && action!=="None selected");
+  const closureComplete=!exceptionOpen || (closure==="Closure verified" && closureEvidence.length>0);
+  const evidenceVisible=evidenceNote.length>0 || !exceptionOpen;
+
+  const numerator=completed + (codingComplete?1:0) + (ownershipComplete?1:0) + (closureComplete?1:0) + (evidenceVisible?1:0);
+  const denominator=checks.length+4;
+  const pct=Math.round((numerator/denominator)*100);
+  q("#readinessBar").style.width=pct+"%";
+
+  let state,title,body;
+  if(!baseComplete){
+    state="blocked";
+    title="Not ready to advance";
+    body="One or more required upstream readiness reviews remain incomplete. Populated fields do not establish complete claim readiness.";
+  }else if(!codingComplete){
+    state="review";
+    title="Qualified review required";
+    body="A coding-related flag is present. DPIS requires completion of qualified coding review before modeled advancement.";
+  }else if(exceptionOpen && !ownershipComplete){
+    state="blocked";
+    title="Exception lacks controlled ownership";
+    body="The exception remains open without both a visible owner and a defined next action.";
+  }else if(exceptionOpen && !evidenceVisible){
+    state="review";
+    title="Evidence trail incomplete";
+    body="The synthetic record needs a work note showing what evidence was reviewed and what remains unresolved.";
+  }else if(exceptionOpen && !closureComplete){
+    state="active";
+    title="Exception active — not closed";
+    body="The modeled workflow may be moving, but advancement is blocked until closure is verified and closure evidence is documented.";
+  }else{
+    state="closed";
+    title="Modeled claim ready to advance";
+    body="Required readiness reviews are complete, qualified review is complete when applicable, and no unresolved exception remains in this educational simulation.";
+  }
+
+  const el=q("#readinessStatus");
+  el.className="gate-result "+state;
+  el.innerHTML='<span class="mini-label">Current modeled state · '+pct+'% control completion</span><h3>'+title+'</h3><p>'+body+'</p>';
+  if(scroll) el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+q("#readinessForm").addEventListener("submit",e=>{e.preventDefault();evaluate(true);});
+q("#caseSelect").addEventListener("change",updateCase);
+q("#codingFlag").addEventListener("change",()=>{
+  if(q("#codingFlag").value==="No") q("#codingReview").value="Not required";
+  else if(q("#codingReview").value==="Not required") q("#codingReview").value="Required — not yet routed";
+  evaluate(false);
+});
+document.querySelectorAll("#readinessForm input, #readinessForm select, #readinessForm textarea").forEach(el=>el.addEventListener("change",()=>evaluate(false)));
+q("#resetChecklist").addEventListener("click",()=>{
+  document.querySelectorAll("#readinessForm input[type=checkbox]").forEach(x=>x.checked=false);
+  q("#codingFlag").value="No";
+  q("#codingReview").value="Not required";
+  q("#openException").value="No open exception";
+  q("#owner").value="Unassigned";
+  q("#nextAction").value="None selected";
+  q("#closureStatus").value="Not established";
+  q("#evidenceNote").value="";
+  q("#closureEvidence").value="";
+  evaluate(false);
+});
+updateCase();
+</script>
+</body>
+</html>
