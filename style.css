@@ -16,3 +16,33 @@ h2,h3{font-weight:600}
 .signature-rule{width:180px;height:3px;background:#FF8200;margin:12px 0 14px}
 .signature-note{font-family:"Inter",Arial,sans-serif;font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;color:#000000}
 @media(max-width:860px){.brand-mark:before{width:48px;height:48px;flex-basis:48px}.site-footer:before{width:64px;height:64px}}
+
+/* Pre-Submission Claim Readiness Control™ */
+.distinction-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.distinction-grid>div{border:1px solid #000000;padding:16px;background:#FFFFFF}
+.distinction-grid strong,.distinction-grid span{display:block}
+.distinction-grid span{margin-top:4px}
+.convergence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.convergence-card{display:block;border:1px solid #000000;padding:22px;background:#FFFFFF;color:#000000;text-decoration:none}
+.convergence-card:hover,.convergence-card:focus{border-color:#FF8200;outline:none}
+.convergence-card h3{margin:8px 0 10px;font-family:"Newsreader",Georgia,serif;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.03}
+.convergence-card p{margin:0}
+.primary-convergence{border:2px solid #FF8200}
+.form-section{padding:24px 0;border-top:1px solid #000000}
+.form-section:first-of-type{border-top:0}
+.interactive-panel textarea{width:100%;box-sizing:border-box;min-height:110px;padding:10px 12px;border:1px solid #000000;background:#FFFFFF;color:#000000;font-family:"Inter",Arial,sans-serif;font-size:16px}
+.boundary-note{border-left:4px solid #FF8200;padding:14px 16px;margin-top:16px;background:#FFFFFF;border-top:1px solid #000000;border-right:1px solid #000000;border-bottom:1px solid #000000}
+.gate-result{border:1px solid #000000;border-left:6px solid #FF8200;background:#FFFFFF;padding:22px;margin-top:18px}
+.gate-result h3{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1;margin:8px 0}
+.gate-result.blocked{border-left-color:#000000}
+.gate-result.review{border-left-color:#FF8200}
+.gate-result.active{border-left-color:#FF8200}
+.gate-result.closed{border:2px solid #FF8200}
+.workflow-control-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:26px 0}
+.workflow-control-strip>div{border:1px solid #000000;padding:16px 10px;text-align:center;background:#FFFFFF}
+.workflow-control-strip strong{display:block;color:#FF8200;font-family:"Newsreader",Georgia,serif;font-size:1.7rem}
+.workflow-control-strip span{display:block;font-size:.82rem;font-weight:800}
+.patient-insight{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.12}
+@media(max-width:860px){
+  .distinction-grid,.convergence-grid,.workflow-control-strip{grid-template-columns:1fr}
+}
