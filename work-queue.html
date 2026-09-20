@@ -23,8 +23,8 @@
 </div>
 <form id="workForm">
 <label>Case status<select id="caseStatus"><option>New</option><option>In Review</option><option>Pending Owner</option><option>Follow-Up Due</option><option>Closed</option></select></label>
-<label>Assigned owner<select id="caseOwner"><option>Unassigned</option><option>Patient Access</option><option>Authorization Support</option><option>Documentation / HIM Review</option><option>Claims Follow-Up</option><option>Qualified Coding Review</option><option>Revenue Cycle Support</option></select></label>
-<label>Next action<select id="nextAction"><option>Review available evidence</option><option>Route to appropriate owner</option><option>Request additional information</option><option>Verify eligibility / coverage data</option><option>Review authorization-service alignment</option><option>Verify encounter-context integrity</option><option>Document closure evidence</option></select></label>
+<label>Assigned owner<select id="caseOwner"><option>Unassigned</option><option>Patient Access</option><option>Authorization Support</option><option>Documentation / HIM Review</option><option>Claims Follow-Up</option><option>Payment Posting / Cash Applications</option><option>Credit Balance Support</option><option>Payer Follow-Up</option><option>Qualified Coding Review</option><option>Revenue Cycle Support</option></select></label>
+<label>Next action<select id="nextAction"><option>Review available evidence</option><option>Route to appropriate owner</option><option>Request additional information</option><option>Verify eligibility / coverage data</option><option>Review authorization-service alignment</option><option>Verify encounter-context integrity</option><option>Trace recovery to original transaction</option><option>Review ERA/EOB and supporting correspondence</option><option>Reconcile remaining balance</option><option>Document closure evidence</option></select></label>
 <label>Follow-up timing<select id="followUp"><option>Same day</option><option>1 business day</option><option>2 business days</option><option>3 business days</option><option>No follow-up — closed</option></select></label>
 <label>Work note<textarea id="workNote" rows="4" placeholder="Document what was reviewed, what remains unresolved, and why the next action was selected."></textarea></label>
 <div class="checklist-grid">
@@ -49,7 +49,8 @@ const cases=[
 {id:"DPI-002",signal:"Additional information required",detection:"Payer response / follow-up queue",condition:"Documentation-readiness flag remained unresolved",patient:"Delay, repeat requests, billing confusion",priority:"Higher",status:"Follow-Up Due"},
 {id:"DPI-003",signal:"Eligibility / coverage signal",detection:"Claim readiness review",condition:"Coverage/member-data conflict requires resolution",patient:"Unexpected bill, extra calls",priority:"Moderate",status:"Pending Owner"},
 {id:"DPI-004",signal:"Payer-requirement signal",detection:"Pre-submission review",condition:"Requirement verification incomplete",patient:"Delay, rescheduling, uncertainty",priority:"Higher",status:"In Review"},
-{id:"DPI-005",signal:"Documentation / encounter-context signal",detection:"Claim support review",condition:"Encounter-context integrity requires review",patient:"Repeated record request, billing confusion",priority:"Moderate",status:"New"}
+{id:"DPI-005",signal:"Documentation / encounter-context signal",detection:"Claim support review",condition:"Encounter-context integrity requires review",patient:"Repeated record request, billing confusion",priority:"Moderate",status:"New"},
+{id:"DPI-006",signal:"Reduced payment / recovery activity",detection:"Payment posting / A/R reconciliation",condition:"Original transaction linkage and recovery evidence require review",patient:"Unexpected balance, another statement, or billing confusion",priority:"Higher",status:"Follow-Up Due"}
 ];
 let selected=cases[0]; const logs=[];
 const q=s=>document.querySelector(s);
