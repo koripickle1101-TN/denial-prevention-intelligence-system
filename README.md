@@ -91,6 +91,60 @@ Patient-to-professional insight:
 
 This control does not submit claims, select codes or modifiers, determine coding accuracy, decide medical necessity or coverage, interpret payer contracts, calculate reimbursement, or establish whether a real claim should be paid.
 
+## Claim Transmission & Acknowledgement Control™
+
+DPIS now extends the claim-control workflow beyond pre-submission readiness. This interactive module practices what happens after a modeled claim is ready to submit and asks whether the claim is actually visible and controlled downstream.
+
+Modeled workflow:
+
+**Ready to submit → transmitted → clearinghouse response → payer acknowledgement → adjudication status → exception routing → follow-up → final status → closure**
+
+The interactive workspace includes:
+
+- Claim / Case Reference
+- Submission Date
+- Transmission Status
+- Clearinghouse Status
+- Clearinghouse Response Date
+- Payer Acknowledgement Status
+- Payer Claim / Reference Number
+- Payer Rejection Present?
+- Claim Found in Payer System?
+- Adjudication Status
+- Last Meaningful Status Change
+- Current Owner
+- Next Required Action
+- Follow-Up Due
+- Escalation Threshold
+- Exception Category
+- Evidence Reviewed
+- Final Claim Status
+- Closure Evidence
+- Potential Patient-Facing Effect
+
+The control rule is:
+
+> **A successful clearinghouse transmission should not be treated as completed claim progression until downstream payer acknowledgement and status visibility are established or an exception has been assigned for follow-up.**
+
+Key operational distinctions:
+
+- **Clearinghouse accepted ≠ payer accepted**
+- **Transmission successful ≠ claim actively progressing**
+- **Claim sent ≠ claim received into adjudication**
+- **No immediate rejection ≠ final acceptance**
+
+The interactive gate can return modeled states such as **Transmission Hold**, **Clearinghouse Exception**, **Payer Visibility Gap**, **Payer Exception**, **Claim Not Found**, **Actively Moving**, **Final Status Gap**, **Closure Pending**, and **Controlled Final State**.
+
+This module extends the DPIS operating sequence:
+
+**Pre-submission readiness → submission → acknowledgement → adjudication visibility → downstream exception / denial traceback**
+
+Patient-to-professional insight:
+
+> **The patient sees the waiting. Healthcare operations has to know where the claim actually is, what evidence proves that status, and who owns the next action.**
+
+This is a student-developed operational simulation only. It does not transmit real claims, access a clearinghouse or payer, reproduce EDI transactions, determine payer acceptance, adjudicate claims, calculate reimbursement, interpret payer contracts, or make coding, coverage, medical-necessity, compliance, or legal determinations.
+
 ## Payment Recovery Reconciliation Review™
 
 DPIS now includes a student-developed post-payment workflow control for practicing how a reduced payment, offset, adjustment, reversal, or recovery signal can be traced back to the original transaction before the account is treated as reconciled.
@@ -117,9 +171,10 @@ This is an educational workflow simulation only. It does not determine payer lia
 
 ## New Review Controls
 
-DPIS now includes six additional student-practice controls:
+DPIS now includes seven additional student-practice controls:
 
 - **Pre-Submission Claim Readiness Control™** — brings upstream data, eligibility, COB, authorization, documentation, payer-specific review, qualified-review routing, ownership, and closure together before modeled claim advancement.
+- **Claim Transmission & Acknowledgement Control™** — follows a modeled claim from transmission through clearinghouse response, payer acknowledgement, adjudication visibility, exception routing, follow-up, final status, and closure.
 - **Denial Traceback Review™** — traces a visible downstream signal through detection point, earlier checkpoints, available evidence, earliest supported condition, root-cause hypothesis, specialist review, preventive control, ownership, closure evidence, recurrence, and patient-facing effect.
 - **Information Request Routing Review™** — asks what information is missing, who owns the next step, where it must be submitted, when it is due, and what proves closure.
 - **Correction Recurrence Review™** — distinguishes an isolated synthetic correction from a repeated pattern that may justify deeper upstream review.
@@ -135,6 +190,14 @@ Key operating distinctions:
 > **Claim populated ≠ claim ready.**
 
 > **Correct data element ≠ complete workflow readiness.**
+
+> **Clearinghouse accepted ≠ payer accepted.**
+
+> **Transmission successful ≠ claim actively progressing.**
+
+> **Claim sent ≠ claim received into adjudication.**
+
+> **No immediate rejection ≠ final acceptance.**
 
 > **Recurrence is a signal for investigation, not proof of a systemic cause.**
 
@@ -201,6 +264,7 @@ This repository includes:
 - `denial-risk-scorecard.html` — student-designed denial-risk review scorecard
 - `root-cause-denial-map.html` — denial-signal root-cause review map
 - `claim-readiness-checklist.html` — interactive Pre-Submission Claim Readiness Control™
+- `claim-transmission-acknowledgement-control.html` — interactive Claim Transmission & Acknowledgement Control™
 - `denial-prevention-dashboard.html` — simulated dashboard aligned to the five-case dataset
 - `monthly-denial-trend-report.html` — simulated denial-risk review summary
 - `sample-denial-cases.html` — synthetic case examples
@@ -216,6 +280,9 @@ Through this project, I am practicing:
 - Claim-readiness review
 - Pre-submission claim readiness control
 - Upstream workflow convergence review
+- Claim transmission and acknowledgement tracking
+- Payer-status visibility and exception routing
+- Follow-up ownership and closure verification
 - Root-cause hypothesis development
 - Eligibility and authorization risk awareness
 - Documentation-readiness review
@@ -235,7 +302,7 @@ DPIS is the third project in the workflow path I use across my healthcare operat
 
 - **EVIS** looks at eligibility and intake risk.
 - **PARCS** looks at prior authorization workflow risk, ownership, and escalation.
-- **DPIS** looks at upstream denial-prevention and claim-readiness risk.
+- **DPIS** looks at pre-submission readiness, claim transmission, downstream status visibility, denial-prevention, traceback, and post-payment reconciliation.
 - **SBI** asks where the first cross-workflow control loss occurred.
 - **Habit Audit** looks at recurring operational habits that may make workflow risk more likely.
 
