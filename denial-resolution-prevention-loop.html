@@ -45,6 +45,9 @@
         <div><strong>Appeal submitted</strong><span>≠ denial resolved</span></div>
         <div><strong>Action taken</strong><span>≠ closure verified</span></div>
         <div><strong>Account resolved</strong><span>≠ recurrence prevented</span></div>
+        <div><strong>Case closed</strong><span>≠ process gap closed</span></div>
+        <div><strong>Immediate correction</strong><span>≠ preventive improvement</span></div>
+        <div><strong>Process change</strong><span>≠ proven improvement</span></div>
         <div><strong>Repeated pattern</strong><span>≠ proven systemic cause</span></div>
       </div>
     </div>
@@ -71,6 +74,8 @@
       <div><span>11</span><strong>Closure verification</strong></div>
       <div><span>12</span><strong>Recurrence review</strong></div>
       <div><span>13</span><strong>Preventive control</strong></div>
+      <div><span>14</span><strong>Implementation evidence</strong></div>
+      <div><span>15</span><strong>Post-control verification</strong></div>
     </div>
 
     <div class="content-card statement-card">
@@ -309,6 +314,64 @@
           <label>Post-Control Review
             <textarea id="postControlReview" rows="4" placeholder="What would be reviewed later to see whether the modeled pattern continued, changed, or remained inconclusive?"></textarea>
           </label>
+
+          <div class="post-control-verification">
+            <span class="mini-label">Preventive Control Effect Review™</span>
+            <h3>Did the preventive control actually change the recurring pattern?</h3>
+            <div class="form-grid">
+              <label>Implementation Date
+                <input id="implementationDate" type="date">
+              </label>
+              <label>Follow-Up Review Date
+                <input id="followUpReviewDate" type="date">
+              </label>
+              <label>Pre-Change Pattern
+                <select id="preChangePattern">
+                  <option>Not documented</option>
+                  <option>Isolated synthetic case</option>
+                  <option>Possible recurrence</option>
+                  <option>Repeated synthetic pattern</option>
+                  <option>Needs more evidence</option>
+                </select>
+              </label>
+              <label>Post-Change Pattern
+                <select id="postChangePattern">
+                  <option>Not reviewed yet</option>
+                  <option>No repeated pattern visible</option>
+                  <option>Lower modeled recurrence</option>
+                  <option>Pattern unchanged</option>
+                  <option>Pattern increased</option>
+                  <option>Inconclusive / more evidence needed</option>
+                </select>
+              </label>
+              <label>Improvement Supported?
+                <select id="improvementSupported">
+                  <option>Not yet determined</option>
+                  <option>Supported in synthetic review</option>
+                  <option>Not supported in synthetic review</option>
+                  <option>Inconclusive</option>
+                </select>
+              </label>
+              <label>Additional Review Needed?
+                <select id="additionalReviewNeeded">
+                  <option>Not determined</option>
+                  <option>No additional review identified</option>
+                  <option>Yes — continue monitoring</option>
+                  <option>Yes — revise modeled control</option>
+                  <option>Yes — qualified review needed</option>
+                </select>
+              </label>
+            </div>
+            <label>Evidence of Implementation
+              <textarea id="implementationEvidence" rows="4" placeholder="What synthetic evidence shows the preventive control was actually implemented rather than only proposed?"></textarea>
+            </label>
+            <label>Pre-Change Evidence
+              <textarea id="preChangeEvidence" rows="4" placeholder="What synthetic recurrence pattern existed before the modeled control change?"></textarea>
+            </label>
+            <label>Post-Change Evidence
+              <textarea id="postChangeEvidence" rows="4" placeholder="What synthetic evidence supports the post-change interpretation?"></textarea>
+            </label>
+          </div>
         </div>
 
         <div class="control-actions">
@@ -335,7 +398,9 @@
       <div><span class="mini-label">Action submitted / payer status unknown</span><h3>Submitted is not resolved</h3><p>Follow the case until a meaningful payer response or final disposition is documented.</p></div>
       <div><span class="mini-label">Final disposition known / closure weak</span><h3>Final status is not enough</h3><p>Closure evidence should show that required account action is complete and no unowned follow-up remains.</p></div>
       <div><span class="mini-label">Recurrence appears</span><h3>Investigate, do not overclaim</h3><p>A repeated synthetic pattern can justify deeper review, but it does not prove a systemic cause by itself.</p></div>
-      <div><span class="mini-label">Preventive control proposed</span><h3>Recheck the process later</h3><p>Post-control review asks whether the modeled recurrence changed rather than assuming the control worked.</p></div>
+      <div><span class="mini-label">Preventive control proposed</span><h3>A plan is not a process change</h3><p>Implementation evidence should show that the modeled control actually entered the workflow.</p></div>
+      <div><span class="mini-label">Control implemented / outcome unknown</span><h3>Process change ≠ proven improvement</h3><p>Compare pre-change and post-change synthetic evidence before concluding that the modeled control helped.</p></div>
+      <div><span class="mini-label">Pattern improves once</span><h3>Review sustainability</h3><p>A favorable result at one review point is not proof of durable improvement. Continue monitoring when the evidence is limited.</p></div>
     </div>
   </section>
 
@@ -353,6 +418,7 @@
         <blockquote>“Why did this happen after I already received the service?”</blockquote>
       </div>
       <p class="patient-insight"><strong>The patient experiences the denial as an outcome. Healthcare operations has to determine whether resolving that account also reveals an earlier process gap that needs to be controlled.</strong></p>
+      <p><strong>The patient needs the individual problem resolved. Healthcare operations also has to determine whether the workflow that created the problem was strengthened.</strong></p>
     </div>
   </section>
 
@@ -360,7 +426,8 @@
     <div class="content-card">
       <span class="mini-label">How this fits inside DPIS</span>
       <h2>From signal to prevention</h2>
-      <p><strong>Denial Traceback Review™</strong> identifies the earliest supported condition and preserves the evidence boundary. <strong>Denial Resolution & Prevention Loop™</strong> continues from that point through immediate account action, ownership, payer follow-up, final disposition, closure verification, recurrence review, and a modeled preventive-control decision.</p>
+      <p><strong>Denial Traceback Review™</strong> identifies the earliest supported condition and preserves the evidence boundary. <strong>Denial Resolution & Prevention Loop™</strong> continues from that point through immediate account action, ownership, payer follow-up, final disposition, closure verification, recurrence review, a modeled preventive-control decision, implementation evidence, and post-control verification.</p>
+      <p>The additional question is no longer only whether a preventive control was proposed. DPIS now asks: <strong>Did the preventive control actually change the recurring pattern?</strong></p>
     </div>
 
     <div class="content-card accent-card">
@@ -448,6 +515,15 @@ function loadCase(){
   q("#preventiveControl").value="None selected";
   q("#controlOwner").value="Unassigned";
   q("#postControlReview").value="";
+  q("#implementationDate").value=today();
+  q("#followUpReviewDate").value=addDays(14);
+  q("#preChangePattern").value="Not documented";
+  q("#postChangePattern").value="Not reviewed yet";
+  q("#improvementSupported").value="Not yet determined";
+  q("#additionalReviewNeeded").value="Not determined";
+  q("#implementationEvidence").value="";
+  q("#preChangeEvidence").value="";
+  q("#postChangeEvidence").value="";
   evaluate(false);
 }
 
@@ -470,6 +546,15 @@ function evaluate(scroll=true){
   const preventive=q("#preventiveControl").value;
   const controlOwner=q("#controlOwner").value;
   const postReview=!!q("#postControlReview").value.trim();
+  const implementationDate=!!q("#implementationDate").value;
+  const followUpReviewDate=!!q("#followUpReviewDate").value;
+  const preChangePattern=q("#preChangePattern").value;
+  const postChangePattern=q("#postChangePattern").value;
+  const improvementSupported=q("#improvementSupported").value;
+  const additionalReviewNeeded=q("#additionalReviewNeeded").value;
+  const implementationEvidence=!!q("#implementationEvidence").value.trim();
+  const preChangeEvidence=!!q("#preChangeEvidence").value.trim();
+  const postChangeEvidence=!!q("#postChangeEvidence").value.trim();
 
   const controls=[
     evidence,checkpoints,earliest,boundary!=="Evidence incomplete",hypothesis,
@@ -479,7 +564,14 @@ function evaluate(scroll=true){
     recurrence==="No recurrence identified" || similar!=="Not yet reviewed",
     recurrence==="No recurrence identified" || preventive!=="None selected",
     recurrence==="No recurrence identified" || controlOwner!=="Unassigned",
-    recurrence==="No recurrence identified" || postReview
+    recurrence==="No recurrence identified" || postReview,
+    recurrence==="No recurrence identified" || implementationDate,
+    recurrence==="No recurrence identified" || implementationEvidence,
+    recurrence==="No recurrence identified" || (preChangePattern!=="Not documented" && preChangeEvidence),
+    recurrence==="No recurrence identified" || (postChangePattern!=="Not reviewed yet" && postChangeEvidence),
+    recurrence==="No recurrence identified" || followUpReviewDate,
+    recurrence==="No recurrence identified" || improvementSupported!=="Not yet determined",
+    recurrence==="No recurrence identified" || additionalReviewNeeded!=="Not determined"
   ];
   const pct=Math.round(controls.filter(Boolean).length/controls.length*100);
   q("#loopProgress").style.width=pct+"%";
@@ -512,11 +604,29 @@ function evaluate(scroll=true){
   }else if(recurrence!=="No recurrence identified" && (similar==="Not yet reviewed" || preventive==="None selected" || controlOwner==="Unassigned" || !postReview)){
     state="review";chip="PREVENTION REVIEW";title="Account resolved — recurrence review is incomplete";
     body="A repeated or possible pattern can justify preventive-control review, but the modeled pattern still needs evidence, ownership, and a post-control review plan.";
+  }else if(recurrence!=="No recurrence identified" && (!implementationDate || !implementationEvidence)){
+    state="active";chip="IMPLEMENTATION EVIDENCE";title="Preventive control proposed — implementation is not yet evidenced";
+    body="A proposed control is not a process change. Document when the modeled control was implemented and what synthetic evidence shows it actually entered the workflow.";
+  }else if(recurrence!=="No recurrence identified" && (preChangePattern==="Not documented" || !preChangeEvidence)){
+    state="review";chip="BASELINE NEEDED";title="Control implemented — pre-change evidence is incomplete";
+    body="Document the synthetic recurrence pattern that existed before the change so the later review has a meaningful baseline.";
+  }else if(recurrence!=="No recurrence identified" && (postChangePattern==="Not reviewed yet" || !postChangeEvidence || !followUpReviewDate)){
+    state="active";chip="POST-CONTROL REVIEW";title="Implementation documented — post-change verification is still pending";
+    body="Compare the post-change synthetic pattern with the pre-change evidence before concluding that the preventive control helped.";
+  }else if(recurrence!=="No recurrence identified" && (improvementSupported==="Not yet determined" || additionalReviewNeeded==="Not determined")){
+    state="review";chip="INTERPRET RESULT";title="Pre/post evidence exists — improvement interpretation remains open";
+    body="State whether improvement is supported, not supported, or inconclusive within the synthetic review, and document whether additional review is needed.";
+  }else if(recurrence!=="No recurrence identified" && improvementSupported==="Not supported in synthetic review"){
+    state="active";chip="REVISE CONTROL";title="The modeled preventive control did not improve the synthetic pattern";
+    body="Keep the process gap open for additional review, revise the modeled control, or gather better evidence rather than declaring success.";
+  }else if(recurrence!=="No recurrence identified" && improvementSupported==="Inconclusive"){
+    state="review";chip="MORE EVIDENCE";title="The synthetic post-control evidence is inconclusive";
+    body="Continue monitoring or revise the review design. An uncertain result should remain uncertain.";
   }else{
     state="closed";chip="LOOP COMPLETE";title="Modeled denial resolution and prevention loop is controlled";
     body=recurrence==="No recurrence identified"
       ?"The synthetic account has evidence review, traceback, action ownership, payer status, final disposition, and closure documented. No recurrence was identified in this case."
-      :"The synthetic account is closed and the recurrence review includes a modeled preventive control, owner, and post-control review plan.";
+      :"The synthetic account is closed and the recurrence review includes a modeled preventive control, owner, implementation evidence, pre/post comparison, and documented improvement interpretation.";
   }
 
   q("#loopStateChip").textContent=chip;
