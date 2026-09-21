@@ -171,10 +171,11 @@ This is an educational workflow simulation only. It does not determine payer lia
 
 ## New Review Controls
 
-DPIS now includes eight additional student-practice controls:
+DPIS now includes nine additional student-practice controls:
 
 - **Pre-Submission Claim Readiness Control™** — brings upstream data, eligibility, COB, authorization, documentation, payer-specific review, qualified-review routing, ownership, and closure together before modeled claim advancement.
 - **Claim Transmission & Acknowledgement Control™** — follows a modeled claim from transmission through clearinghouse response, payer acknowledgement, adjudication visibility, exception routing, follow-up, final status, and closure.
+- **A/R Work Queue Prioritization & Human Review Control™** — uses transparent synthetic A/R signals to generate an explainable priority, then requires human acceptance, override, or escalation plus ownership, action, follow-up, and closure verification.
 - **Denial Traceback Review™** — traces a visible downstream signal through detection point, earlier checkpoints, available evidence, earliest supported condition, root-cause hypothesis, specialist review, preventive control, ownership, closure evidence, recurrence, and patient-facing effect.
 - **Denial Resolution & Prevention Loop™** — carries a synthetic denial from reason review and evidence verification through backward trace, immediate account action, ownership, payer follow-up, final disposition, closure verification, recurrence review, preventive control, and post-control review.
 - **Information Request Routing Review™** — asks what information is missing, who owns the next step, where it must be submitted, when it is due, and what proves closure.
@@ -207,6 +208,63 @@ Key operating distinctions:
 > **Account resolved ≠ recurrence prevented.**
 
 > **Recurrence is a signal for investigation, not proof of a systemic cause.**
+
+## A/R Work Queue Prioritization & Human Review Control™
+
+DPIS now includes an interactive responsible-automation module for practicing how a remote A/R queue can prioritize work without turning the automated recommendation into decision authority.
+
+Modeled path:
+
+**Account enters queue → automation evaluates signals → priority generated → reason displayed → human review → accept / override / escalate → owner assigned → action performed → follow-up → outcome verified**
+
+Synthetic inputs include:
+
+- Account / Case Reference
+- A/R Age
+- Balance Band
+- Current Claim Status
+- Denial / Exception Present?
+- Last Meaningful Action
+- Days Since Last Action
+- Next Action Due
+- Payer Response Pending?
+- Documentation Exception?
+- Authorization Exception?
+- Follow-Up Required?
+- Escalation Threshold Reached?
+- Automated Priority
+- Priority Reason
+- Human Review Required?
+- Human Override?
+- Override / Escalation Reason
+- Current Owner
+- Recommended Next Action
+- Human-Confirmed Next Action
+- Follow-Up Date
+- Action Performed?
+- Evidence Reviewed / Work Note
+- Closure Evidence
+
+The interactive model never displays a priority without an explanation. A reviewer can see why the account was surfaced, accept the recommendation, override it with a required rationale, or escalate the account for qualified review.
+
+Key distinctions:
+
+- **Automated priority ≠ verified next action**
+- **Automated follow-up ≠ resolved account**
+- **Queue position ≠ decision authority**
+- **Oldest account ≠ automatically highest operational priority**
+- **Technically open ≠ actively moving**
+- **System state ≠ controlled workflow**
+
+Responsible automation principle:
+
+> **AI or automation can surface a signal, but the workflow still needs defined authority, ownership, escalation, documentation, and verification before that signal becomes accountable action.**
+
+Patient-to-professional insight:
+
+> **The patient experiences the waiting. Operations has to make sure the account is visible to the right person before waiting becomes another unresolved patient problem.**
+
+The module intentionally does not reuse unsupported percentage claims about A/R reduction, collections, cost, or productivity from inspiration material. It demonstrates synthetic workflow logic only and makes no employer, payer, financial, or productivity claims.
 
 ## Denial Resolution & Prevention Loop™
 
@@ -341,6 +399,9 @@ Through this project, I am practicing:
 - Pre-submission claim readiness control
 - Upstream workflow convergence review
 - Claim transmission and acknowledgement tracking
+- A/R queue prioritization and aging awareness
+- Explainable automation and human override
+- Human-in-the-loop ownership, escalation, and accountability
 - Payer-status visibility and exception routing
 - Follow-up ownership and closure verification
 - Root-cause hypothesis development
@@ -366,7 +427,7 @@ DPIS is the third project in the workflow path I use across my healthcare operat
 
 - **EVIS** looks at eligibility and intake risk.
 - **PARCS** looks at prior authorization workflow risk, ownership, and escalation.
-- **DPIS** looks at pre-submission readiness, claim transmission, downstream status visibility, denial-prevention, traceback, and post-payment reconciliation.
+- **DPIS** looks at pre-submission readiness, claim transmission, downstream status visibility, explainable A/R prioritization, human review, denial prevention, traceback, follow-up, closure, recurrence, and post-payment reconciliation.
 - **SBI** asks where the first cross-workflow control loss occurred.
 - **Habit Audit** looks at recurring operational habits that may make workflow risk more likely.
 
