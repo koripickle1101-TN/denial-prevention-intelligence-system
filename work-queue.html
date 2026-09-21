@@ -1,8 +1,9 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DPIS Work Queue Simulator</title><link rel="stylesheet" href="style.css"></head><body>
-<header class="site-header"><nav class="nav-shell"><div class="brand-mark">DPIS</div><div class="nav-links"><a href="index.html">Home</a><a href="denial-prevention-dashboard.html">Dashboard</a><a href="sample-denial-cases.html">Cases</a></div></nav></header>
+<header class="site-header"><nav class="nav-shell"><div class="brand-mark">DPIS</div><div class="nav-links"><a href="index.html">Home</a><a href="denial-prevention-dashboard.html">Dashboard</a><a href="ar-work-queue-prioritization-control.html">A/R Priority + Human Review</a><a href="sample-denial-cases.html">Cases</a></div></nav></header>
 <main>
-<section class="page-hero"><div class="eyebrow">Career-Style Workflow Simulation · Synthetic Cases · No PHI</div><h1>DPIS Work Queue Simulator</h1><p class="hero-subtitle">A student-developed simulation of the kind of operational work I am preparing to perform: review a queue, open a case, determine the next supported action, assign ownership, document follow-up, escalate when needed, and verify closure. It is not a production claims system.</p></section>
+<section class="page-hero"><div class="eyebrow">Healthcare Operations Intelligence Engine™ · Career-Style Workflow Simulation</div><h1>DPIS Work Queue Simulator</h1><p class="hero-subtitle">A student-developed simulation of the operational work I am preparing to perform: review a queue, open a case, determine the next supported action, assign ownership, document follow-up, escalate when needed, and verify closure.</p><p class="hero-subtitle"><strong>Student-developed · Simulated · Synthetic data only · No PHI</strong></p><div class="hero-actions"><a class="primary-button" href="#caseWorkbench">Work General Queue</a><a class="secondary-button" href="ar-work-queue-prioritization-control.html">Open A/R Priority + Human Review Control™</a></div></section>
 <section class="content-section">
+<div class="content-card accent-card"><span class="mini-label">Responsible automation extension</span><h2>A queue position should explain itself.</h2><p>The general DPIS queue remains available below. For A/R prioritization practice, the new <strong>A/R Work Queue Prioritization & Human Review Control™</strong> generates a transparent synthetic priority, displays the triggering reasons, and requires human acceptance, override, or escalation before the next action is treated as controlled.</p><p><strong>Automated priority ≠ verified next action.</strong></p><a class="primary-button" href="ar-work-queue-prioritization-control.html">Open A/R Human Review Control →</a></div>
 <div class="interactive-panel">
 <h2>1. Work the Queue</h2>
 <div class="queue-toolbar">
@@ -41,8 +42,7 @@
 
 <div class="content-card accent-card"><h2>Career Simulation Boundary</h2><p>This workspace simulates operational habits such as queue management, ownership, follow-up, escalation, documentation, and closure. It does not submit real claims, access EHRs, determine coding, make payer decisions, or use PHI.</p></div>
 </section>
-</main>
-<footer class="site-footer"><p>Created by Kori Pickle</p><p>Student-developed · Simulated · Synthetic data only · No PHI</p></footer>
+<section class="signature-lockup" aria-label="Kori Pickle signature"><a class="signature-name" href="https://lnkd.in/p/eQuDNisW" target="_blank" rel="noreferrer">Kori Pickle</a><div class="signature-rule"></div><div class="signature-note">Patient-to-professional healthcare operations portfolio</div></section></main><footer class="site-footer"><p><strong>DPIS — Denial Prevention Intelligence System™</strong></p><p>Created by Kori Pickle</p><p>Healthcare Operations Intelligence Engine™</p><p>Student-developed · Simulated · Synthetic data only · No PHI</p></footer>
 <script>
 const cases=[
 {id:"DPI-001",signal:"Authorization-related denial signal",detection:"Denial / AR review",condition:"Authorization-service alignment requires review",patient:"Delay, repeat calls, uncertainty",priority:"Higher",status:"New"},
