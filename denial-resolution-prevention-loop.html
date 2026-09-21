@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DPIS | Denial Resolution & Prevention Loop™</title>
+  <meta name="description" content="Student-developed, simulated, no-PHI interactive denial-resolution and prevention workflow for evidence review, traceback, ownership, follow-up, closure, recurrence, and preventive control.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav-shell">
+    <div class="brand-mark">DPIS</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="work-queue.html">Work Queue</a>
+      <a href="claim-transmission-acknowledgement-control.html">Transmission</a>
+      <a href="root-cause-denial-map.html">Traceback</a>
+      <a href="#loop">Resolution Loop</a>
+      <a href="#prevention">Prevention</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero denial-loop-hero">
+    <div class="eyebrow">Healthcare Operations Intelligence Engine™ · Career-Style Student Simulation</div>
+    <h1>Denial Resolution & Prevention Loop™</h1>
+    <p class="hero-subtitle">A premium interactive DPIS module for practicing what happens after a denial becomes visible: review the signal, verify evidence, trace backward, separate supported conditions from hypotheses, route the immediate action, follow the case to final disposition, verify closure, and examine recurrence before proposing a preventive control.</p>
+    <p class="hero-subtitle"><strong>Student-developed · Simulated · Synthetic data only · No PHI</strong></p>
+    <div class="hero-actions">
+      <a class="primary-button" href="#loop">Open Denial Resolution Loop</a>
+      <a class="secondary-button" href="root-cause-denial-map.html">Open Denial Traceback Review™</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="content-card accent-card">
+      <span class="mini-label">Core principle</span>
+      <h2>Resolving the account and preventing recurrence are two different control problems.</h2>
+      <p>A denial reason can identify the downstream signal, but it does not automatically prove the original workflow failure. DPIS now carries the case from denial signal through closure and then asks whether recurrence justifies a preventive-control review.</p>
+      <div class="distinction-grid">
+        <div><strong>Denial reason</strong><span>≠ proven root cause</span></div>
+        <div><strong>Corrected claim</strong><span>≠ corrected workflow</span></div>
+        <div><strong>Appeal submitted</strong><span>≠ denial resolved</span></div>
+        <div><strong>Action taken</strong><span>≠ closure verified</span></div>
+        <div><strong>Account resolved</strong><span>≠ recurrence prevented</span></div>
+        <div><strong>Repeated pattern</strong><span>≠ proven systemic cause</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">01</span>
+      <h2>The Denial Resolution & Prevention Loop</h2>
+      <p>The workflow is designed to preserve the distinction between what the synthetic evidence supports and what remains a hypothesis.</p>
+    </div>
+
+    <div class="denial-loop-rail">
+      <div><span>01</span><strong>Denial signal</strong></div>
+      <div><span>02</span><strong>Reason review</strong></div>
+      <div><span>03</span><strong>Evidence verification</strong></div>
+      <div><span>04</span><strong>Backward trace</strong></div>
+      <div><span>05</span><strong>Earliest supported condition</strong></div>
+      <div><span>06</span><strong>Root-cause hypothesis</strong></div>
+      <div><span>07</span><strong>Immediate action</strong></div>
+      <div><span>08</span><strong>Ownership</strong></div>
+      <div><span>09</span><strong>Follow-up</strong></div>
+      <div><span>10</span><strong>Final disposition</strong></div>
+      <div><span>11</span><strong>Closure verification</strong></div>
+      <div><span>12</span><strong>Recurrence review</strong></div>
+      <div><span>13</span><strong>Preventive control</strong></div>
+    </div>
+
+    <div class="content-card statement-card">
+      <span class="mini-label">Signature question</span>
+      <p>Where did the workflow first lose control—and what evidence would justify changing the process rather than only fixing the individual account?</p>
+    </div>
+  </section>
+
+  <section id="loop" class="content-section">
+    <div class="section-intro">
+      <span class="section-number">02</span>
+      <h2>Interactive Denial Workbench</h2>
+      <p>Choose a fictional denial case, then move it through evidence review, traceback, account action, payer follow-up, closure, recurrence, and prevention.</p>
+    </div>
+
+    <div class="interactive-panel denial-loop-panel">
+      <div class="control-header-row">
+        <div>
+          <span class="mini-label">Synthetic denial queue</span>
+          <h3>Resolution-to-Prevention Control</h3>
+        </div>
+        <div id="loopStateChip" class="control-chip">DENIAL REVIEW</div>
+      </div>
+
+      <div class="form-section">
+        <label>Fictional denial case
+          <select id="caseSelect">
+            <option value="DNL-001">DNL-001 · Authorization-related denial signal</option>
+            <option value="DNL-002">DNL-002 · Additional information required</option>
+            <option value="DNL-003">DNL-003 · Eligibility / coverage-related denial signal</option>
+            <option value="DNL-004">DNL-004 · Payer requirement / timely-filing review signal</option>
+            <option value="DNL-005">DNL-005 · Documentation / encounter-context denial signal</option>
+          </select>
+        </label>
+        <div id="caseSummary" class="status-box"></div>
+      </div>
+
+      <form id="loopForm">
+        <div class="form-section">
+          <span class="mini-label">A · Signal and reason review</span>
+          <div class="form-grid">
+            <label>Denial / Claim Signal
+              <input id="denialSignal" type="text">
+            </label>
+            <label>Denial Reason Reported
+              <input id="denialReason" type="text" placeholder="Synthetic payer reason / category">
+            </label>
+            <label>Qualified Review Needed?
+              <select id="qualifiedReview">
+                <option>No qualified review identified</option>
+                <option>Coding review required</option>
+                <option>Clinical / documentation review required</option>
+                <option>Payer / contract specialist review required</option>
+                <option>Other qualified review required</option>
+              </select>
+            </label>
+            <label>Potential Patient-Facing Effect
+              <select id="patientEffect">
+                <option>Coverage uncertainty</option>
+                <option>Another bill / changing balance</option>
+                <option>Additional phone call</option>
+                <option>Delayed resolution</option>
+                <option>Repeated information request</option>
+                <option>No modeled patient-facing effect identified</option>
+              </select>
+            </label>
+          </div>
+          <label>Evidence Reviewed
+            <textarea id="evidenceReviewed" rows="4" placeholder="Synthetic example: payer response, claim history, authorization record, eligibility data, documentation note, prior follow-up activity."></textarea>
+          </label>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">B · Backward trace and evidence boundary</span>
+          <label>Earlier Checkpoints Reviewed
+            <textarea id="earlierCheckpoints" rows="4" placeholder="Synthetic example: eligibility → authorization requirement → documentation readiness → claim readiness → transmission → payer acknowledgement."></textarea>
+          </label>
+          <div class="form-grid">
+            <label>Earliest Supported Condition
+              <select id="earliestCondition">
+                <option>Not established</option>
+                <option>Eligibility / coverage condition</option>
+                <option>Authorization requirement / alignment condition</option>
+                <option>Documentation-readiness condition</option>
+                <option>Encounter-context condition</option>
+                <option>Claim-preparation / submission condition</option>
+                <option>Payer acknowledgement / routing condition</option>
+                <option>Timely-filing / follow-up condition</option>
+                <option>Other / needs review</option>
+              </select>
+            </label>
+            <label>Evidence Boundary
+              <select id="evidenceBoundary">
+                <option>Evidence incomplete</option>
+                <option>Earliest supported condition documented</option>
+                <option>Qualified review required before conclusion</option>
+              </select>
+            </label>
+          </div>
+          <label>Root-Cause Hypothesis
+            <textarea id="rootCauseHypothesis" rows="4" placeholder="State what may have happened without presenting the hypothesis as a proven cause."></textarea>
+          </label>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">C · Immediate account action and ownership</span>
+          <div class="form-grid">
+            <label>Immediate Account Action
+              <select id="immediateAction">
+                <option>None selected</option>
+                <option>Review / correct account information</option>
+                <option>Route authorization exception</option>
+                <option>Route documentation request</option>
+                <option>Route qualified coding review</option>
+                <option>Submit / track corrected claim</option>
+                <option>Submit / track appeal</option>
+                <option>Request / route reprocessing</option>
+                <option>Follow up with payer</option>
+                <option>Route to other qualified workflow</option>
+              </select>
+            </label>
+            <label>Current Owner
+              <select id="currentOwner">
+                <option>Unassigned</option>
+                <option>Claims / A/R Follow-Up</option>
+                <option>Revenue Cycle Support</option>
+                <option>Patient Access / Eligibility</option>
+                <option>Prior Authorization Support</option>
+                <option>Documentation / HIM Support</option>
+                <option>Qualified Coding Review</option>
+                <option>Payer Follow-Up</option>
+                <option>Other Qualified Review</option>
+              </select>
+            </label>
+            <label>Action Date
+              <input id="actionDate" type="date">
+            </label>
+            <label>Next Follow-Up Date
+              <input id="nextFollowUp" type="date">
+            </label>
+            <label>Appeal / Correction / Other Action
+              <select id="actionType">
+                <option>No downstream action selected</option>
+                <option>Corrected claim</option>
+                <option>Appeal</option>
+                <option>Reprocessing request</option>
+                <option>Additional information submitted</option>
+                <option>Payer follow-up only</option>
+                <option>Qualified review / alternate workflow</option>
+              </select>
+            </label>
+            <label>Submission Evidence
+              <select id="submissionEvidence">
+                <option>Not applicable / not yet submitted</option>
+                <option>Submission documented</option>
+                <option>Receipt / status documented</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">D · Payer status, final disposition, and closure</span>
+          <div class="form-grid">
+            <label>Payer Status / Response
+              <select id="payerStatus">
+                <option>No current payer status</option>
+                <option>Pending review</option>
+                <option>Additional information requested</option>
+                <option>Reprocessed / revised status</option>
+                <option>Appeal decision received</option>
+                <option>Final payer disposition received</option>
+              </select>
+            </label>
+            <label>Final Disposition
+              <select id="finalDisposition">
+                <option>Not final</option>
+                <option>Resolved in synthetic account</option>
+                <option>Denied / final status maintained</option>
+                <option>Reprocessed / revised outcome</option>
+                <option>Transferred to qualified / alternate workflow</option>
+                <option>Other documented final disposition</option>
+              </select>
+            </label>
+          </div>
+          <label>Closure Evidence
+            <textarea id="closureEvidence" rows="4" placeholder="Synthetic example: final disposition recorded, account action complete, no unowned follow-up remains, and closure documentation is present."></textarea>
+          </label>
+        </div>
+
+        <div id="prevention" class="form-section">
+          <span class="mini-label">E · Recurrence and preventive-control review</span>
+          <div class="form-grid">
+            <label>Recurrence Flag
+              <select id="recurrenceFlag">
+                <option>No recurrence identified</option>
+                <option>Possible recurrence</option>
+                <option>Repeated synthetic pattern</option>
+                <option>Needs more evidence</option>
+              </select>
+            </label>
+            <label>Similar Cases Found?
+              <select id="similarCases">
+                <option>No</option>
+                <option>Yes</option>
+                <option>Not yet reviewed</option>
+              </select>
+            </label>
+            <label>Preventive Control
+              <select id="preventiveControl">
+                <option>None selected</option>
+                <option>Earlier eligibility / data validation gate</option>
+                <option>Authorization requirement detection gate</option>
+                <option>Documentation readiness gate</option>
+                <option>Encounter-context integrity check</option>
+                <option>Claim readiness / pre-submission control</option>
+                <option>Transmission / acknowledgement visibility control</option>
+                <option>Follow-up / escalation control</option>
+                <option>Ownership / handoff control</option>
+                <option>Other modeled control</option>
+              </select>
+            </label>
+            <label>Control Owner
+              <select id="controlOwner">
+                <option>Unassigned</option>
+                <option>Patient Access</option>
+                <option>Eligibility / Financial Clearance</option>
+                <option>Prior Authorization Support</option>
+                <option>Documentation / HIM Support</option>
+                <option>Claims / A/R Follow-Up</option>
+                <option>Revenue Cycle Support</option>
+                <option>Qualified Review</option>
+              </select>
+            </label>
+          </div>
+          <label>Post-Control Review
+            <textarea id="postControlReview" rows="4" placeholder="What would be reviewed later to see whether the modeled pattern continued, changed, or remained inconclusive?"></textarea>
+          </label>
+        </div>
+
+        <div class="control-actions">
+          <button class="action-button" type="submit">Evaluate Resolution Loop</button>
+          <button id="saveAction" class="secondary-button" type="button">Save Simulated Action</button>
+          <button id="resetCase" class="secondary-button" type="button">Reset Case</button>
+        </div>
+      </form>
+
+      <div class="progress-track"><div id="loopProgress" class="progress-bar"></div></div>
+      <div id="loopResult" class="gate-result" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">03</span>
+      <h2>What the Loop Is Testing</h2>
+    </div>
+
+    <div class="decision-matrix">
+      <div><span class="mini-label">Signal known / evidence weak</span><h3>Do not jump to root cause</h3><p>Keep the denial reason separate from the earliest condition the synthetic evidence actually supports.</p></div>
+      <div><span class="mini-label">Immediate action selected / owner missing</span><h3>Action is not controlled</h3><p>A correction, appeal, or follow-up path still needs visible ownership and timing.</p></div>
+      <div><span class="mini-label">Action submitted / payer status unknown</span><h3>Submitted is not resolved</h3><p>Follow the case until a meaningful payer response or final disposition is documented.</p></div>
+      <div><span class="mini-label">Final disposition known / closure weak</span><h3>Final status is not enough</h3><p>Closure evidence should show that required account action is complete and no unowned follow-up remains.</p></div>
+      <div><span class="mini-label">Recurrence appears</span><h3>Investigate, do not overclaim</h3><p>A repeated synthetic pattern can justify deeper review, but it does not prove a systemic cause by itself.</p></div>
+      <div><span class="mini-label">Preventive control proposed</span><h3>Recheck the process later</h3><p>Post-control review asks whether the modeled recurrence changed rather than assuming the control worked.</p></div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">04</span>
+      <h2>Patient-to-Professional Perspective</h2>
+    </div>
+
+    <div class="patient-impact-panel">
+      <div class="patient-quote-grid">
+        <blockquote>“Why wasn't this covered?”</blockquote>
+        <blockquote>“Why did I get another bill?”</blockquote>
+        <blockquote>“Why am I calling about this again?”</blockquote>
+        <blockquote>“Why did this happen after I already received the service?”</blockquote>
+      </div>
+      <p class="patient-insight"><strong>The patient experiences the denial as an outcome. Healthcare operations has to determine whether resolving that account also reveals an earlier process gap that needs to be controlled.</strong></p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="content-card">
+      <span class="mini-label">How this fits inside DPIS</span>
+      <h2>From signal to prevention</h2>
+      <p><strong>Denial Traceback Review™</strong> identifies the earliest supported condition and preserves the evidence boundary. <strong>Denial Resolution & Prevention Loop™</strong> continues from that point through immediate account action, ownership, payer follow-up, final disposition, closure verification, recurrence review, and a modeled preventive-control decision.</p>
+    </div>
+
+    <div class="content-card accent-card">
+      <span class="mini-label">Educational boundary</span>
+      <h2>What this module does not decide</h2>
+      <p>DPIS does not select codes or modifiers, determine coding correctness, decide medical necessity, determine coverage, interpret contracts, make appeal determinations, establish payer liability, or claim that a modeled preventive control would reduce real denials. Those matters require current authoritative guidance and appropriate qualified review.</p>
+    </div>
+  </section>
+
+  <section class="signature-lockup" aria-label="Kori Pickle signature">
+    <a class="signature-name" href="https://lnkd.in/p/eQuDNisW" target="_blank" rel="noreferrer">Kori Pickle</a>
+    <div class="signature-rule"></div>
+    <div class="signature-note">Patient-to-professional healthcare operations portfolio</div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p><strong>DPIS — Denial Prevention Intelligence System™</strong></p>
+  <p>Created by Kori Pickle</p>
+  <p>Healthcare Operations Intelligence Engine™</p>
+  <p>Student-developed · Simulated · Synthetic data only · No PHI</p>
+</footer>
+
+<script>
+const cases={
+  "DNL-001":{
+    signal:"Authorization-related denial signal",
+    reason:"Authorization-related payer response in synthetic scenario",
+    summary:"A downstream authorization-related denial is visible. The student workflow must trace whether requirement detection, service alignment, documentation readiness, submission, or follow-up created the earliest supported condition.",
+    effect:"Coverage uncertainty"
+  },
+  "DNL-002":{
+    signal:"Additional information required",
+    reason:"Payer requests additional information",
+    summary:"The denial/hold signal identifies missing information, but the root cause is not assumed. The workflow must identify the missing item, owner, routing path, submission evidence, and closure.",
+    effect:"Repeated information request"
+  },
+  "DNL-003":{
+    signal:"Eligibility / coverage-related denial signal",
+    reason:"Coverage or member-data issue reported",
+    summary:"The downstream signal requires review of eligibility, member/payer data, COB, readiness, and whether an unresolved exception advanced into the claim workflow.",
+    effect:"Another bill / changing balance"
+  },
+  "DNL-004":{
+    signal:"Payer requirement / timely-filing review signal",
+    reason:"Payer requirement or filing-related reason reported",
+    summary:"The workflow reviews current source verification, submission timing, ownership, and follow-up without independently deciding payer-policy correctness.",
+    effect:"Delayed resolution"
+  },
+  "DNL-005":{
+    signal:"Documentation / encounter-context denial signal",
+    reason:"Documentation-related payer response",
+    summary:"A document may belong to the correct fictional patient but still require encounter-context review. DPIS flags the issue for appropriate documentation or qualified review rather than making clinical or coding determinations.",
+    effect:"Additional phone call"
+  }
+};
+
+const q=s=>document.querySelector(s);
+const today=()=>new Date().toISOString().slice(0,10);
+const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+
+function loadCase(){
+  const c=cases[q("#caseSelect").value];
+  q("#denialSignal").value=c.signal;
+  q("#denialReason").value=c.reason;
+  q("#caseSummary").innerHTML="<strong>"+q("#caseSelect").value+"</strong><br>"+c.summary;
+  q("#patientEffect").value=c.effect;
+  q("#qualifiedReview").value="No qualified review identified";
+  q("#evidenceReviewed").value="";
+  q("#earlierCheckpoints").value="";
+  q("#earliestCondition").value="Not established";
+  q("#evidenceBoundary").value="Evidence incomplete";
+  q("#rootCauseHypothesis").value="";
+  q("#immediateAction").value="None selected";
+  q("#currentOwner").value="Unassigned";
+  q("#actionDate").value=today();
+  q("#nextFollowUp").value=addDays(2);
+  q("#actionType").value="No downstream action selected";
+  q("#submissionEvidence").value="Not applicable / not yet submitted";
+  q("#payerStatus").value="No current payer status";
+  q("#finalDisposition").value="Not final";
+  q("#closureEvidence").value="";
+  q("#recurrenceFlag").value="No recurrence identified";
+  q("#similarCases").value="Not yet reviewed";
+  q("#preventiveControl").value="None selected";
+  q("#controlOwner").value="Unassigned";
+  q("#postControlReview").value="";
+  evaluate(false);
+}
+
+function evaluate(scroll=true){
+  const evidence=!!q("#evidenceReviewed").value.trim();
+  const checkpoints=!!q("#earlierCheckpoints").value.trim();
+  const earliest=q("#earliestCondition").value!=="Not established";
+  const boundary=q("#evidenceBoundary").value;
+  const hypothesis=!!q("#rootCauseHypothesis").value.trim();
+  const action=q("#immediateAction").value;
+  const owner=q("#currentOwner").value;
+  const followup=!!q("#nextFollowUp").value;
+  const actionType=q("#actionType").value;
+  const submission=q("#submissionEvidence").value;
+  const payer=q("#payerStatus").value;
+  const finalDisposition=q("#finalDisposition").value;
+  const closure=!!q("#closureEvidence").value.trim();
+  const recurrence=q("#recurrenceFlag").value;
+  const similar=q("#similarCases").value;
+  const preventive=q("#preventiveControl").value;
+  const controlOwner=q("#controlOwner").value;
+  const postReview=!!q("#postControlReview").value.trim();
+
+  const controls=[
+    evidence,checkpoints,earliest,boundary!=="Evidence incomplete",hypothesis,
+    action!=="None selected",owner!=="Unassigned",followup,
+    actionType!=="No downstream action selected" || action==="Follow up with payer" || action==="Route to other qualified workflow",
+    payer!=="No current payer status",finalDisposition!=="Not final",closure,
+    recurrence==="No recurrence identified" || similar!=="Not yet reviewed",
+    recurrence==="No recurrence identified" || preventive!=="None selected",
+    recurrence==="No recurrence identified" || controlOwner!=="Unassigned",
+    recurrence==="No recurrence identified" || postReview
+  ];
+  const pct=Math.round(controls.filter(Boolean).length/controls.length*100);
+  q("#loopProgress").style.width=pct+"%";
+
+  let state,title,body,chip;
+  if(!evidence || !checkpoints){
+    state="blocked";chip="EVIDENCE REVIEW";title="Denial signal visible — evidence trail incomplete";
+    body="The denial reason is a starting signal, not a proven root cause. Review available evidence and earlier checkpoints before selecting a supported condition.";
+  }else if(!earliest || boundary==="Evidence incomplete"){
+    state="review";chip="TRACEBACK ACTIVE";title="Backward trace still needs an evidence-supported condition";
+    body="The workflow has been reviewed, but the earliest supported condition has not yet been established.";
+  }else if(!hypothesis){
+    state="review";chip="HYPOTHESIS GAP";title="Evidence boundary documented — hypothesis still needs to be stated";
+    body="Document what may have contributed while keeping the hypothesis separate from the supported evidence.";
+  }else if(action==="None selected" || owner==="Unassigned" || !followup){
+    state="active";chip="ACTION CONTROL";title="Immediate account action is not fully controlled";
+    body="A supported next step still needs visible ownership and follow-up timing.";
+  }else if(actionType!=="No downstream action selected" && submission==="Not applicable / not yet submitted" && !["Follow up with payer","Route to other qualified workflow"].includes(action)){
+    state="active";chip="SUBMISSION GAP";title="Selected downstream action lacks submission evidence";
+    body="A correction, appeal, reprocessing, or information-submission path should remain open until submission evidence or status is documented.";
+  }else if(payer==="No current payer status"){
+    state="active";chip="FOLLOW-UP DUE";title="Action taken — payer status still unknown";
+    body="Submitting or routing an action does not prove resolution. Continue follow-up until a meaningful payer response is documented.";
+  }else if(finalDisposition==="Not final"){
+    state="active";chip="FINAL DISPOSITION PENDING";title="Payer response is visible — final disposition remains open";
+    body="The account should not be treated as closed until a documented final disposition or qualified alternate workflow is established.";
+  }else if(!closure){
+    state="active";chip="CLOSURE PENDING";title="Final disposition known — closure evidence missing";
+    body="Final status alone does not prove operational closure. Document that required account action is complete and no unowned follow-up remains.";
+  }else if(recurrence!=="No recurrence identified" && (similar==="Not yet reviewed" || preventive==="None selected" || controlOwner==="Unassigned" || !postReview)){
+    state="review";chip="PREVENTION REVIEW";title="Account resolved — recurrence review is incomplete";
+    body="A repeated or possible pattern can justify preventive-control review, but the modeled pattern still needs evidence, ownership, and a post-control review plan.";
+  }else{
+    state="closed";chip="LOOP COMPLETE";title="Modeled denial resolution and prevention loop is controlled";
+    body=recurrence==="No recurrence identified"
+      ?"The synthetic account has evidence review, traceback, action ownership, payer status, final disposition, and closure documented. No recurrence was identified in this case."
+      :"The synthetic account is closed and the recurrence review includes a modeled preventive control, owner, and post-control review plan.";
+  }
+
+  q("#loopStateChip").textContent=chip;
+  const el=q("#loopResult");
+  el.className="gate-result "+state;
+  el.innerHTML='<span class="mini-label">Denial loop state · '+pct+'% documented</span><h3>'+title+'</h3><p>'+body+'</p>';
+  if(scroll) el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+q("#caseSelect").addEventListener("change",loadCase);
+document.querySelectorAll("#loopForm input, #loopForm select, #loopForm textarea").forEach(el=>el.addEventListener("change",()=>evaluate(false)));
+q("#loopForm").addEventListener("submit",e=>{e.preventDefault();evaluate(true);});
+q("#saveAction").addEventListener("click",()=>{
+  q("#loopResult").insertAdjacentHTML("beforeend","<p><strong>Simulated action saved in this browser session:</strong> "+q("#immediateAction").value+" · Owner: "+q("#currentOwner").value+" · Follow-up: "+q("#nextFollowUp").value+"</p>");
+});
+q("#resetCase").addEventListener("click",loadCase);
+loadCase();
+</script>
+</body>
+</html>
