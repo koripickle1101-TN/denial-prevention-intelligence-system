@@ -147,27 +147,68 @@ This is a student-developed operational simulation only. It does not transmit re
 
 ## Payment Recovery Reconciliation Review™
 
-DPIS now includes a student-developed post-payment workflow control for practicing how a reduced payment, offset, adjustment, reversal, or recovery signal can be traced back to the original transaction before the account is treated as reconciled.
+DPIS includes an interactive post-payment control for practicing how a later financial signal can be traced back to the original synthetic transaction before the financial workflow is treated as reconciled.
 
-Core workflow:
+Modeled workflow:
 
-**Recovery signal → trace original transaction → review evidence → reconcile amount → route exception → document action → verify closure**
+**Recovery signal → original transaction → recovery explanation → recovery method → later payment linkage → reconciliation → ownership → remaining balance → closure**
+
+The interactive workbench includes:
+
+- Recovery Signal
+- Original Account / Claim Reference
+- Original Payment
+- Recovery Amount
+- Recovery Explanation
+- Recovery Method
+- ERA/EOB Reference
+- Later Transaction / Offset Reference
+- Supporting Explanation Available?
+- Original Account Reviewed?
+- Later Transaction Linked?
+- Amount Reconciled?
+- Posting / Adjustment Reviewed?
+- Specialist Review Needed?
+- Current Owner
+- Next Action
+- Follow-Up Due
+- Remaining Balance Reviewed?
+- Evidence / Work Note
+- Workflow Status
+- Closure Evidence
+- Potential Patient-Facing Effect
+
+The module visibly separates the conceptual recovery process from one possible recovery method:
+
+- **Recovery / recoupment process** — the broader modeled process of recovering money connected to an earlier payment.
+- **Offset method** — one modeled method in which a later payment is reduced to recover an earlier amount.
+
+The student model does not assume that these terms or procedures are implemented identically by every payer or organization.
 
 Key distinctions:
 
 - **Paid ≠ correctly reconciled**
 - **Reduced payment ≠ explanation of the underlying recovery**
-- **Adjusted balance ≠ reconciled account**
+- **Recovery posted ≠ recovery reconciled**
+- **Adjusted balance ≠ closed financial workflow**
 
 Control question:
 
-> **If a later payment is reduced because of an earlier account, what evidence should connect the recovery to the original transaction before the adjustment is treated as fully reconciled?**
+> **If a later payment is reduced because of an earlier account, what evidence connects the recovery to the original transaction, and what must be reconciled before the workflow can be treated as closed?**
+
+The interactive control can return modeled states such as **Source Linkage**, **Evidence Review**, **Reconciliation Gap**, **Evidence Boundary**, **Ownership Required**, **Closure Conflict**, **Closure Pending**, and **Reconciled**.
 
 Patient-to-professional insight:
 
-> **The patient sees the balance. The operations team has to understand the chain of transactions that produced it.**
+> **The patient sees the balance. Healthcare operations has to understand the chain of transactions that produced it.**
 
-This is an educational workflow simulation only. It does not determine payer liability, contract correctness, coding accuracy, refund obligations, reimbursement, or legal requirements.
+A later payment may be the point where a recovery becomes visible, not the point where the underlying financial workflow began.
+
+Real-world handling boundary:
+
+> **Applicable payer and organizational guidance would need to be reviewed for real-world handling.**
+
+Terms such as recovery, recoupment, offset, reversal, adjustment, refund, and cross-claim recovery may be used or implemented differently depending on payer, organization, contract, and workflow. This educational simulation does not determine payer liability, contract correctness, coding accuracy, refund obligations, reimbursement, legal requirements, or whether any real payer action is financially correct.
 
 ## New Review Controls
 
@@ -181,7 +222,7 @@ DPIS now includes nine additional student-practice controls:
 - **Information Request Routing Review™** — asks what information is missing, who owns the next step, where it must be submitted, when it is due, and what proves closure.
 - **Correction Recurrence Review™** — distinguishes an isolated synthetic correction from a repeated pattern that may justify deeper upstream review.
 - **Encounter-Context Review** — checks whether supporting documentation belongs to the correct encounter, not only the correct patient.
-- **Payment Recovery Reconciliation Review™** — traces a post-payment financial signal to the original transaction, available remittance evidence, ownership, remaining balance, and closure.
+- **Payment Recovery Reconciliation Review™** — interactively traces a post-payment financial signal to the original transaction, recovery explanation and method, later-payment linkage, remittance evidence, reconciliation, ownership, remaining balance, and closure.
 
 Key operating distinctions:
 
@@ -206,6 +247,10 @@ Key operating distinctions:
 > **Action taken ≠ closure verified.**
 
 > **Account resolved ≠ recurrence prevented.**
+
+> **Paid ≠ correctly reconciled.**
+
+> **Recovery posted ≠ recovery reconciled.**
 
 > **Recurrence is a signal for investigation, not proof of a systemic cause.**
 
