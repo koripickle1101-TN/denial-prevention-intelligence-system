@@ -62,13 +62,13 @@
       <a class="workspace-card" href="claim-readiness-checklist.html">
         <span class="mini-label">Pre-submission control gate</span>
         <h3>Claim Readiness</h3>
-        <p>Bring patient/member data, eligibility, COB, payer information, authorization, documentation, service context, qualified review, ownership, and closure together before a modeled claim can advance.</p>
+        <p>Bring patient/member data, eligibility, COB, payer-order evidence, payer destination, authorization, documentation, service context, qualified review, ownership, and closure together before a modeled claim can advance.</p>
         <strong>Open Pre-Submission Control →</strong>
       </a>
       <a class="workspace-card primary-workspace" href="claim-transmission-acknowledgement-control.html">
         <span class="mini-label">Claim-control handoff</span>
         <h3>Transmission + Payer Handoff</h3>
-        <p>Track a synthetic claim from readiness and transmission through clearinghouse response, payer acknowledgement, payer claim reference, adjudication visibility, exception ownership, follow-up, final disposition, and verified closure.</p>
+        <p>Verify payer destination against the modeled coverage arrangement, then track a synthetic claim through transmission, clearinghouse response, payer acknowledgement, payer claim reference, adjudication visibility, exception ownership, follow-up, final disposition, and verified closure.</p>
         <strong>Open Interactive Handoff Review →</strong>
       </a>
       <a class="workspace-card" href="root-cause-denial-map.html">
@@ -144,6 +144,7 @@
       <p><strong>The patient experiences the denial as an outcome. Healthcare operations has to determine whether resolving that account also reveals an earlier process gap that needs to be controlled.</strong></p>
       <p><strong>The patient experiences the waiting. Operations has to make sure the account is visible to the right person before waiting becomes another unresolved patient problem.</strong></p>
       <p><strong>The patient sees the delay. Healthcare operations has to determine where the claim actually stopped moving.</strong></p>
+      <p><strong>The patient sees the billing problem. Healthcare operations has to determine whether the coverage and payer-routing workflow was correct before the claim ever moved downstream.</strong></p>
       <p><strong>The patient sees the balance. Healthcare operations has to understand the chain of transactions that produced it.</strong></p>
     </div>
   </section>
@@ -164,6 +165,9 @@
       <p><strong>Detection ≠ resolution.</strong></p>
       <p><strong>Claim populated ≠ claim ready.</strong></p>
       <p><strong>Correct data element ≠ complete workflow readiness.</strong></p>
+      <p><strong>Coverage verified ≠ payer order verified.</strong></p>
+      <p><strong>Correct coverage ≠ correct claim destination.</strong></p>
+      <p><strong>Payer destination selected ≠ payer responsibility established.</strong></p>
       <p><strong>Clearinghouse accepted ≠ payer accepted.</strong></p>
       <p><strong>Payer acknowledged ≠ adjudicated.</strong></p>
       <p><strong>Adjudication started ≠ final disposition.</strong></p>
