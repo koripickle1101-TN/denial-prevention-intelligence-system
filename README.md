@@ -145,6 +145,66 @@ Patient-to-professional insight:
 
 This is a student-developed operational simulation only. It does not transmit real claims, access a clearinghouse or payer, reproduce EDI transactions, determine payer acceptance, adjudicate claims, calculate reimbursement, interpret payer contracts, or make coding, coverage, medical-necessity, compliance, or legal determinations.
 
+
+### Clearinghouse-to-Payer Handoff Review™
+
+The Claim Transmission & Acknowledgement Control™ now includes a dedicated interactive handoff review that asks whether a modeled claim actually moved from clearinghouse acceptance into payer-controlled processing.
+
+Modeled path:
+
+**Claim ready → transmitted → clearinghouse response → payer acknowledgement → payer claim reference → adjudication visibility → exception → owner → follow-up → final status → closure**
+
+Synthetic review fields include:
+
+- Claim / Case Reference
+- Claim Ready?
+- Submission Timestamp
+- Transmission Status
+- Clearinghouse Status
+- Clearinghouse Response Timestamp
+- Clearinghouse Response
+- Clearinghouse Evidence Reviewed?
+- Clearinghouse Evidence Note
+- Payer Acknowledgement Status
+- Payer Claim / Reference Number
+- Payer Rejection Present?
+- Claim Found in Payer System?
+- Adjudication Status
+- Last Meaningful Status Change
+- Payer / Handoff Evidence Reviewed
+- Exception Category
+- Current Owner
+- Next Required Action
+- Follow-Up Due
+- Escalation Threshold
+- Potential Patient-Facing Effect
+- Exception / Follow-Up Evidence
+- Final Disposition
+- Closure Status
+- Closure Evidence
+
+Control question:
+
+> **What evidence proves that a claim moved from clearinghouse acceptance into payer-controlled processing, and what should happen when that evidence never appears?**
+
+Key distinctions:
+
+- **Claim created ≠ claim ready**
+- **Claim transmitted ≠ clearinghouse accepted**
+- **Clearinghouse accepted ≠ payer accepted**
+- **Payer acknowledged ≠ adjudicated**
+- **Adjudication started ≠ final disposition**
+- **Status visible ≠ action completed**
+
+The interactive control can return modeled states such as **Readiness Hold**, **Transmission Hold**, **Clearinghouse Hold**, **Handoff Not Proven**, **Payer Evidence**, **Exception Unowned**, **Adjudication Active**, **Final Status Pending**, **Closure Pending**, and **Controlled**.
+
+Patient-to-professional insight:
+
+> **The patient sees the delay. Healthcare operations has to determine where the claim actually stopped moving.**
+
+The source's unsupported 95–98% clean-claim / first-pass acceptance figure is intentionally excluded. The project also does not assume that every clearinghouse provides the same edits, services, connectivity, status reporting, or remittance workflow.
+
+
 ## Payment Recovery Reconciliation Review™
 
 DPIS includes an interactive post-payment control for practicing how a later financial signal can be traced back to the original synthetic transaction before the financial workflow is treated as reconciled.
@@ -215,7 +275,7 @@ Terms such as recovery, recoupment, offset, reversal, adjustment, refund, and cr
 DPIS now includes nine additional student-practice controls:
 
 - **Pre-Submission Claim Readiness Control™** — brings upstream data, eligibility, COB, authorization, documentation, payer-specific review, qualified-review routing, ownership, and closure together before modeled claim advancement.
-- **Claim Transmission & Acknowledgement Control™** — follows a modeled claim from transmission through clearinghouse response, payer acknowledgement, adjudication visibility, exception routing, follow-up, final status, and closure.
+- **Claim Transmission & Acknowledgement Control™** — follows a modeled claim from readiness and transmission through clearinghouse response, Clearinghouse-to-Payer Handoff Review™, payer acknowledgement, payer claim reference, adjudication visibility, exception routing, follow-up, final status, and closure.
 - **A/R Work Queue Prioritization & Human Review Control™** — uses transparent synthetic A/R signals to generate an explainable priority, then requires human acceptance, override, or escalation plus ownership, action, follow-up, and closure verification.
 - **Denial Traceback Review™** — traces a visible downstream signal through detection point, earlier checkpoints, available evidence, earliest supported condition, root-cause hypothesis, specialist review, preventive control, ownership, closure evidence, recurrence, and patient-facing effect.
 - **Denial Resolution & Prevention Loop™** — carries a synthetic denial from reason review and evidence verification through backward trace, immediate account action, ownership, payer follow-up, final disposition, closure verification, recurrence review, preventive control, and post-control review.
