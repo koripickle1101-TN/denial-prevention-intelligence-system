@@ -129,3 +129,25 @@ h2,h3{font-weight:600}
 .payment-recovery-panel input[type="text"],.payment-recovery-panel input[type="number"],.payment-recovery-panel input[type="date"]{width:100%;box-sizing:border-box;min-height:48px;margin-top:7px;padding:10px 12px;border:1px solid #000000;background:#FFFFFF;color:#000000;font-family:"Inter",Arial,sans-serif;font-size:16px}
 @media(max-width:1050px){.recovery-journey-rail{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:860px){.recovery-distinction-grid,.method-choice-grid,.reconciliation-math{grid-template-columns:1fr}.recovery-journey-rail{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Clearinghouse-to-Payer Handoff Review™ */
+.handoff-rail{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:7px;margin:28px 0}
+.handoff-rail>div{border:1px solid #000000;background:#FFFFFF;padding:13px 8px;min-height:102px}
+.handoff-rail span{display:block;color:#FF8200;font-family:"Newsreader",Georgia,serif;font-size:1.5rem;line-height:1;margin-bottom:8px}
+.handoff-rail strong{display:block;font-size:.69rem;line-height:1.23;text-transform:uppercase;letter-spacing:.045em}
+.handoff-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+.handoff-evidence-grid>div{border:1px solid #000000;background:#FFFFFF;padding:22px;border-bottom:4px solid #FF8200}
+.handoff-evidence-grid h3{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.04;margin:8px 0 10px}
+.checkpoint-ledger{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px;margin:20px 0 8px}
+.checkpoint{border:1px solid #000000;background:#FFFFFF;padding:10px 7px;min-height:84px}
+.checkpoint span{display:block;color:#FF8200;font-family:"Newsreader",Georgia,serif;font-size:1.3rem;line-height:1}
+.checkpoint strong{display:block;font-size:.67rem;text-transform:uppercase;line-height:1.2;margin:6px 0}
+.checkpoint small{display:block;font-size:.58rem;letter-spacing:.06em}
+.checkpoint.complete{border-top:4px solid #FF8200}
+.checkpoint.active{border-top:4px solid #000000}
+.checkpoint.exception{border:2px solid #FF8200}
+.checkpoint.clear{border-top:4px solid #000000}
+.checkpoint.open{opacity:.72}
+.transmission-panel input[type="text"],.transmission-panel input[type="date"],.transmission-panel input[type="datetime-local"]{width:100%;box-sizing:border-box;min-height:48px;margin-top:7px;padding:10px 12px;border:1px solid #000000;background:#FFFFFF;color:#000000;font-family:"Inter",Arial,sans-serif;font-size:16px}
+@media(max-width:1100px){.handoff-rail,.checkpoint-ledger{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:860px){.handoff-evidence-grid{grid-template-columns:1fr}.handoff-rail,.checkpoint-ledger{grid-template-columns:repeat(2,minmax(0,1fr))}}
