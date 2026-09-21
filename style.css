@@ -109,3 +109,23 @@ h2,h3{font-weight:600}
 .ar-review-panel input[type="text"],.ar-review-panel input[type="date"]{width:100%;box-sizing:border-box;min-height:48px;margin-top:7px;padding:10px 12px;border:1px solid #000000;background:#FFFFFF;color:#000000;font-family:"Inter",Arial,sans-serif;font-size:16px}
 @media(max-width:1050px){.ar-journey-rail{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(max-width:860px){.ar-journey-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.recommendation-grid,.human-decision-grid{grid-template-columns:1fr}}
+
+/* Payment Recovery Reconciliation Review™ */
+.payment-recovery-hero{position:relative;overflow:hidden}
+.payment-recovery-hero:after{content:"";position:absolute;right:-105px;top:-110px;width:275px;height:275px;border:2px solid #FF8200;border-radius:50%;box-shadow:0 0 0 28px #FFFFFF,0 0 0 30px #000000;opacity:.12;pointer-events:none}
+.payment-recovery-panel{border:2px solid #000000;box-shadow:10px 10px 0 #FF8200}
+.recovery-distinction-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+.recovery-distinction-grid>div{border:1px solid #000000;background:#FFFFFF;padding:24px;border-bottom:4px solid #FF8200}
+.recovery-distinction-grid h3{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.7rem,3vw,2.5rem);line-height:1;margin:8px 0 12px}
+.recovery-journey-rail{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px;margin:28px 0}
+.recovery-journey-rail>div{border:1px solid #000000;background:#FFFFFF;padding:14px 9px;min-height:98px}
+.recovery-journey-rail span{display:block;color:#FF8200;font-family:"Newsreader",Georgia,serif;font-size:1.55rem;line-height:1;margin-bottom:8px}
+.recovery-journey-rail strong{display:block;font-size:.72rem;line-height:1.24;text-transform:uppercase;letter-spacing:.045em}
+.recovery-method-panel{margin-top:22px;border-top:1px solid #000000;padding-top:20px}
+.method-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.reconciliation-math{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0 10px}
+.reconciliation-math>div{border:1px solid #000000;background:#FFFFFF;padding:18px;border-top:4px solid #FF8200}
+.reconciliation-math strong{display:block;font-family:"Newsreader",Georgia,serif;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1;margin-top:8px}
+.payment-recovery-panel input[type="text"],.payment-recovery-panel input[type="number"],.payment-recovery-panel input[type="date"]{width:100%;box-sizing:border-box;min-height:48px;margin-top:7px;padding:10px 12px;border:1px solid #000000;background:#FFFFFF;color:#000000;font-family:"Inter",Arial,sans-serif;font-size:16px}
+@media(max-width:1050px){.recovery-journey-rail{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:860px){.recovery-distinction-grid,.method-choice-grid,.reconciliation-math{grid-template-columns:1fr}.recovery-journey-rail{grid-template-columns:repeat(2,minmax(0,1fr))}}
