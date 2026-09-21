@@ -171,11 +171,12 @@ This is an educational workflow simulation only. It does not determine payer lia
 
 ## New Review Controls
 
-DPIS now includes seven additional student-practice controls:
+DPIS now includes eight additional student-practice controls:
 
 - **Pre-Submission Claim Readiness Control™** — brings upstream data, eligibility, COB, authorization, documentation, payer-specific review, qualified-review routing, ownership, and closure together before modeled claim advancement.
 - **Claim Transmission & Acknowledgement Control™** — follows a modeled claim from transmission through clearinghouse response, payer acknowledgement, adjudication visibility, exception routing, follow-up, final status, and closure.
 - **Denial Traceback Review™** — traces a visible downstream signal through detection point, earlier checkpoints, available evidence, earliest supported condition, root-cause hypothesis, specialist review, preventive control, ownership, closure evidence, recurrence, and patient-facing effect.
+- **Denial Resolution & Prevention Loop™** — carries a synthetic denial from reason review and evidence verification through backward trace, immediate account action, ownership, payer follow-up, final disposition, closure verification, recurrence review, preventive control, and post-control review.
 - **Information Request Routing Review™** — asks what information is missing, who owns the next step, where it must be submitted, when it is due, and what proves closure.
 - **Correction Recurrence Review™** — distinguishes an isolated synthetic correction from a repeated pattern that may justify deeper upstream review.
 - **Encounter-Context Review** — checks whether supporting documentation belongs to the correct encounter, not only the correct patient.
@@ -199,7 +200,65 @@ Key operating distinctions:
 
 > **No immediate rejection ≠ final acceptance.**
 
+> **Appeal submitted ≠ denial resolved.**
+
+> **Action taken ≠ closure verified.**
+
+> **Account resolved ≠ recurrence prevented.**
+
 > **Recurrence is a signal for investigation, not proof of a systemic cause.**
+
+## Denial Resolution & Prevention Loop™
+
+DPIS now includes an interactive denial-management practice loop that begins after a denial or claim problem becomes visible and continues through both account resolution and prevention-oriented review.
+
+Modeled workflow:
+
+**Denial signal → reason review → evidence verification → backward trace → earliest supported condition → root-cause hypothesis → immediate action → ownership → follow-up → final disposition → closure verification → recurrence review → preventive control**
+
+Interactive fields include:
+
+- Denial / Claim Signal
+- Denial Reason Reported
+- Evidence Reviewed
+- Earlier Checkpoints Reviewed
+- Earliest Supported Condition
+- Root-Cause Hypothesis
+- Qualified Review Needed?
+- Immediate Account Action
+- Current Owner
+- Action Date
+- Next Follow-Up Date
+- Appeal / Correction / Other Action
+- Submission Evidence
+- Payer Status / Response
+- Final Disposition
+- Closure Evidence
+- Recurrence Flag
+- Similar Cases Found?
+- Preventive Control
+- Control Owner
+- Post-Control Review
+- Potential Patient-Facing Effect
+
+The control deliberately separates the downstream reason from the evidence boundary. A denial reason can identify what became visible, but the student workflow still has to establish the earliest supported condition before documenting a root-cause hypothesis.
+
+Key distinctions:
+
+- **Denial reason ≠ proven root cause**
+- **Corrected claim ≠ corrected workflow**
+- **Appeal submitted ≠ denial resolved**
+- **Action taken ≠ closure verified**
+- **Account resolved ≠ recurrence prevented**
+- **Repeated pattern ≠ proven systemic cause**
+
+The interactive loop can return modeled states such as **Evidence Review**, **Traceback Active**, **Hypothesis Gap**, **Action Control**, **Submission Gap**, **Follow-Up Due**, **Final Disposition Pending**, **Closure Pending**, **Prevention Review**, and **Loop Complete**.
+
+Patient-to-professional insight:
+
+> **The patient experiences the denial as an outcome. Healthcare operations has to determine whether resolving that account also reveals an earlier process gap that needs to be controlled.**
+
+This module does not select codes or modifiers, determine coding correctness, decide medical necessity, determine coverage, interpret contracts, make appeal determinations, establish payer liability, or claim that a modeled preventive control would reduce real denials.
 
 ## Synthetic Case Set
 
@@ -263,6 +322,7 @@ This repository includes:
 - `index.html` — DPIS project overview
 - `denial-risk-scorecard.html` — student-designed denial-risk review scorecard
 - `root-cause-denial-map.html` — denial-signal root-cause review map
+- `denial-resolution-prevention-loop.html` — interactive Denial Resolution & Prevention Loop™
 - `claim-readiness-checklist.html` — interactive Pre-Submission Claim Readiness Control™
 - `claim-transmission-acknowledgement-control.html` — interactive Claim Transmission & Acknowledgement Control™
 - `denial-prevention-dashboard.html` — simulated dashboard aligned to the five-case dataset
@@ -284,6 +344,10 @@ Through this project, I am practicing:
 - Payer-status visibility and exception routing
 - Follow-up ownership and closure verification
 - Root-cause hypothesis development
+- Denial-resolution workflow control
+- Payer follow-up through final disposition
+- Closure verification
+- Recurrence review and preventive-control planning
 - Eligibility and authorization risk awareness
 - Documentation-readiness review
 - Payer-requirement awareness
