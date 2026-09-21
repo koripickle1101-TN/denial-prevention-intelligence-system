@@ -278,7 +278,7 @@ DPIS now includes nine additional student-practice controls:
 - **Claim Transmission & Acknowledgement Control™** — follows a modeled claim from readiness and transmission through clearinghouse response, Clearinghouse-to-Payer Handoff Review™, payer acknowledgement, payer claim reference, adjudication visibility, exception routing, follow-up, final status, and closure.
 - **A/R Work Queue Prioritization & Human Review Control™** — uses transparent synthetic A/R signals to generate an explainable priority, then requires human acceptance, override, or escalation plus ownership, action, follow-up, and closure verification.
 - **Denial Traceback Review™** — traces a visible downstream signal through detection point, earlier checkpoints, available evidence, earliest supported condition, root-cause hypothesis, specialist review, preventive control, ownership, closure evidence, recurrence, and patient-facing effect.
-- **Denial Resolution & Prevention Loop™** — carries a synthetic denial from reason review and evidence verification through backward trace, immediate account action, ownership, payer follow-up, final disposition, closure verification, recurrence review, preventive control, and post-control review.
+- **Denial Resolution & Prevention Loop™** — carries a synthetic denial from reason review and evidence verification through backward trace, immediate account action, ownership, payer follow-up, final disposition, closure verification, recurrence review, preventive control, implementation evidence, pre/post comparison, and post-control verification.
 - **Information Request Routing Review™** — asks what information is missing, who owns the next step, where it must be submitted, when it is due, and what proves closure.
 - **Correction Recurrence Review™** — distinguishes an isolated synthetic correction from a repeated pattern that may justify deeper upstream review.
 - **Encounter-Context Review** — checks whether supporting documentation belongs to the correct encounter, not only the correct patient.
@@ -307,6 +307,12 @@ Key operating distinctions:
 > **Action taken ≠ closure verified.**
 
 > **Account resolved ≠ recurrence prevented.**
+
+> **Case closed ≠ process gap closed.**
+
+> **Immediate correction ≠ preventive improvement.**
+
+> **Process change ≠ proven improvement.**
 
 > **Paid ≠ correctly reconciled.**
 
@@ -377,7 +383,7 @@ DPIS now includes an interactive denial-management practice loop that begins aft
 
 Modeled workflow:
 
-**Denial signal → reason review → evidence verification → backward trace → earliest supported condition → root-cause hypothesis → immediate action → ownership → follow-up → final disposition → closure verification → recurrence review → preventive control**
+**Denial signal → reason review → evidence verification → backward trace → earliest supported condition → root-cause hypothesis → immediate action → ownership → follow-up → final disposition → closure verification → recurrence review → preventive control → implementation evidence → post-control verification**
 
 Interactive fields include:
 
@@ -402,9 +408,24 @@ Interactive fields include:
 - Preventive Control
 - Control Owner
 - Post-Control Review
+- Implementation Date
+- Evidence of Implementation
+- Pre-Change Pattern
+- Pre-Change Evidence
+- Post-Change Pattern
+- Post-Change Evidence
+- Follow-Up Review Date
+- Improvement Supported?
+- Additional Review Needed?
 - Potential Patient-Facing Effect
 
 The control deliberately separates the downstream reason from the evidence boundary. A denial reason can identify what became visible, but the student workflow still has to establish the earliest supported condition before documenting a root-cause hypothesis.
+
+The continuous-improvement extension adds a second question after account closure:
+
+> **Did the preventive control actually change the recurring pattern?**
+
+DPIS now requires modeled implementation evidence and pre-change/post-change review before a recurring-pattern control can be described as supported within the simulation.
 
 Key distinctions:
 
@@ -415,7 +436,7 @@ Key distinctions:
 - **Account resolved ≠ recurrence prevented**
 - **Repeated pattern ≠ proven systemic cause**
 
-The interactive loop can return modeled states such as **Evidence Review**, **Traceback Active**, **Hypothesis Gap**, **Action Control**, **Submission Gap**, **Follow-Up Due**, **Final Disposition Pending**, **Closure Pending**, **Prevention Review**, and **Loop Complete**.
+The interactive loop can return modeled states such as **Evidence Review**, **Traceback Active**, **Hypothesis Gap**, **Action Control**, **Submission Gap**, **Follow-Up Due**, **Final Disposition Pending**, **Closure Pending**, **Prevention Review**, **Implementation Evidence**, **Baseline Needed**, **Post-Control Review**, **Interpret Result**, **Revise Control**, **More Evidence**, and **Loop Complete**.
 
 Patient-to-professional insight:
 
