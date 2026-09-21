@@ -46,3 +46,30 @@ h2,h3{font-weight:600}
 @media(max-width:860px){
   .distinction-grid,.convergence-grid,.workflow-control-strip{grid-template-columns:1fr}
 }
+
+/* Claim Transmission & Acknowledgement Control™ */
+.transmission-hero{position:relative;overflow:hidden}
+.transmission-hero:after{content:"";position:absolute;right:-90px;top:-100px;width:250px;height:250px;border:2px solid #FF8200;border-radius:50%;box-shadow:0 0 0 24px #FFFFFF,0 0 0 26px #000000;opacity:.1;pointer-events:none}
+.journey-rail{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px;margin:28px 0}
+.journey-rail>div{border:1px solid #000000;background:#FFFFFF;padding:14px 10px;min-height:96px}
+.journey-rail span{display:block;color:#FF8200;font-family:"Newsreader",Georgia,serif;font-size:1.6rem;line-height:1;margin-bottom:8px}
+.journey-rail strong{display:block;font-size:.78rem;line-height:1.25;text-transform:uppercase;letter-spacing:.05em}
+.transmission-panel{border:2px solid #000000;box-shadow:10px 10px 0 #FF8200}
+.control-header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:18px;border-bottom:1px solid #000000}
+.control-header-row h3{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.8rem,4vw,3rem);line-height:1;margin:8px 0 0}
+.control-chip{border:1px solid #FF8200;padding:8px 12px;font-weight:800;font-size:.72rem;letter-spacing:.12em;white-space:nowrap}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.form-grid label{font-weight:800}
+.form-grid input,.form-grid select{width:100%;box-sizing:border-box;min-height:48px;margin-top:7px;padding:10px 12px;border:1px solid #000000;background:#FFFFFF;color:#000000;font-family:"Inter",Arial,sans-serif;font-size:16px}
+.decision-matrix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:24px 0}
+.decision-matrix>div{border:1px solid #000000;background:#FFFFFF;padding:22px;border-bottom:4px solid #FF8200}
+.decision-matrix h3{margin:8px 0 10px;font-family:"Newsreader",Georgia,serif;font-size:clamp(1.45rem,3vw,2.2rem);line-height:1.04}
+.patient-impact-panel{border-top:4px solid #FF8200;border-bottom:1px solid #000000;padding:32px 0}
+.patient-quote-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}
+.patient-quote-grid blockquote{margin:0;border:1px solid #000000;background:#FFFFFF;padding:20px;font-family:"Newsreader",Georgia,serif;font-size:1.35rem;line-height:1.18}
+@media(max-width:860px){
+  .journey-rail{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .form-grid,.decision-matrix,.patient-quote-grid{grid-template-columns:1fr}
+  .control-header-row{display:block}
+  .control-chip{display:inline-block;margin-top:14px}
+}
