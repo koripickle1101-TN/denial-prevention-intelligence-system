@@ -50,7 +50,7 @@ h2,h3{font-weight:600}
 /* Claim Transmission & Acknowledgement Control™ */
 .transmission-hero{position:relative;overflow:hidden}
 .transmission-hero:after{content:"";position:absolute;right:-90px;top:-100px;width:250px;height:250px;border:2px solid #FF8200;border-radius:50%;box-shadow:0 0 0 24px #FFFFFF,0 0 0 26px #000000;opacity:.1;pointer-events:none}
-.journey-rail{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px;margin:28px 0}
+.journey-rail{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px;margin:28px 0}
 .journey-rail>div{border:1px solid #000000;background:#FFFFFF;padding:14px 10px;min-height:96px}
 .journey-rail span{display:block;color:#FF8200;font-family:"Newsreader",Georgia,serif;font-size:1.6rem;line-height:1;margin-bottom:8px}
 .journey-rail strong{display:block;font-size:.78rem;line-height:1.25;text-transform:uppercase;letter-spacing:.05em}
@@ -138,7 +138,7 @@ h2,h3{font-weight:600}
 .handoff-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
 .handoff-evidence-grid>div{border:1px solid #000000;background:#FFFFFF;padding:22px;border-bottom:4px solid #FF8200}
 .handoff-evidence-grid h3{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.04;margin:8px 0 10px}
-.checkpoint-ledger{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px;margin:20px 0 8px}
+.checkpoint-ledger{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;margin:20px 0 8px}
 .checkpoint{border:1px solid #000000;background:#FFFFFF;padding:10px 7px;min-height:84px}
 .checkpoint span{display:block;color:#FF8200;font-family:"Newsreader",Georgia,serif;font-size:1.3rem;line-height:1}
 .checkpoint strong{display:block;font-size:.67rem;text-transform:uppercase;line-height:1.2;margin:6px 0}
