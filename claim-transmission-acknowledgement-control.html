@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DPIS | Claim Transmission & Acknowledgement Control™</title>
+  <meta name="description" content="Student-developed, simulated, no-PHI claim transmission and acknowledgement workflow for practicing clearinghouse-to-payer status visibility, exception routing, follow-up, and closure.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav-shell">
+    <div class="brand-mark">DPIS</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="work-queue.html">Work Queue</a>
+      <a href="claim-readiness-checklist.html">Readiness</a>
+      <a href="#tracking">Tracking</a>
+      <a href="#control-gate">Control Gate</a>
+      <a href="root-cause-denial-map.html">Traceback</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero transmission-hero">
+    <div class="eyebrow">Healthcare Operations Intelligence Engine™ · Career-Style Student Simulation</div>
+    <h1>Claim Transmission & Acknowledgement Control™</h1>
+    <p class="hero-subtitle">A premium interactive claims-control workspace for practicing what happens after a modeled claim is ready to submit: transmission, clearinghouse response, payer acknowledgement, adjudication visibility, exception routing, follow-up, final status, and closure.</p>
+    <p class="hero-subtitle"><strong>Student-developed · Simulated · Synthetic data only · No PHI</strong></p>
+
+    <div class="hero-actions">
+      <a class="primary-button" href="#tracking">Open Claim Tracking Workspace</a>
+      <a class="secondary-button" href="claim-readiness-checklist.html">Review Pre-Submission Control</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="content-card accent-card">
+      <span class="mini-label">Core operating rule</span>
+      <h2>Clearinghouse accepted ≠ payer accepted.</h2>
+      <p>A successful clearinghouse transmission proves that one checkpoint was passed. It does not, by itself, prove payer receipt, payer acknowledgement, entry into adjudication, or final resolution.</p>
+      <div class="distinction-grid">
+        <div><strong>Clearinghouse accepted</strong><span>≠ payer accepted</span></div>
+        <div><strong>Transmission successful</strong><span>≠ claim actively progressing</span></div>
+        <div><strong>Claim sent</strong><span>≠ claim received into adjudication</span></div>
+        <div><strong>No immediate rejection</strong><span>≠ final acceptance</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">01</span>
+      <h2>Claim-Control Journey</h2>
+      <p>DPIS now extends beyond pre-submission readiness into downstream status visibility.</p>
+    </div>
+
+    <div class="journey-rail" aria-label="Claim transmission workflow">
+      <div><span>01</span><strong>Ready to submit</strong></div>
+      <div><span>02</span><strong>Transmitted</strong></div>
+      <div><span>03</span><strong>Clearinghouse response</strong></div>
+      <div><span>04</span><strong>Payer acknowledgement</strong></div>
+      <div><span>05</span><strong>Adjudication status</strong></div>
+      <div><span>06</span><strong>Exception routing</strong></div>
+      <div><span>07</span><strong>Follow-up</strong></div>
+      <div><span>08</span><strong>Final status</strong></div>
+      <div><span>09</span><strong>Closure</strong></div>
+    </div>
+
+    <div class="content-card statement-card">
+      <span class="mini-label">Claim-control question</span>
+      <p>Where is the claim now, what evidence proves that status, and what action is required next?</p>
+    </div>
+  </section>
+
+  <section id="tracking" class="content-section">
+    <div class="section-intro">
+      <span class="section-number">02</span>
+      <h2>Interactive Claim Tracking Workspace</h2>
+      <p>Select a fictional case, review its current status, document the evidence trail, assign ownership, and evaluate whether the modeled claim is actively controlled or has become a downstream exception.</p>
+    </div>
+
+    <div class="interactive-panel transmission-panel">
+      <div class="control-header-row">
+        <div>
+          <span class="mini-label">Synthetic claim queue</span>
+          <h3>Transmission-to-Payer Visibility</h3>
+        </div>
+        <div id="topStateChip" class="control-chip">STATUS REVIEW</div>
+      </div>
+
+      <div class="form-section">
+        <label>Fictional claim / case
+          <select id="caseSelect">
+            <option value="TX-001">TX-001 · Clearinghouse accepted / payer acknowledgement pending</option>
+            <option value="TX-002">TX-002 · Clearinghouse accepted / payer rejection received</option>
+            <option value="TX-003">TX-003 · Claim not found in payer system</option>
+            <option value="TX-004">TX-004 · Payer acknowledged / adjudication in process</option>
+            <option value="TX-005">TX-005 · Final payer status received / closure pending</option>
+          </select>
+        </label>
+        <div id="caseSummary" class="status-box"></div>
+      </div>
+
+      <form id="trackingForm">
+        <div class="form-section">
+          <span class="mini-label">A · Transmission and clearinghouse checkpoint</span>
+          <div class="form-grid">
+            <label>Claim / Case Reference
+              <input id="claimRef" type="text">
+            </label>
+            <label>Submission Date
+              <input id="submissionDate" type="date">
+            </label>
+            <label>Transmission Status
+              <select id="transmissionStatus">
+                <option>Not transmitted</option>
+                <option>Transmitted</option>
+                <option>Transmission error</option>
+              </select>
+            </label>
+            <label>Clearinghouse Status
+              <select id="clearinghouseStatus">
+                <option>Pending</option>
+                <option>Accepted</option>
+                <option>Rejected</option>
+              </select>
+            </label>
+            <label>Clearinghouse Response Date
+              <input id="clearinghouseResponseDate" type="date">
+            </label>
+            <label>Clearinghouse evidence reviewed?
+              <select id="clearinghouseEvidence">
+                <option>No</option>
+                <option>Yes</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">B · Payer acknowledgement and claim visibility</span>
+          <div class="form-grid">
+            <label>Payer Acknowledgement Status
+              <select id="payerAckStatus">
+                <option>Not established</option>
+                <option>Pending acknowledgement</option>
+                <option>Acknowledged / accepted into payer workflow</option>
+                <option>Rejected by payer</option>
+                <option>No acknowledgement received</option>
+              </select>
+            </label>
+            <label>Payer Claim / Reference Number
+              <input id="payerClaimRef" type="text" placeholder="Synthetic payer reference">
+            </label>
+            <label>Payer Rejection Present?
+              <select id="payerRejection">
+                <option>No</option>
+                <option>Yes</option>
+              </select>
+            </label>
+            <label>Claim Found in Payer System?
+              <select id="claimFound">
+                <option>Not checked</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>Adjudication Status
+              <select id="adjudicationStatus">
+                <option>Not established</option>
+                <option>Not started</option>
+                <option>In process</option>
+                <option>Additional information / review needed</option>
+                <option>Finalized</option>
+              </select>
+            </label>
+            <label>Last Meaningful Status Change
+              <input id="lastStatusDate" type="date">
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">C · Exception routing and active follow-up</span>
+          <div class="form-grid">
+            <label>Exception Category
+              <select id="exceptionCategory">
+                <option>No exception identified</option>
+                <option>Payer-level rejection</option>
+                <option>Invalid member / policy information</option>
+                <option>Provider enrollment / identifier issue</option>
+                <option>Missing or inconsistent claim data</option>
+                <option>Duplicate submission concern</option>
+                <option>Payer-specific / formatting edit</option>
+                <option>No acknowledgement received</option>
+                <option>Claim not found in payer system</option>
+                <option>Additional information required</option>
+                <option>Other / qualified review needed</option>
+              </select>
+            </label>
+            <label>Current Owner
+              <select id="owner">
+                <option>Unassigned</option>
+                <option>Claims Submission Support</option>
+                <option>Revenue Cycle Support</option>
+                <option>A/R Follow-Up</option>
+                <option>Payer Follow-Up</option>
+                <option>Patient Access / Eligibility</option>
+                <option>Provider Enrollment Support</option>
+                <option>Documentation / HIM Support</option>
+                <option>Qualified Specialist Review</option>
+              </select>
+            </label>
+            <label>Next Required Action
+              <select id="nextAction">
+                <option>None selected</option>
+                <option>Review clearinghouse response</option>
+                <option>Confirm payer acknowledgement</option>
+                <option>Locate claim in payer system</option>
+                <option>Review payer rejection details</option>
+                <option>Correct / route member or policy information</option>
+                <option>Route provider enrollment issue</option>
+                <option>Route missing / inconsistent claim data</option>
+                <option>Investigate duplicate concern</option>
+                <option>Submit / route additional information</option>
+                <option>Follow up with payer</option>
+                <option>Document final status</option>
+                <option>Verify closure</option>
+              </select>
+            </label>
+            <label>Follow-Up Due
+              <input id="followUpDue" type="date">
+            </label>
+            <label>Escalation Threshold
+              <select id="escalationThreshold">
+                <option>Not reached</option>
+                <option>Approaching threshold</option>
+                <option>Reached — escalation required</option>
+              </select>
+            </label>
+            <label>Potential Patient-Facing Effect
+              <select id="patientEffect">
+                <option>Waiting / uncertainty</option>
+                <option>Claim processing delay</option>
+                <option>Another billing statement</option>
+                <option>Additional phone call</option>
+                <option>Coverage / payer confusion</option>
+                <option>No modeled patient-facing effect identified</option>
+              </select>
+            </label>
+          </div>
+
+          <label>Evidence Reviewed
+            <textarea id="evidenceReviewed" rows="4" placeholder="Synthetic example: clearinghouse acceptance reviewed; payer acknowledgement still pending; payer claim reference not yet available; next follow-up assigned."></textarea>
+          </label>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">D · Final status and closure</span>
+          <div class="form-grid">
+            <label>Final Claim Status
+              <select id="finalClaimStatus">
+                <option>Not final</option>
+                <option>Accepted / adjudicated in this simulation</option>
+                <option>Denied / requires denial workflow</option>
+                <option>Rejected / correction workflow required</option>
+                <option>Returned / additional action required</option>
+                <option>Other final disposition</option>
+              </select>
+            </label>
+            <label>Closure Status
+              <select id="closureStatus">
+                <option>Open</option>
+                <option>Action in progress</option>
+                <option>Final status known — closure verification pending</option>
+                <option>Closure verified</option>
+              </select>
+            </label>
+          </div>
+
+          <label>Closure Evidence
+            <textarea id="closureEvidence" rows="4" placeholder="Synthetic example: payer final status documented, required downstream action completed or routed, no unowned follow-up remains, and closure evidence recorded."></textarea>
+          </label>
+        </div>
+
+        <div class="control-actions">
+          <button class="action-button" type="submit">Evaluate Claim-Control Gate</button>
+          <button id="saveAction" class="secondary-button" type="button">Save Simulated Action</button>
+          <button id="resetCase" class="secondary-button" type="button">Reset Current Case</button>
+        </div>
+      </form>
+
+      <div class="progress-track"><div id="controlProgress" class="progress-bar"></div></div>
+      <div id="controlResult" class="gate-result" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="control-gate" class="content-section">
+    <div class="section-intro">
+      <span class="section-number">03</span>
+      <h2>Claim-Control Decision Logic</h2>
+      <p>The control does not treat a transmitted claim as completed work. It evaluates whether downstream visibility and ownership exist.</p>
+    </div>
+
+    <div class="decision-matrix">
+      <div>
+        <span class="mini-label">Clearinghouse rejected</span>
+        <h3>Hold at transmission checkpoint</h3>
+        <p>Review the clearinghouse response and route the correction before treating the claim as downstream.</p>
+      </div>
+      <div>
+        <span class="mini-label">Clearinghouse accepted / payer unknown</span>
+        <h3>Visibility incomplete</h3>
+        <p>Confirm payer acknowledgement, claim presence, and next-action ownership.</p>
+      </div>
+      <div>
+        <span class="mini-label">Payer rejection / claim not found</span>
+        <h3>Route an exception</h3>
+        <p>Identify the supported exception category, assign ownership, document evidence, and set follow-up.</p>
+      </div>
+      <div>
+        <span class="mini-label">Payer acknowledged / adjudication active</span>
+        <h3>Actively moving — not closed</h3>
+        <p>Maintain status visibility and follow-up until final disposition is documented.</p>
+      </div>
+      <div>
+        <span class="mini-label">Final status received</span>
+        <h3>Verify downstream closure</h3>
+        <p>Final status alone is not enough if a denial, rejection, correction, or other action still needs ownership.</p>
+      </div>
+      <div>
+        <span class="mini-label">Closure verified</span>
+        <h3>Controlled final state</h3>
+        <p>The modeled final status, required downstream action, evidence trail, and closure are documented.</p>
+      </div>
+    </div>
+
+    <div class="content-card accent-card">
+      <span class="mini-label">Control rule</span>
+      <h2>A successful clearinghouse transmission is not completed claim progression.</h2>
+      <p>DPIS treats the claim as controlled only when downstream payer acknowledgement and status visibility are established, or when an exception has a visible owner, next action, follow-up timing, evidence trail, and eventual closure.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">04</span>
+      <h2>Patient-to-Professional Perspective</h2>
+    </div>
+
+    <div class="patient-impact-panel">
+      <div class="patient-quote-grid">
+        <blockquote>“Why hasn't insurance processed my claim?”</blockquote>
+        <blockquote>“Why are you saying they never received it?”</blockquote>
+        <blockquote>“Why am I getting another bill?”</blockquote>
+        <blockquote>“Why can't anyone tell me where the claim is?”</blockquote>
+      </div>
+
+      <p class="patient-insight"><strong>The patient sees the waiting. Healthcare operations has to know where the claim actually is, what evidence proves that status, and who owns the next action.</strong></p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="content-card">
+      <span class="mini-label">How this extends DPIS</span>
+      <h2>Pre-submission readiness → downstream claim control</h2>
+      <p><strong>Pre-Submission Claim Readiness Control™</strong> asks whether the modeled claim is ready to leave the upstream workflow. <strong>Claim Transmission & Acknowledgement Control™</strong> then asks whether the claim successfully moves through transmission, payer acknowledgement, adjudication visibility, exception handling, and closure.</p>
+      <p>When a downstream rejection or denial appears, the case can then move into <strong>Denial Traceback Review™</strong> to investigate where the workflow may have first lost control.</p>
+    </div>
+
+    <div class="content-card accent-card">
+      <span class="mini-label">Educational boundary</span>
+      <h2>What this control does not do</h2>
+      <p>This simulation does not transmit real claims, access a clearinghouse or payer, reproduce EDI transactions, determine payer acceptance, adjudicate claims, calculate reimbursement, interpret payer contracts, or make coding, coverage, medical-necessity, compliance, or legal determinations.</p>
+    </div>
+  </section>
+
+  <section class="signature-lockup" aria-label="Kori Pickle signature">
+    <a class="signature-name" href="https://lnkd.in/p/eQuDNisW" target="_blank" rel="noreferrer">Kori Pickle</a>
+    <div class="signature-rule"></div>
+    <div class="signature-note">Patient-to-professional healthcare operations portfolio</div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p><strong>DPIS — Denial Prevention Intelligence System™</strong></p>
+  <p>Created by Kori Pickle</p>
+  <p>Healthcare Operations Intelligence Engine™</p>
+  <p>Student-developed · Simulated · Synthetic data only · No PHI</p>
+</footer>
+
+<script>
+const cases={
+  "TX-001":{
+    summary:"Clearinghouse accepted the synthetic transmission, but payer acknowledgement has not yet been established.",
+    transmission:"Transmitted",clearinghouse:"Accepted",ack:"Pending acknowledgement",rejection:"No",found:"Not checked",adjudication:"Not established",exception:"No acknowledgement received",owner:"Payer Follow-Up",action:"Confirm payer acknowledgement",final:"Not final",closure:"Open",patient:"Waiting / uncertainty"
+  },
+  "TX-002":{
+    summary:"The clearinghouse accepted the transmission and a payer-level rejection is now visible.",
+    transmission:"Transmitted",clearinghouse:"Accepted",ack:"Rejected by payer",rejection:"Yes",found:"Yes",adjudication:"Not started",exception:"Payer-level rejection",owner:"Claims Submission Support",action:"Review payer rejection details",final:"Rejected / correction workflow required",closure:"Action in progress",patient:"Claim processing delay"
+  },
+  "TX-003":{
+    summary:"The transmission passed the clearinghouse, but the fictional payer system cannot locate the claim.",
+    transmission:"Transmitted",clearinghouse:"Accepted",ack:"No acknowledgement received",rejection:"No",found:"No",adjudication:"Not established",exception:"Claim not found in payer system",owner:"Payer Follow-Up",action:"Locate claim in payer system",final:"Not final",closure:"Action in progress",patient:"Coverage / payer confusion"
+  },
+  "TX-004":{
+    summary:"The fictional payer has acknowledged the claim and adjudication is in process.",
+    transmission:"Transmitted",clearinghouse:"Accepted",ack:"Acknowledged / accepted into payer workflow",rejection:"No",found:"Yes",adjudication:"In process",exception:"No exception identified",owner:"A/R Follow-Up",action:"Follow up with payer",final:"Not final",closure:"Action in progress",patient:"Waiting / uncertainty"
+  },
+  "TX-005":{
+    summary:"A final synthetic payer status is documented, but downstream closure still requires verification.",
+    transmission:"Transmitted",clearinghouse:"Accepted",ack:"Acknowledged / accepted into payer workflow",rejection:"No",found:"Yes",adjudication:"Finalized",exception:"No exception identified",owner:"Revenue Cycle Support",action:"Verify closure",final:"Accepted / adjudicated in this simulation",closure:"Final status known — closure verification pending",patient:"No modeled patient-facing effect identified"
+  }
+};
+
+const q=s=>document.querySelector(s);
+const today=()=>new Date().toISOString().slice(0,10);
+const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+
+function loadCase(){
+  const id=q("#caseSelect").value,c=cases[id];
+  q("#claimRef").value=id;
+  q("#submissionDate").value=addDays(-4);
+  q("#transmissionStatus").value=c.transmission;
+  q("#clearinghouseStatus").value=c.clearinghouse;
+  q("#clearinghouseResponseDate").value=addDays(-4);
+  q("#clearinghouseEvidence").value="Yes";
+  q("#payerAckStatus").value=c.ack;
+  q("#payerClaimRef").value=c.found==="Yes"?"PAY-"+id.replace("TX-",""):"";
+  q("#payerRejection").value=c.rejection;
+  q("#claimFound").value=c.found;
+  q("#adjudicationStatus").value=c.adjudication;
+  q("#lastStatusDate").value=addDays(-2);
+  q("#exceptionCategory").value=c.exception;
+  q("#owner").value=c.owner;
+  q("#nextAction").value=c.action;
+  q("#followUpDue").value=addDays(2);
+  q("#escalationThreshold").value="Not reached";
+  q("#patientEffect").value=c.patient;
+  q("#evidenceReviewed").value="";
+  q("#finalClaimStatus").value=c.final;
+  q("#closureStatus").value=c.closure;
+  q("#closureEvidence").value="";
+  q("#caseSummary").innerHTML="<strong>"+id+"</strong><br>"+c.summary;
+  evaluate(false);
+}
+
+function evaluate(scroll=true){
+  const transmission=q("#transmissionStatus").value;
+  const clearing=q("#clearinghouseStatus").value;
+  const clearingEvidence=q("#clearinghouseEvidence").value==="Yes";
+  const ack=q("#payerAckStatus").value;
+  const payerRef=q("#payerClaimRef").value.trim();
+  const rejection=q("#payerRejection").value==="Yes";
+  const found=q("#claimFound").value;
+  const adjudication=q("#adjudicationStatus").value;
+  const exception=q("#exceptionCategory").value;
+  const owner=q("#owner").value;
+  const action=q("#nextAction").value;
+  const evidence=q("#evidenceReviewed").value.trim();
+  const finalStatus=q("#finalClaimStatus").value;
+  const closure=q("#closureStatus").value;
+  const closureEvidence=q("#closureEvidence").value.trim();
+  const due=q("#followUpDue").value;
+  const escalation=q("#escalationThreshold").value;
+
+  const controls=[
+    transmission==="Transmitted",
+    clearing!=="Pending",
+    clearingEvidence,
+    ack!=="Not established",
+    found!=="Not checked",
+    owner!=="Unassigned",
+    action!=="None selected",
+    !!due,
+    !!evidence,
+    finalStatus!=="Not final" || adjudication!=="Not established"
+  ];
+  const pct=Math.round(controls.filter(Boolean).length/controls.length*100);
+  q("#controlProgress").style.width=pct+"%";
+
+  let state,title,body,chip;
+
+  if(transmission!=="Transmitted"){
+    state="blocked";chip="TRANSMISSION HOLD";title="Claim has not successfully entered the transmission path";
+    body="The modeled workflow should remain at the submission checkpoint until transmission is successful or the transmission error is routed and resolved.";
+  }else if(clearing==="Rejected"){
+    state="blocked";chip="CLEARINGHOUSE EXCEPTION";title="Clearinghouse rejection requires action";
+    body="The claim has not reached the payer acknowledgement stage. Review the clearinghouse response, assign the correction, and document the next action.";
+  }else if(clearing==="Pending" || !clearingEvidence){
+    state="active";chip="CLEARINGHOUSE STATUS";title="Clearinghouse status is not fully established";
+    body="Transmission occurred, but the clearinghouse response or supporting evidence is still incomplete.";
+  }else if(clearing==="Accepted" && (ack==="Pending acknowledgement" || ack==="No acknowledgement received" || ack==="Not established")){
+    state="active";chip="PAYER VISIBILITY GAP";title="Clearinghouse accepted — payer status still needs confirmation";
+    body="Successful clearinghouse transmission is only one checkpoint. Payer acknowledgement, claim presence, ownership, follow-up timing, and evidence must remain visible.";
+  }else if(rejection || ack==="Rejected by payer"){
+    state="review";chip="PAYER EXCEPTION";title="Payer rejection requires controlled exception routing";
+    body=owner==="Unassigned"||action==="None selected"||!evidence
+      ?"The payer-level exception is visible, but ownership, next action, or evidence documentation is incomplete."
+      :"The rejection has a visible owner, next action, and evidence trail. Continue the appropriate correction or review workflow until final disposition and closure are verified.";
+  }else if(found==="No"){
+    state="review";chip="CLAIM NOT FOUND";title="Claim-location exception requires follow-up";
+    body="The modeled payer system cannot locate the claim. The case should remain open with a visible owner, next action, follow-up date, and documented evidence.";
+  }else if(ack==="Acknowledged / accepted into payer workflow" && adjudication!=="Finalized"){
+    state="active";chip="ACTIVELY MOVING";title="Payer acknowledgement established — claim not final";
+    body=escalation==="Reached — escalation required"
+      ?"The claim is in the payer workflow, but the escalation threshold has been reached. Escalate according to the modeled workflow."
+      :"The claim is visible in the payer workflow. Maintain status visibility and follow-up until a final disposition is documented.";
+  }else if(adjudication==="Finalized" && finalStatus==="Not final"){
+    state="review";chip="FINAL STATUS GAP";title="Adjudication appears final, but final claim status is not documented";
+    body="The modeled record still needs a final claim status before downstream closure can be evaluated.";
+  }else if(finalStatus!=="Not final" && (closure!=="Closure verified" || !closureEvidence)){
+    state="active";chip="CLOSURE PENDING";title="Final status known — closure not yet verified";
+    body="A final payer status does not automatically close the operational workflow. Document any required downstream action and the evidence that confirms closure.";
+  }else{
+    state="closed";chip="CONTROLLED FINAL STATE";title="Modeled claim progression and closure verified";
+    body="Transmission, clearinghouse response, payer visibility, final status, ownership, evidence, and closure are documented within this synthetic workflow.";
+  }
+
+  q("#topStateChip").textContent=chip;
+  const el=q("#controlResult");
+  el.className="gate-result "+state;
+  el.innerHTML='<span class="mini-label">Claim-control state · '+pct+'% documented</span><h3>'+title+'</h3><p>'+body+'</p>';
+  if(scroll) el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+q("#caseSelect").addEventListener("change",loadCase);
+document.querySelectorAll("#trackingForm input, #trackingForm select, #trackingForm textarea").forEach(el=>el.addEventListener("change",()=>evaluate(false)));
+q("#trackingForm").addEventListener("submit",e=>{e.preventDefault();evaluate(true);});
+q("#saveAction").addEventListener("click",()=>{
+  q("#controlResult").insertAdjacentHTML("beforeend","<p><strong>Simulated action saved in this browser session:</strong> "+q("#nextAction").value+" · Owner: "+q("#owner").value+" · Follow-up: "+q("#followUpDue").value+"</p>");
+});
+q("#resetCase").addEventListener("click",loadCase);
+
+loadCase();
+</script>
+</body>
+</html>
