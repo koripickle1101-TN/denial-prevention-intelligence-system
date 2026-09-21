@@ -172,3 +172,20 @@ h2,h3{font-weight:600}
 .bundling-evidence-summary .interactive-result{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:1050px){.bundling-rail{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:860px){.bundling-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.bundling-evidence-summary .interactive-result{grid-template-columns:1fr}}
+
+
+/* Resolution ≠ Prevention Decision Lab™ */
+.career-proof-lab{position:relative}
+.career-proof-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+.career-proof-grid .content-card{margin-bottom:0;min-height:190px}
+.career-proof-grid h3,.interview-proof-card h3{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.02;margin:8px 0 12px}
+.career-proof-panel{border:2px solid #000000;box-shadow:10px 10px 0 #FF8200;margin:30px 0}
+.decision-check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+.decision-check-grid label{display:flex;gap:12px;align-items:flex-start;border:1px solid #000000;padding:16px;background:#FFFFFF;font-weight:700}
+.decision-check-grid input{width:22px!important;height:22px;min-height:0!important;margin:1px 0 0!important;accent-color:#FF8200;flex:0 0 auto}
+.career-proof-panel .primary-button{cursor:pointer;margin:4px 0 18px}
+.interview-proof-card{border-top:4px solid #FF8200}
+@media(max-width:860px){
+  .career-proof-grid,.decision-check-grid{grid-template-columns:1fr}
+  .career-proof-panel{box-shadow:6px 6px 0 #FF8200}
+}
