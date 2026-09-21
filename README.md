@@ -275,7 +275,7 @@ Terms such as recovery, recoupment, offset, reversal, adjustment, refund, and cr
 DPIS now includes nine additional student-practice controls:
 
 - **Pre-Submission Claim Readiness Control™** — brings upstream data, eligibility, COB, authorization, documentation, payer-specific review, qualified-review routing, ownership, and closure together before modeled claim advancement.
-- **Claim Transmission & Acknowledgement Control™** — follows a modeled claim from readiness and transmission through clearinghouse response, Clearinghouse-to-Payer Handoff Review™, payer acknowledgement, payer claim reference, adjudication visibility, exception routing, follow-up, final status, and closure.
+- **Claim Transmission & Acknowledgement Control™** — verifies upstream payer-destination evidence, then follows a modeled claim through transmission, clearinghouse response, Clearinghouse-to-Payer Handoff Review™, payer acknowledgement, payer claim reference, adjudication visibility, exception routing, follow-up, final status, and closure.
 - **A/R Work Queue Prioritization & Human Review Control™** — uses transparent synthetic A/R signals to generate an explainable priority, then requires human acceptance, override, or escalation plus ownership, action, follow-up, and closure verification.
 - **Denial Traceback Review™** — traces a visible downstream signal through detection point, earlier checkpoints, available evidence, earliest supported condition, root-cause hypothesis, specialist review, preventive control, ownership, closure evidence, recurrence, and patient-facing effect.
 - **Denial Resolution & Prevention Loop™** — carries a synthetic denial from reason review and evidence verification through backward trace, immediate account action, ownership, payer follow-up, final disposition, closure verification, recurrence review, preventive control, implementation evidence, pre/post comparison, and post-control verification.
@@ -293,6 +293,12 @@ Key operating distinctions:
 > **Claim populated ≠ claim ready.**
 
 > **Correct data element ≠ complete workflow readiness.**
+
+> **Coverage verified ≠ payer order verified.**
+
+> **Correct coverage ≠ correct claim destination.**
+
+> **Payer destination selected ≠ payer responsibility established.**
 
 > **Clearinghouse accepted ≠ payer accepted.**
 
@@ -319,6 +325,26 @@ Key operating distinctions:
 > **Recovery posted ≠ recovery reconciled.**
 
 > **Recurrence is a signal for investigation, not proof of a systemic cause.**
+
+## Coverage-to-Payer Routing Integration
+
+DPIS now explicitly consumes payer-routing readiness as an upstream control rather than assuming that eligibility verification alone establishes the correct claim destination.
+
+Cross-project path:
+
+**EVIS eligibility / coverage → payer-order review → payer destination → DPIS claim readiness → transmission → clearinghouse response → payer acknowledgement**
+
+The **Pre-Submission Claim Readiness Control™** now asks whether payer destination was verified against the modeled coverage arrangement before claim advancement. A new synthetic case, **CR-006**, models a coverage / payer-routing readiness exception.
+
+The **Claim Transmission & Acknowledgement Control™** now includes a pre-transmission payer-routing check and a synthetic **TX-008** case where coverage is visible but the payer destination is not supported by upstream evidence.
+
+Control question:
+
+> **Was the payer destination verified against the patient's modeled coverage arrangement before submission?**
+
+This connects to the EVIS **Medicare Coverage & Payer Routing Readiness Gate™**, which practices arrangement identification, effective-date review, other-insurance review, COB/MSP review, payer-order evidence, service context, payer destination, ownership, and closure.
+
+DPIS does not determine real Medicare eligibility, payer responsibility, MSP status, coverage, authorization, or claim payment. The integration is a student-developed workflow-control simulation using synthetic information.
 
 ## A/R Work Queue Prioritization & Human Review Control™
 
@@ -522,6 +548,7 @@ Through this project, I am practicing:
 - Denial-prevention thinking
 - Revenue-cycle workflow analysis
 - Claim-readiness review
+- Payer-order and claim-destination readiness
 - Pre-submission claim readiness control
 - Upstream workflow convergence review
 - Claim transmission and acknowledgement tracking
