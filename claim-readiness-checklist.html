@@ -39,6 +39,8 @@
         <div><strong>Correct data element</strong><span>≠ complete workflow readiness</span></div>
         <div><strong>Detection</strong><span>≠ resolution</span></div>
         <div><strong>Handoff</strong><span>≠ ownership</span></div>
+        <div><strong>Coverage verified</strong><span>≠ payer order verified</span></div>
+        <div><strong>Correct coverage</strong><span>≠ correct claim destination</span></div>
       </div>
     </div>
   </section>
@@ -55,6 +57,11 @@
         <span class="mini-label">EVIS input</span>
         <h3>Patient / Insurance / COB Integrity</h3>
         <p>Patient/member data, eligibility, coverage, payer information, COB, and unresolved eligibility exceptions.</p>
+      </a>
+      <a class="convergence-card" href="https://eligibility-verification-intelligen.vercel.app/medicare-coverage-payer-routing-readiness-gate.html" target="_blank" rel="noreferrer">
+        <span class="mini-label">EVIS payer-routing input</span>
+        <h3>Coverage / Payer Order / Destination</h3>
+        <p>Medicare arrangement, other insurance, COB/MSP review, primary-payer status, service context, and payer destination before modeled claim advancement.</p>
       </a>
       <a class="convergence-card" href="https://parcs-prior-authorization-command-s.vercel.app/" target="_blank" rel="noreferrer">
         <span class="mini-label">PARCS input</span>
@@ -90,6 +97,7 @@
             <option value="CR-003">CR-003 · Documentation / encounter-context exception</option>
             <option value="CR-004">CR-004 · Coding-related review flag</option>
             <option value="CR-005">CR-005 · Payer-specific information / attachment exception</option>
+            <option value="CR-006">CR-006 · Coverage / payer-routing readiness exception</option>
           </select>
         </label>
         <label>Modeled workflow state
@@ -112,6 +120,7 @@
             <label class="check-item"><input id="eligibility" type="checkbox"><span>Eligibility / coverage reviewed</span></label>
             <label class="check-item"><input id="cob" type="checkbox"><span>COB / other insurance reviewed</span></label>
             <label class="check-item"><input id="payerInfo" type="checkbox"><span>Payer information validated</span></label>
+            <label class="check-item"><input id="payerDestination" type="checkbox"><span>Payer destination verified against the modeled coverage arrangement</span></label>
           </div>
         </div>
 
@@ -181,6 +190,7 @@
                 <option>Resolve patient / member data discrepancy</option>
                 <option>Resolve COB / other insurance exception</option>
                 <option>Verify payer information</option>
+                <option>Resolve coverage / payer-order / payer-routing exception</option>
                 <option>Complete authorization / referral follow-up</option>
                 <option>Route documentation exception</option>
                 <option>Route qualified coding review</option>
@@ -238,6 +248,7 @@
     <div class="content-card statement-card">
       <span class="mini-label">Control question</span>
       <p>Before a modeled claim advances, what evidence proves that required upstream information is not only present, but sufficiently reviewed, routed, owned, and closed?</p>
+      <p><strong>Was the payer destination verified against the patient's modeled coverage arrangement before submission?</strong></p>
     </div>
   </section>
 
@@ -280,11 +291,12 @@ const cases={
   "CR-002":{signal:"Authorization / referral readiness exception",condition:"Authorization requirement or service alignment remains unresolved",patient:"Potential denial, delay, or coverage uncertainty"},
   "CR-003":{signal:"Documentation / encounter-context exception",condition:"Supporting information may be incomplete or attached to the wrong encounter context",patient:"Potential repeated records request, delay, or billing confusion"},
   "CR-004":{signal:"Coding-related review flag",condition:"A coding-related issue requires qualified review before modeled advancement",patient:"Potential claim delay, rejection, or corrected-bill experience"},
-  "CR-005":{signal:"Payer-specific information / attachment exception",condition:"Required payer-specific information, attachment, or source review remains incomplete",patient:"Potential claim delay, additional request, or follow-up"}
+  "CR-005":{signal:"Payer-specific information / attachment exception",condition:"Required payer-specific information, attachment, or source review remains incomplete",patient:"Potential claim delay, additional request, or follow-up"},
+  "CR-006":{signal:"Coverage / payer-routing readiness exception",condition:"Coverage is identified, but payer order or the expected claim destination is not yet supported by the modeled upstream evidence",patient:"Potential payer rejection, delayed resolution, billing confusion, or another insurance-related call"}
 };
 
 const q=s=>document.querySelector(s);
-const checks=["patientMember","eligibility","cob","payerInfo","providerService","authReferral","documentation","serviceAlignment","attachments","payerSource"];
+const checks=["patientMember","eligibility","cob","payerInfo","payerDestination","providerService","authReferral","documentation","serviceAlignment","attachments","payerSource"];
 
 function updateCase(){
   const c=cases[q("#caseSelect").value];
@@ -292,6 +304,16 @@ function updateCase(){
   if(q("#caseSelect").value==="CR-004"){
     q("#codingFlag").value="Yes — qualified review required";
     q("#codingReview").value="Required — not yet routed";
+  } else {
+    q("#codingFlag").value="No";
+    q("#codingReview").value="Not required";
+  }
+  if(q("#caseSelect").value==="CR-006"){
+    q("#payerDestination").checked=false;
+    q("#openException").value="Yes — unresolved";
+    q("#owner").value="Eligibility / Financial Clearance";
+    q("#nextAction").value="Resolve coverage / payer-order / payer-routing exception";
+    q("#evidenceNote").value="Synthetic routing exception: coverage is visible, but payer-order and claim-destination evidence still need review.";
   }
   evaluate(false);
 }
