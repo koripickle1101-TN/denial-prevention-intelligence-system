@@ -463,6 +463,66 @@
     </div>
   </section>
 
+
+  <section id="career-proof" class="content-section career-proof-lab">
+    <div class="section-intro">
+      <span class="section-number">Career Proof</span>
+      <h2>Resolution ≠ Prevention Decision Lab™</h2>
+      <p>Practice the two questions a downstream denial should trigger: what must happen to resolve the synthetic account, and what upstream control allowed the condition to reach the claim?</p>
+    </div>
+
+    <div class="career-proof-grid">
+      <div class="content-card">
+        <span class="mini-label">Line of inquiry 01</span>
+        <h3>Resolve the account</h3>
+        <p>What evidence supports the denial signal? What remains unresolved? Who owns the next authorized action? What follow-up and closure evidence are still required?</p>
+      </div>
+      <div class="content-card accent-card">
+        <span class="mini-label">Line of inquiry 02</span>
+        <h3>Prevent recurrence</h3>
+        <p>What earlier checkpoint needs review? Is the earliest condition supported by evidence or still a hypothesis? Does recurrence justify a modeled preventive control?</p>
+      </div>
+    </div>
+
+    <div class="interactive-panel career-proof-panel">
+      <div class="control-header-row">
+        <div>
+          <span class="mini-label">Interactive career reasoning check</span>
+          <h3>Is the case resolved, prevented, both—or neither?</h3>
+        </div>
+        <div id="careerProofState" class="control-chip">REVIEW EVIDENCE</div>
+      </div>
+      <div class="decision-check-grid">
+        <label><input id="cpFinalDisposition" type="checkbox"> Final disposition documented</label>
+        <label><input id="cpClosureEvidence" type="checkbox"> Closure evidence documented</label>
+        <label><input id="cpRecurrenceReviewed" type="checkbox"> Recurrence reviewed</label>
+        <label><input id="cpPreventiveControl" type="checkbox"> Preventive control identified when supported</label>
+        <label><input id="cpImplementationEvidence" type="checkbox"> Implementation evidence documented</label>
+        <label><input id="cpPostControlReview" type="checkbox"> Post-control pattern reviewed</label>
+      </div>
+      <button id="evaluateCareerProof" class="primary-button" type="button">Evaluate Control State</button>
+      <div id="careerProofResult" class="gate-result review" aria-live="polite">
+        <span class="mini-label">Current interpretation</span>
+        <h3>Evidence review not yet complete</h3>
+        <p>Use the controls above to distinguish account resolution from process improvement. A payment or corrected outcome alone does not prove the workflow was improved.</p>
+      </div>
+    </div>
+
+    <div class="content-card statement-card">
+      <span class="mini-label">Career insight</span>
+      <p><strong>Denial identified ≠ root cause established.</strong><br>
+      <strong>Action taken ≠ account resolved.</strong><br>
+      <strong>Payment recovered ≠ workflow corrected.</strong></p>
+    </div>
+
+    <div class="content-card interview-proof-card">
+      <span class="mini-label">Interview-ready portfolio evidence</span>
+      <h3>How I would approach a denied claim</h3>
+      <p>In my simulated portfolio work, I practice starting with the visible denial signal and verifying the available evidence before assuming the denial reason is the root cause. I then trace the workflow backward to determine where an earlier exception may have developed, identify what remains unresolved, establish the appropriate owner or escalation path, and document follow-up through verified closure. I also look at whether the same failure pattern appears repeatedly, because resolving one account does not necessarily prevent recurrence.</p>
+      <p class="boundary-note"><strong>Scope boundary:</strong> This is student-developed workflow practice using synthetic data. It does not represent professional denial-management experience or authority to make coding, modifier, medical-necessity, appeal, payer, or reimbursement determinations.</p>
+    </div>
+  </section>
+
   <section class="signature-lockup" aria-label="Kori Pickle signature">
     <a class="signature-name" href="https://lnkd.in/p/eQuDNisW" target="_blank" rel="noreferrer">Kori Pickle</a>
     <div class="signature-rule"></div>
@@ -682,5 +742,29 @@ q("#saveAction").addEventListener("click",()=>{
 q("#resetCase").addEventListener("click",loadCase);
 loadCase();
 </script>
+
+<script>
+(function(){
+  const button=document.getElementById('evaluateCareerProof');
+  if(!button) return;
+  button.addEventListener('click',function(){
+    const resolved=document.getElementById('cpFinalDisposition').checked && document.getElementById('cpClosureEvidence').checked;
+    const preventionReviewed=document.getElementById('cpRecurrenceReviewed').checked;
+    const preventionEvidence=document.getElementById('cpPreventiveControl').checked && document.getElementById('cpImplementationEvidence').checked && document.getElementById('cpPostControlReview').checked;
+    const chip=document.getElementById('careerProofState');
+    const result=document.getElementById('careerProofResult');
+    let state='EVIDENCE GAP', title='Neither control is fully demonstrated', body='Continue documenting the immediate account pathway and the recurrence/prevention pathway separately.';
+    if(resolved && !preventionReviewed){state='ACCOUNT RESOLVED';title='Resolution supported; prevention not yet reviewed';body='The synthetic account has closure evidence, but that does not show whether the upstream process gap was examined.';}
+    else if(resolved && preventionReviewed && !preventionEvidence){state='PREVENTION REVIEW';title='Account resolved; preventive-control evidence remains incomplete';body='Recurrence has been reviewed, but process improvement should not be claimed until implementation and post-control evidence support it.';}
+    else if(resolved && preventionEvidence){state='RESOLUTION + PREVENTION';title='Both control pathways are supported in this simulation';body='The account-resolution pathway has closure evidence and the preventive-control pathway has implementation plus post-control review evidence. This remains a synthetic educational result, not a real-world outcome claim.';}
+    else if(!resolved && preventionEvidence){state='CLOSURE CONFLICT';title='Preventive evidence cannot substitute for account closure';body='A modeled process control may be documented, but the individual account still needs final disposition and closure evidence.';}
+    chip.textContent=state;
+    result.querySelector('h3').textContent=title;
+    result.querySelector('p').textContent=body;
+    result.className='gate-result '+(resolved&&preventionEvidence?'closed':'review');
+  });
+})();
+</script>
+
 </body>
 </html>
