@@ -606,3 +606,25 @@ I want the project to show how I am learning to think through denial risk honest
 - [GitHub profile](https://github.com/koripickle1101-TN)
 
 Created by Kori Pickle. Student-developed portfolio project. Synthetic data only. No PHI.
+
+
+## Resolution ≠ Prevention Decision Lab™
+
+DPIS includes an interactive career-proof layer inside the Denial Resolution & Prevention Loop™. It practices two separate lines of inquiry after a downstream denial becomes visible:
+
+1. **Account resolution:** What evidence supports the signal, what remains unresolved, who owns the next authorized action, and what proves closure?
+2. **Recurrence prevention:** What earlier checkpoint needs review, what remains hypothesis, whether recurrence supports a preventive control, and what implementation/post-control evidence would be needed before claiming improvement?
+
+The interactive evaluator distinguishes modeled states such as **EVIDENCE GAP**, **ACCOUNT RESOLVED**, **PREVENTION REVIEW**, **RESOLUTION + PREVENTION**, and **CLOSURE CONFLICT**.
+
+Key distinctions:
+
+- **Denial identified ≠ root cause established**
+- **Action taken ≠ account resolved**
+- **Payment recovered ≠ workflow corrected**
+
+Control question:
+
+> **A downstream denial should trigger two lines of inquiry: what must happen to resolve the account, and what upstream control allowed the condition to reach the claim?**
+
+The module also includes an interview-ready explanation of Kori's student workflow reasoning while preserving the boundary that the simulation does not represent professional denial-management experience or authority to make coding, modifier, medical-necessity, appeal, payer, or reimbursement determinations.
