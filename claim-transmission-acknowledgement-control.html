@@ -48,6 +48,8 @@
         <div><strong>Payer acknowledged</strong><span>≠ adjudicated</span></div>
         <div><strong>Adjudication started</strong><span>≠ final disposition</span></div>
         <div><strong>Status visible</strong><span>≠ action completed</span></div>
+        <div><strong>Coverage verified</strong><span>≠ correct claim destination</span></div>
+        <div><strong>Payer destination selected</strong><span>≠ payer responsibility established</span></div>
       </div>
     </div>
 
@@ -85,6 +87,11 @@
 
     <div class="handoff-evidence-grid">
       <div>
+        <span class="mini-label">Routing readiness</span>
+        <h3>Was the payer destination verified before transmission?</h3>
+        <p>Review the modeled coverage arrangement, payer-order evidence, and expected payer destination before the claim leaves the upstream workflow.</p>
+      </div>
+      <div>
         <span class="mini-label">Transmission evidence</span>
         <h3>Did the claim leave the upstream workflow?</h3>
         <p>Review the modeled submission timestamp and transmission state.</p>
@@ -116,19 +123,21 @@
 
     <div class="journey-rail" aria-label="Claim transmission workflow">
       <div><span>01</span><strong>Ready to submit</strong></div>
-      <div><span>02</span><strong>Transmitted</strong></div>
-      <div><span>03</span><strong>Clearinghouse response</strong></div>
-      <div><span>04</span><strong>Payer acknowledgement</strong></div>
-      <div><span>05</span><strong>Adjudication status</strong></div>
-      <div><span>06</span><strong>Exception routing</strong></div>
-      <div><span>07</span><strong>Follow-up</strong></div>
-      <div><span>08</span><strong>Final status</strong></div>
-      <div><span>09</span><strong>Closure</strong></div>
+      <div><span>02</span><strong>Payer destination verified</strong></div>
+      <div><span>03</span><strong>Transmitted</strong></div>
+      <div><span>04</span><strong>Clearinghouse response</strong></div>
+      <div><span>05</span><strong>Payer acknowledgement</strong></div>
+      <div><span>06</span><strong>Adjudication status</strong></div>
+      <div><span>07</span><strong>Exception routing</strong></div>
+      <div><span>08</span><strong>Follow-up</strong></div>
+      <div><span>09</span><strong>Final status</strong></div>
+      <div><span>10</span><strong>Closure</strong></div>
     </div>
 
     <div class="content-card statement-card">
       <span class="mini-label">Claim-control question</span>
       <p>Where is the claim now, what evidence proves that status, and what action is required next?</p>
+      <p><strong>Was the payer destination verified against the patient's modeled coverage arrangement before submission?</strong></p>
     </div>
   </section>
 
@@ -158,6 +167,7 @@
             <option value="TX-005">TX-005 · Final payer status received / closure pending</option>
             <option value="TX-006">TX-006 · Clearinghouse rejected before payer handoff</option>
             <option value="TX-007">TX-007 · Controlled claim progression / closure verified</option>
+            <option value="TX-008">TX-008 · Coverage / payer-destination routing mismatch</option>
           </select>
         </label>
         <div id="caseSummary" class="status-box"></div>
@@ -178,6 +188,12 @@
                 <option>Yes</option>
               </select>
             </label>
+            <label>Payer Destination Verified Against Coverage Arrangement?
+              <select id="payerDestinationVerified">
+                <option>No / needs upstream review</option>
+                <option>Yes — verified against modeled coverage arrangement</option>
+              </select>
+            </label>
             <label>Submission Timestamp
               <input id="submissionTimestamp" type="datetime-local">
             </label>
@@ -189,6 +205,9 @@
               </select>
             </label>
           </div>
+          <label>Upstream Payer-Routing Evidence
+            <textarea id="routingEvidence" rows="4" placeholder="Document the synthetic evidence that connects the coverage arrangement, payer-order review, and expected payer destination before transmission."></textarea>
+          </label>
         </div>
 
         <div class="form-section">
@@ -287,6 +306,7 @@
                 <option>No acknowledgement received</option>
                 <option>Claim not found in payer system</option>
                 <option>Additional information required</option>
+                <option>Coverage / payer-destination routing mismatch</option>
                 <option>Other / qualified review needed</option>
               </select>
             </label>
@@ -312,6 +332,7 @@
                 <option>Locate claim in payer system</option>
                 <option>Review payer rejection details</option>
                 <option>Correct / route member or policy information</option>
+                <option>Route coverage / payer-order exception upstream</option>
                 <option>Route provider enrollment issue</option>
                 <option>Route missing / inconsistent claim data</option>
                 <option>Investigate duplicate concern</option>
@@ -463,8 +484,9 @@
     <div class="content-card">
       <span class="mini-label">How this extends DPIS</span>
       <h2>Pre-submission readiness → transmission → payer handoff → downstream claim control</h2>
-      <p><strong>Pre-Submission Claim Readiness Control™</strong> asks whether the modeled claim is ready to leave the upstream workflow. <strong>Claim Transmission & Acknowledgement Control™</strong> then tests transmission and payer-side visibility. <strong>Clearinghouse-to-Payer Handoff Review™</strong> specifically asks whether evidence exists that the claim entered payer-controlled processing.</p>
+      <p><strong>Pre-Submission Claim Readiness Control™</strong> asks whether the modeled claim is ready to leave the upstream workflow, including whether payer destination is supported by the modeled coverage arrangement. <strong>Claim Transmission & Acknowledgement Control™</strong> then tests transmission and payer-side visibility. <strong>Clearinghouse-to-Payer Handoff Review™</strong> specifically asks whether evidence exists that the claim entered payer-controlled processing.</p>
       <p>When a downstream rejection or denial appears, the case can move into <strong>Denial Traceback Review™</strong> to investigate where the workflow may have first lost control.</p>
+      <p><strong>EVIS upstream connection:</strong> Medicare Coverage &amp; Payer Routing Readiness Gate™ practices the coverage → payer order → payer destination controls that should be resolved before this transmission workflow begins.</p>
     </div>
 
     <div class="content-card accent-card">
@@ -552,6 +574,12 @@ const cases={
     ready:"Yes",transmission:"Transmitted",ch:"Accepted",chResponse:"Accepted for downstream routing",chEvidence:"Yes",
     ack:"Acknowledged / accepted into payer workflow",payerRef:"SYN-PAYER-7707",rejection:"No",found:"Yes",adj:"Finalized",
     exception:"No exception identified",owner:"Revenue Cycle Support",action:"Verify closure",final:"Accepted / adjudicated in this simulation",closure:"Closure verified"
+  },
+  "TX-008":{
+    summary:"Coverage is visible in the synthetic record, but payer-order and destination evidence do not support transmission yet. The case should return upstream before a clearinghouse handoff is attempted.",
+    ready:"Yes",transmission:"Not transmitted",ch:"Pending",chResponse:"No response documented",chEvidence:"No",
+    ack:"Not established",payerRef:"",rejection:"No",found:"Not checked",adj:"Not established",
+    exception:"Coverage / payer-destination routing mismatch",owner:"Patient Access / Eligibility",action:"Route coverage / payer-order exception upstream",final:"Not final",closure:"Open"
   }
 };
 
@@ -560,7 +588,12 @@ function loadCase(){
   q("#caseSummary").innerHTML="<strong>"+q("#caseSelect").value+"</strong><br>"+c.summary;
   q("#claimRef").value=q("#caseSelect").value;
   q("#claimReady").value=c.ready;
-  q("#submissionTimestamp").value=localValue(-3,10,24);
+  const routeReady=q("#caseSelect").value!=="TX-008";
+  q("#payerDestinationVerified").value=routeReady?"Yes — verified against modeled coverage arrangement":"No / needs upstream review";
+  q("#routingEvidence").value=routeReady
+    ?"Synthetic upstream evidence confirms that the modeled coverage arrangement, payer-order review, and payer destination were reviewed before submission."
+    :"";
+  q("#submissionTimestamp").value=c.transmission==="Transmitted"?localValue(-3,10,24):"";
   q("#transmissionStatus").value=c.transmission;
   q("#clearinghouseStatus").value=c.ch;
   q("#clearinghouseResponseTimestamp").value=localValue(-3,10,29);
@@ -599,6 +632,7 @@ function loadCase(){
 
 function checkpointState(){
   const ready=q("#claimReady").value==="Yes";
+  const route=q("#payerDestinationVerified").value==="Yes — verified against modeled coverage arrangement" && !!q("#routingEvidence").value.trim();
   const tx=q("#transmissionStatus").value==="Transmitted";
   const ch=q("#clearinghouseStatus").value;
   const ack=q("#payerAckStatus").value;
@@ -615,6 +649,7 @@ function checkpointState(){
 
   return [
     ["Ready",ready?"complete":"open"],
+    ["Payer route",route?"complete":"exception"],
     ["Transmitted",tx?"complete":"open"],
     ["Clearinghouse",ch==="Accepted"?"complete":ch==="Rejected"?"exception":"open"],
     ["Payer ack",ack==="Acknowledged / accepted into payer workflow"?"complete":ack==="Rejected by payer"?"exception":"open"],
@@ -638,6 +673,8 @@ function evaluate(scroll=true){
   renderLedger();
 
   const ready=q("#claimReady").value==="Yes";
+  const route=q("#payerDestinationVerified").value==="Yes — verified against modeled coverage arrangement";
+  const routeEvidence=!!q("#routingEvidence").value.trim();
   const tx=q("#transmissionStatus").value;
   const ch=q("#clearinghouseStatus").value;
   const chEvidence=q("#clearinghouseEvidence").value==="Yes" && !!q("#clearinghouseEvidenceNote").value.trim();
@@ -664,6 +701,7 @@ function evaluate(scroll=true){
 
   const controls=[
     ready,
+    route && routeEvidence,
     tx==="Transmitted",
     ch!=="Pending" && chEvidence,
     handoffProven || ch==="Rejected",
@@ -683,6 +721,9 @@ function evaluate(scroll=true){
   if(!ready){
     state="blocked";chip="READINESS HOLD";title="Claim is not ready to enter transmission control";
     body="Return to the Pre-Submission Claim Readiness Control™ before treating this case as ready for downstream transmission.";
+  }else if(!route || !routeEvidence){
+    state="blocked";chip="PAYER ROUTING HOLD";title="Claim readiness is incomplete because payer destination is not verified";
+    body="Coverage identification alone does not establish the correct claim destination. Return upstream to review the modeled coverage arrangement, payer order, and payer-routing evidence before transmission.";
   }else if(tx!=="Transmitted"){
     state="blocked";chip="TRANSMISSION HOLD";title="Claim readiness is established, but transmission is not";
     body="The payer handoff has not started. Confirm the modeled transmission state before reviewing downstream claim progression.";
