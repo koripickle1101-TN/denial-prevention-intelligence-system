@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DPIS | A/R Work Queue Prioritization & Human Review Control™</title>
+  <meta name="description" content="Student-developed, simulated, no-PHI interactive A/R work-queue prioritization and human-review control for remote healthcare operations practice.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav-shell">
+    <div class="brand-mark">DPIS</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="work-queue.html">Work Queue</a>
+      <a href="#queue">A/R Priority Queue</a>
+      <a href="#review">Human Review</a>
+      <a href="#decision">Decision Log</a>
+      <a href="denial-resolution-prevention-loop.html">Resolution Loop</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero ar-queue-hero">
+    <div class="eyebrow">Healthcare Operations Intelligence Engine™ · Responsible Automation Practice</div>
+    <h1>A/R Work Queue Prioritization & Human Review Control™</h1>
+    <p class="hero-subtitle">An interactive DPIS module for practicing how automation can organize revenue-cycle work without replacing human judgment. The system surfaces a synthetic priority and explains why; the user must still review the evidence, accept or override the recommendation, assign ownership, document the next action, and verify closure.</p>
+    <p class="hero-subtitle"><strong>Student-developed · Simulated · Synthetic data only · No PHI</strong></p>
+    <div class="hero-actions">
+      <a class="primary-button" href="#queue">Open A/R Priority Queue</a>
+      <a class="secondary-button" href="work-queue.html">Open General DPIS Work Queue</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="content-card accent-card">
+      <span class="mini-label">Core operating principle</span>
+      <h2>Automation can surface the account. Human review still controls the decision.</h2>
+      <p>The simulated priority is never treated as decision authority. DPIS makes the signal, priority reason, evidence gaps, ownership, escalation, next action, override rationale, and closure status visible before a synthetic account is treated as controlled.</p>
+      <div class="distinction-grid">
+        <div><strong>Automated priority</strong><span>≠ verified next action</span></div>
+        <div><strong>Automated follow-up</strong><span>≠ resolved account</span></div>
+        <div><strong>Queue position</strong><span>≠ decision authority</span></div>
+        <div><strong>Oldest account</strong><span>≠ automatically highest priority</span></div>
+        <div><strong>Technically open</strong><span>≠ actively moving</span></div>
+        <div><strong>System state</strong><span>≠ controlled workflow</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">01</span>
+      <h2>Responsible A/R Automation Path</h2>
+      <p>The module is designed around explainability and human-in-the-loop control rather than autonomous billing decisions.</p>
+    </div>
+
+    <div class="ar-journey-rail">
+      <div><span>01</span><strong>Account enters queue</strong></div>
+      <div><span>02</span><strong>Signals evaluated</strong></div>
+      <div><span>03</span><strong>Priority generated</strong></div>
+      <div><span>04</span><strong>Reason displayed</strong></div>
+      <div><span>05</span><strong>Human review</strong></div>
+      <div><span>06</span><strong>Accept / override</strong></div>
+      <div><span>07</span><strong>Owner assigned</strong></div>
+      <div><span>08</span><strong>Action performed</strong></div>
+      <div><span>09</span><strong>Follow-up</strong></div>
+      <div><span>10</span><strong>Outcome verified</strong></div>
+    </div>
+
+    <div class="content-card statement-card">
+      <span class="mini-label">Human-review question</span>
+      <p>Why is this account in the queue, what evidence supports the priority, and should the recommended action be accepted, overridden, escalated, or routed to a qualified role?</p>
+    </div>
+  </section>
+
+  <section id="queue" class="content-section">
+    <div class="section-intro">
+      <span class="section-number">02</span>
+      <h2>Interactive A/R Priority Queue</h2>
+      <p>The priority model is intentionally transparent. It uses synthetic operational signals to sort work, then exposes the exact reasons behind the recommendation.</p>
+    </div>
+
+    <div class="interactive-panel ar-priority-panel">
+      <div class="queue-toolbar">
+        <label>Filter automated priority
+          <select id="priorityFilter">
+            <option value="all">All priorities</option>
+            <option>Critical</option>
+            <option>High</option>
+            <option>Moderate</option>
+            <option>Routine</option>
+          </select>
+        </label>
+        <label>Filter current claim status
+          <select id="statusFilter">
+            <option value="all">All statuses</option>
+            <option>Awaiting payer response</option>
+            <option>Denial / exception</option>
+            <option>Claim not acknowledged</option>
+            <option>Underpayment review</option>
+            <option>Documentation exception</option>
+            <option>Authorization exception</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="queueList" class="queue-list"></div>
+    </div>
+  </section>
+
+  <section id="review" class="content-section">
+    <div class="section-intro">
+      <span class="section-number">03</span>
+      <h2>Human Review Workbench</h2>
+      <p>The automation explains its priority. The student reviewer must decide whether the recommendation is supported before confirming the next action.</p>
+    </div>
+
+    <div class="interactive-panel ar-review-panel">
+      <div class="control-header-row">
+        <div>
+          <span class="mini-label">Selected synthetic account</span>
+          <h3 id="accountTitle">A/R Account Review</h3>
+        </div>
+        <div id="priorityChip" class="control-chip">PRIORITY</div>
+      </div>
+
+      <div class="workbench-grid">
+        <div><span class="mini-label">A/R age</span><strong id="wbAge"></strong></div>
+        <div><span class="mini-label">Balance band</span><strong id="wbBalance"></strong></div>
+        <div><span class="mini-label">Claim status</span><strong id="wbStatus"></strong></div>
+        <div><span class="mini-label">Days since last action</span><strong id="wbDays"></strong></div>
+      </div>
+
+      <div class="priority-explainability">
+        <span class="mini-label">Why the automation surfaced this account</span>
+        <h3 id="priorityLabel"></h3>
+        <ul id="priorityReasons"></ul>
+      </div>
+
+      <form id="reviewForm">
+        <div class="form-section">
+          <span class="mini-label">A · Source signals</span>
+          <div class="form-grid">
+            <label>Account / Case Reference
+              <input id="accountRef" type="text" readonly>
+            </label>
+            <label>A/R Age
+              <select id="arAge">
+                <option>0–30 days</option>
+                <option>31–60 days</option>
+                <option>61–90 days</option>
+                <option>90+ days</option>
+              </select>
+            </label>
+            <label>Balance Band
+              <select id="balanceBand">
+                <option>Lower synthetic balance</option>
+                <option>Moderate synthetic balance</option>
+                <option>Higher synthetic balance</option>
+              </select>
+            </label>
+            <label>Current Claim Status
+              <select id="claimStatus">
+                <option>Awaiting payer response</option>
+                <option>Denial / exception</option>
+                <option>Claim not acknowledged</option>
+                <option>Underpayment review</option>
+                <option>Documentation exception</option>
+                <option>Authorization exception</option>
+              </select>
+            </label>
+            <label>Last Meaningful Action
+              <input id="lastAction" type="date">
+            </label>
+            <label>Next Action Due
+              <input id="nextActionDue" type="date">
+            </label>
+          </div>
+
+          <div class="checklist-grid">
+            <label class="check-item"><input id="payerPending" type="checkbox"><span>Payer response pending</span></label>
+            <label class="check-item"><input id="denialException" type="checkbox"><span>Denial / exception present</span></label>
+            <label class="check-item"><input id="documentationException" type="checkbox"><span>Documentation exception present</span></label>
+            <label class="check-item"><input id="authorizationException" type="checkbox"><span>Authorization exception present</span></label>
+            <label class="check-item"><input id="followUpRequired" type="checkbox"><span>Follow-up required</span></label>
+            <label class="check-item"><input id="escalationReached" type="checkbox"><span>Escalation threshold reached</span></label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">B · Automated recommendation</span>
+          <div class="recommendation-grid">
+            <div>
+              <span class="mini-label">Automated Priority</span>
+              <strong id="autoPriorityDisplay">—</strong>
+            </div>
+            <div>
+              <span class="mini-label">Human Review Required?</span>
+              <strong id="humanReviewDisplay">—</strong>
+            </div>
+          </div>
+          <label>Priority Reason
+            <textarea id="priorityReasonText" rows="5" readonly></textarea>
+          </label>
+          <label>Recommended Next Action
+            <select id="recommendedAction">
+              <option>Confirm payer status</option>
+              <option>Review denial / exception evidence</option>
+              <option>Escalate unacknowledged claim</option>
+              <option>Review underpayment evidence</option>
+              <option>Route documentation exception</option>
+              <option>Route authorization exception</option>
+              <option>Document closure</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">C · Human-in-the-loop decision</span>
+          <div class="human-decision-grid">
+            <label class="decision-tile"><input type="radio" name="humanDecision" value="Accept priority" checked><span><strong>Accept priority</strong><small>The displayed reasons support the automated priority.</small></span></label>
+            <label class="decision-tile"><input type="radio" name="humanDecision" value="Override priority"><span><strong>Override priority</strong><small>The reviewer determines another priority or action is better supported.</small></span></label>
+            <label class="decision-tile"><input type="radio" name="humanDecision" value="Escalate for qualified review"><span><strong>Escalate</strong><small>The case requires judgment outside this student simulation.</small></span></label>
+          </div>
+
+          <label>Override / Escalation Reason
+            <textarea id="overrideReason" rows="4" placeholder="Required when overriding the automated priority or escalating for qualified review. Explain what evidence changed the decision."></textarea>
+          </label>
+
+          <div class="form-grid">
+            <label>Current Owner
+              <select id="owner">
+                <option>Unassigned</option>
+                <option>A/R Follow-Up</option>
+                <option>Payer Follow-Up</option>
+                <option>Claims Support</option>
+                <option>Revenue Cycle Support</option>
+                <option>Patient Access / Eligibility</option>
+                <option>Prior Authorization Support</option>
+                <option>Documentation / HIM Support</option>
+                <option>Payment / Underpayment Review</option>
+                <option>Qualified Specialist Review</option>
+              </select>
+            </label>
+            <label>Human-Confirmed Next Action
+              <select id="confirmedAction">
+                <option>None selected</option>
+                <option>Confirm payer status</option>
+                <option>Review denial / exception evidence</option>
+                <option>Escalate unacknowledged claim</option>
+                <option>Review underpayment evidence</option>
+                <option>Route documentation exception</option>
+                <option>Route authorization exception</option>
+                <option>Document closure</option>
+              </select>
+            </label>
+            <label>Follow-Up Date
+              <input id="followUpDate" type="date">
+            </label>
+            <label>Action Performed?
+              <select id="actionPerformed">
+                <option>No</option>
+                <option>Yes</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">D · Evidence and closure</span>
+          <label>Evidence Reviewed / Work Note
+            <textarea id="evidenceNote" rows="5" placeholder="Document the status evidence, what the automation surfaced, what the human reviewer confirmed or changed, ownership, and what remains open."></textarea>
+          </label>
+          <label>Closure Evidence
+            <textarea id="closureEvidence" rows="4" placeholder="Synthetic example: final payer/account status documented, required action completed, no unowned follow-up remains, and closure is verified."></textarea>
+          </label>
+          <div class="control-actions">
+            <button class="action-button" type="submit">Evaluate Human Review Control</button>
+            <button id="saveDecision" class="secondary-button" type="button">Save Simulated Decision</button>
+            <button id="resetAccount" class="secondary-button" type="button">Reset Account</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="progress-track"><div id="reviewProgress" class="progress-bar"></div></div>
+      <div id="reviewResult" class="gate-result" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="decision" class="content-section">
+    <div class="section-intro">
+      <span class="section-number">04</span>
+      <h2>Decision & Accountability Log</h2>
+      <p>The simulated log records whether the human reviewer accepted, overrode, or escalated the automated recommendation and why.</p>
+    </div>
+    <div class="interactive-panel">
+      <div id="decisionLog" class="activity-log"></div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">05</span>
+      <h2>Patient-to-Professional Perspective</h2>
+    </div>
+
+    <div class="patient-impact-panel">
+      <div class="patient-quote-grid">
+        <blockquote>“Why hasn't my insurance processed this?”</blockquote>
+        <blockquote>“Why am I receiving another statement?”</blockquote>
+        <blockquote>“Why hasn't anyone called me back?”</blockquote>
+        <blockquote>“Why does nobody seem to know what is happening?”</blockquote>
+      </div>
+      <p class="patient-insight"><strong>The patient experiences the waiting. Operations has to make sure the account is visible to the right person before waiting becomes another unresolved patient problem.</strong></p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="content-card">
+      <span class="mini-label">Responsible automation principle</span>
+      <h2>Good automation should explain the work, not hide the decision.</h2>
+      <p>DPIS treats automation as a support layer. The modeled worker can see the triggering signals, priority rationale, recommended action, evidence gaps, ownership, escalation path, and override reason before the account moves.</p>
+      <p><strong>AI or automation can surface a signal, but the workflow still needs defined authority, ownership, escalation, documentation, and verification before that signal becomes accountable action.</strong></p>
+    </div>
+
+    <div class="content-card accent-card">
+      <span class="mini-label">Evidence boundary</span>
+      <h2>No unsupported performance claims</h2>
+      <p>This portfolio module intentionally does not reuse unverified percentage claims about A/R reduction, collections, cost, or productivity. The simulation demonstrates workflow logic, not employer results or validated automation performance.</p>
+    </div>
+
+    <div class="content-card accent-card">
+      <span class="mini-label">Educational boundary</span>
+      <h2>What this module does not do</h2>
+      <p>It does not access real A/R, claims, payer portals, EHRs, contracts, bank data, or patient information. It does not determine coding, coverage, medical necessity, payer liability, legal rights, or the correctness of a real-world automated recommendation. All priorities and balances are fictional educational assumptions.</p>
+    </div>
+  </section>
+
+  <section class="signature-lockup" aria-label="Kori Pickle signature">
+    <a class="signature-name" href="https://lnkd.in/p/eQuDNisW" target="_blank" rel="noreferrer">Kori Pickle</a>
+    <div class="signature-rule"></div>
+    <div class="signature-note">Patient-to-professional healthcare operations portfolio</div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p><strong>DPIS — Denial Prevention Intelligence System™</strong></p>
+  <p>Created by Kori Pickle</p>
+  <p>Healthcare Operations Intelligence Engine™</p>
+  <p>Student-developed · Simulated · Synthetic data only · No PHI</p>
+</footer>
+
+<script>
+const accounts=[
+  {id:"AR-001",age:"31–60 days",balance:"Moderate synthetic balance",status:"Claim not acknowledged",last:-5,due:-2,payer:true,denial:false,doc:false,auth:false,follow:true,escalation:true,patient:"Waiting / uncertainty"},
+  {id:"AR-002",age:"61–90 days",balance:"Higher synthetic balance",status:"Denial / exception",last:-3,due:0,payer:false,denial:true,doc:false,auth:true,follow:true,escalation:false,patient:"Another billing statement"},
+  {id:"AR-003",age:"90+ days",balance:"Lower synthetic balance",status:"Awaiting payer response",last:-1,due:4,payer:true,denial:false,doc:false,auth:false,follow:false,escalation:false,patient:"Waiting / uncertainty"},
+  {id:"AR-004",age:"0–30 days",balance:"Higher synthetic balance",status:"Authorization exception",last:-6,due:-1,payer:false,denial:true,doc:true,auth:true,follow:true,escalation:true,patient:"Coverage uncertainty"},
+  {id:"AR-005",age:"31–60 days",balance:"Moderate synthetic balance",status:"Underpayment review",last:-8,due:-3,payer:false,denial:false,doc:false,auth:false,follow:true,escalation:true,patient:"Changing balance"},
+  {id:"AR-006",age:"0–30 days",balance:"Lower synthetic balance",status:"Documentation exception",last:-2,due:1,payer:false,denial:false,doc:true,auth:false,follow:true,escalation:false,patient:"Additional phone call"}
+];
+
+const q=s=>document.querySelector(s);
+const logs=[];
+let selected=accounts[0];
+const today=()=>new Date().toISOString().slice(0,10);
+const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+const diffDays=date=>{
+  if(!date)return 0;
+  return Math.max(0,Math.floor((new Date(today()+"T00:00:00")-new Date(date+"T00:00:00"))/86400000));
+};
+
+function agePoints(age){return {"0–30 days":0,"31–60 days":1,"61–90 days":2,"90+ days":3}[age]||0}
+function balancePoints(b){return {"Lower synthetic balance":0,"Moderate synthetic balance":1,"Higher synthetic balance":2}[b]||0}
+
+function calculatePriority(){
+  const age=q("#arAge").value;
+  const balance=q("#balanceBand").value;
+  const days=diffDays(q("#lastAction").value);
+  const due=q("#nextActionDue").value;
+  const overdue=due && new Date(due+"T00:00:00")<new Date(today()+"T00:00:00");
+  const payer=q("#payerPending").checked;
+  const denial=q("#denialException").checked;
+  const doc=q("#documentationException").checked;
+  const auth=q("#authorizationException").checked;
+  const follow=q("#followUpRequired").checked;
+  const escalation=q("#escalationReached").checked;
+
+  let score=agePoints(age)+balancePoints(balance);
+  const reasons=[];
+  if(agePoints(age)>=2){score+=1;reasons.push("A/R age is "+age+".");}
+  if(balance==="Higher synthetic balance"){score+=1;reasons.push("Synthetic balance band is higher.");}
+  if(days>=5){score+=2;reasons.push("Last meaningful action was "+days+" days ago.");}
+  if(overdue){score+=3;reasons.push("Next action is overdue.");}
+  if(payer){score+=1;reasons.push("Payer response is pending.");}
+  if(denial){score+=2;reasons.push("Denial / exception is present.");}
+  if(doc){score+=1;reasons.push("Documentation exception is open.");}
+  if(auth){score+=2;reasons.push("Authorization exception is open.");}
+  if(follow){score+=1;reasons.push("Follow-up is required.");}
+  if(escalation){score+=3;reasons.push("Escalation threshold is reached.");}
+
+  let priority="Routine";
+  if(score>=11)priority="Critical";
+  else if(score>=7)priority="High";
+  else if(score>=4)priority="Moderate";
+
+  const reviewRequired=priority==="Critical"||priority==="High"||denial||doc||auth||escalation;
+  return {priority,reasons,reviewRequired,score,days,overdue};
+}
+
+function recommendation(){
+  const status=q("#claimStatus").value;
+  if(status==="Claim not acknowledged")return "Escalate unacknowledged claim";
+  if(status==="Denial / exception")return "Review denial / exception evidence";
+  if(status==="Underpayment review")return "Review underpayment evidence";
+  if(status==="Documentation exception")return "Route documentation exception";
+  if(status==="Authorization exception")return "Route authorization exception";
+  return "Confirm payer status";
+}
+
+function refreshAutomation(){
+  const p=calculatePriority();
+  q("#autoPriorityDisplay").textContent=p.priority;
+  q("#humanReviewDisplay").textContent=p.reviewRequired?"Yes":"Recommended";
+  q("#priorityLabel").textContent="Priority: "+p.priority;
+  q("#priorityReasons").innerHTML=(p.reasons.length?p.reasons:["No higher-priority operational signals are currently selected."]).map(x=>"<li>"+x+"</li>").join("");
+  q("#priorityReasonText").value=(p.reasons.length?p.reasons.join("\n"):"No higher-priority operational signals are currently selected.");
+  q("#recommendedAction").value=recommendation();
+  q("#priorityChip").textContent=p.priority.toUpperCase();
+  q("#wbAge").textContent=q("#arAge").value;
+  q("#wbBalance").textContent=q("#balanceBand").value;
+  q("#wbStatus").textContent=q("#claimStatus").value;
+  q("#wbDays").textContent=p.days+" day(s)";
+  return p;
+}
+
+function getPriorityForAccount(a){
+  let score=agePoints(a.age)+balancePoints(a.balance);
+  if(agePoints(a.age)>=2)score+=1;
+  if(a.balance==="Higher synthetic balance")score+=1;
+  if(Math.abs(a.last)>=5)score+=2;
+  if(a.due<0)score+=3;
+  if(a.payer)score+=1;
+  if(a.denial)score+=2;
+  if(a.doc)score+=1;
+  if(a.auth)score+=2;
+  if(a.follow)score+=1;
+  if(a.escalation)score+=3;
+  return score>=11?"Critical":score>=7?"High":score>=4?"Moderate":"Routine";
+}
+
+function renderQueue(){
+  const pf=q("#priorityFilter").value,sf=q("#statusFilter").value;
+  const rows=accounts
+    .map(a=>({...a,priority:getPriorityForAccount(a)}))
+    .filter(a=>(pf==="all"||a.priority===pf)&&(sf==="all"||a.status===sf))
+    .sort((a,b)=>["Critical","High","Moderate","Routine"].indexOf(a.priority)-["Critical","High","Moderate","Routine"].indexOf(b.priority));
+  q("#queueList").innerHTML=rows.map(a=>`
+    <button type="button" class="queue-row ${selected.id===a.id?"active":""}" data-id="${a.id}">
+      <span><strong>${a.id}</strong><small>${a.status} · ${a.age}</small></span>
+      <span class="queue-meta"><b>${a.priority}</b><em>${a.balance}</em></span>
+    </button>`).join("")||"<p>No synthetic accounts match these filters.</p>";
+}
+
+function loadAccount(){
+  const a=selected;
+  q("#accountTitle").textContent=a.id+" · Human Review";
+  q("#accountRef").value=a.id;
+  q("#arAge").value=a.age;
+  q("#balanceBand").value=a.balance;
+  q("#claimStatus").value=a.status;
+  q("#lastAction").value=addDays(a.last);
+  q("#nextActionDue").value=addDays(a.due);
+  q("#payerPending").checked=a.payer;
+  q("#denialException").checked=a.denial;
+  q("#documentationException").checked=a.doc;
+  q("#authorizationException").checked=a.auth;
+  q("#followUpRequired").checked=a.follow;
+  q("#escalationReached").checked=a.escalation;
+  q("#owner").value="Unassigned";
+  q("#confirmedAction").value="None selected";
+  q("#followUpDate").value=addDays(2);
+  q("#actionPerformed").value="No";
+  q("#overrideReason").value="";
+  q("#evidenceNote").value="";
+  q("#closureEvidence").value="";
+  document.querySelector('input[name="humanDecision"][value="Accept priority"]').checked=true;
+  refreshAutomation();
+  evaluate(false);
+}
+
+function humanDecision(){return document.querySelector('input[name="humanDecision"]:checked').value}
+
+function evaluate(scroll=true){
+  const p=refreshAutomation();
+  const decision=humanDecision();
+  const override=q("#overrideReason").value.trim();
+  const owner=q("#owner").value;
+  const confirmed=q("#confirmedAction").value;
+  const follow=q("#followUpDate").value;
+  const actionDone=q("#actionPerformed").value==="Yes";
+  const evidence=q("#evidenceNote").value.trim();
+  const closure=q("#closureEvidence").value.trim();
+
+  const controls=[
+    p.reasons.length>0,
+    decision==="Accept priority" || !!override,
+    owner!=="Unassigned",
+    confirmed!=="None selected",
+    !!follow,
+    !!evidence,
+    actionDone,
+    !!closure
+  ];
+  const pct=Math.round(controls.filter(Boolean).length/controls.length*100);
+  q("#reviewProgress").style.width=pct+"%";
+
+  let state,title,body;
+  if((decision==="Override priority"||decision==="Escalate for qualified review")&&!override){
+    state="blocked";title="Override / escalation reason required";
+    body="The automation may be overridden or escalated, but the human decision must be explained with a documented reason.";
+  }else if(owner==="Unassigned"||confirmed==="None selected"||!follow){
+    state="active";title="Priority reviewed — action control incomplete";
+    body="The recommendation has been reviewed, but the modeled account still needs a visible owner, human-confirmed next action, and follow-up date.";
+  }else if(!evidence){
+    state="review";title="Human decision needs an evidence note";
+    body="Document what the automation surfaced, what the reviewer confirmed or changed, and what remains unresolved.";
+  }else if(!actionDone){
+    state="active";title="Decision documented — action still pending";
+    body="The account is prioritized and controlled, but the human-confirmed action has not yet been marked performed.";
+  }else if(!closure){
+    state="active";title="Action performed — outcome verification still open";
+    body="Automated or human-triggered follow-up is not the same as account resolution. Closure evidence is still required.";
+  }else{
+    state="closed";title="Human-reviewed A/R workflow controlled";
+    body="The automated priority is explainable, the human decision is documented, ownership and next action are visible, the action was performed, and closure evidence is recorded.";
+  }
+
+  const el=q("#reviewResult");
+  el.className="gate-result "+state;
+  el.innerHTML='<span class="mini-label">Human-review control · '+pct+'% documented</span><h3>'+title+'</h3><p>'+body+'</p>';
+  if(scroll)el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function addLog(){
+  const decision=humanDecision();
+  const p=calculatePriority();
+  logs.unshift({
+    id:selected.id,
+    time:new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"}),
+    text:"Automated priority: "+p.priority+". Human decision: "+decision+". Owner: "+q("#owner").value+". Confirmed action: "+q("#confirmedAction").value+"."+(q("#overrideReason").value.trim()?" Reason: "+q("#overrideReason").value.trim():"")
+  });
+  q("#decisionLog").innerHTML=logs.map(l=>'<div class="log-row"><strong>'+l.id+'</strong><span>'+l.time+'</span><p>'+l.text+'</p></div>').join("");
+}
+
+q("#queueList").addEventListener("click",e=>{
+  const b=e.target.closest("[data-id]");if(!b)return;
+  selected=accounts.find(a=>a.id===b.dataset.id);
+  renderQueue();loadAccount();
+  q("#review").scrollIntoView({behavior:"smooth",block:"start"});
+});
+q("#priorityFilter").addEventListener("change",renderQueue);
+q("#statusFilter").addEventListener("change",renderQueue);
+document.querySelectorAll("#reviewForm input, #reviewForm select, #reviewForm textarea").forEach(el=>el.addEventListener("change",()=>{refreshAutomation();evaluate(false)}));
+q("#reviewForm").addEventListener("submit",e=>{e.preventDefault();evaluate(true)});
+q("#saveDecision").addEventListener("click",()=>{evaluate(false);addLog()});
+q("#resetAccount").addEventListener("click",loadAccount);
+
+renderQueue();
+loadAccount();
+</script>
+</body>
+</html>
