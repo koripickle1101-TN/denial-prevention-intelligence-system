@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>DPIS | Payment Recovery Reconciliation Review™</title>
-  <meta name="description" content="Student-developed, simulated, no-PHI payment recovery reconciliation workflow for healthcare revenue-cycle learning.">
+  <meta name="description" content="Student-developed, simulated, no-PHI interactive payment recovery reconciliation workflow for remote healthcare revenue-cycle practice.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,181 +14,457 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="work-queue.html">Work Queue</a>
-      <a href="denial-prevention-dashboard.html">Dashboard</a>
-      <a href="sample-denial-cases.html">Cases</a>
+      <a href="ar-work-queue-prioritization-control.html">A/R Queue</a>
+      <a href="#recovery">Recovery Review</a>
+      <a href="#linkage">Transaction Linkage</a>
+      <a href="#closure">Closure</a>
     </div>
   </nav>
 </header>
+
 <main>
-  <section class="page-hero">
+  <section class="page-hero payment-recovery-hero">
     <div class="eyebrow">Healthcare Operations Intelligence Engine™ · Career-Style Student Simulation</div>
     <h1>Payment Recovery Reconciliation Review™</h1>
-    <p class="hero-subtitle">A simulated revenue-cycle workflow for practicing what happens after money has moved: identify the financial signal, trace it to the original transaction, review available evidence, route unresolved work, reconcile the balance, and verify closure.</p>
+    <p class="hero-subtitle">A premium interactive revenue-cycle workspace for practicing how a later financial signal can be traced back to an earlier synthetic transaction, linked to supporting evidence, routed to the right owner, reconciled, and verified before the workflow is treated as closed.</p>
     <p class="hero-subtitle"><strong>Student-developed · Simulated · Synthetic data only · No PHI</strong></p>
+    <div class="hero-actions">
+      <a class="primary-button" href="#recovery">Open Recovery Review</a>
+      <a class="secondary-button" href="ar-work-queue-prioritization-control.html">Open A/R Human Review Control</a>
+    </div>
   </section>
 
   <section class="content-section">
     <div class="content-card accent-card">
-      <h2>Operational Distinctions</h2>
-      <p><strong>Paid ≠ correctly reconciled.</strong></p>
-      <p><strong>Reduced payment ≠ explanation of the underlying recovery.</strong></p>
-      <p><strong>Adjusted balance ≠ reconciled account.</strong></p>
-    </div>
-
-    <div class="interactive-panel">
-      <h2>1. Identify the Financial Signal</h2>
-      <div class="workbench-grid">
-        <label>Recovery signal
-          <select id="signal">
-            <option>Reduced payment</option>
-            <option>Adjustment on ERA/EOB</option>
-            <option>Payment reversal</option>
-            <option>Offset against later payment</option>
-            <option>Overpayment recovery notice</option>
-            <option>Unexplained balance change</option>
-          </select>
-        </label>
-        <label>Recovery method
-          <select id="method">
-            <option>Offset</option>
-            <option>Direct refund request</option>
-            <option>Adjustment / reversal</option>
-            <option>Needs review</option>
-          </select>
-        </label>
-        <label>Original account / claim reference
-          <input id="accountRef" type="text" value="SYN-ACCT-1042">
-        </label>
-        <label>ERA/EOB reference
-          <input id="eraRef" type="text" value="SYN-ERA-2207">
-        </label>
-        <label>Original payment
-          <input id="originalPayment" type="number" min="0" step="25" value="1000">
-        </label>
-        <label>Recovery / adjustment amount
-          <input id="recoveryAmount" type="number" min="0" step="25" value="300">
-        </label>
+      <span class="mini-label">Conceptual distinction used in this simulation</span>
+      <h2>Recovery / recoupment describes the process. Offset describes one possible recovery method.</h2>
+      <p>In this student model, a payer recovery signal may relate to an earlier payment. An offset is modeled as one possible way the recovery becomes visible on a later payment. Real-world terminology, posting rules, contractual treatment, and recovery procedures can vary by payer and organization.</p>
+      <div class="recovery-distinction-grid">
+        <div>
+          <span class="mini-label">WHAT</span>
+          <h3>Recovery / Recoupment Process</h3>
+          <p>The broader synthetic process of recovering money connected to an earlier payment.</p>
+        </div>
+        <div>
+          <span class="mini-label">HOW</span>
+          <h3>Offset Method</h3>
+          <p>One modeled method in which a later payment is reduced to recover an earlier amount.</p>
+        </div>
       </div>
     </div>
 
-    <div class="interactive-panel">
-      <h2>2. Trace, Review, Route</h2>
-      <div class="checklist-grid">
-        <label class="check-item"><input id="supportingExplanation" type="checkbox"><span>Supporting explanation available</span></label>
-        <label class="check-item"><input id="earlierAccount" type="checkbox"><span>Original account / earlier transaction reviewed</span></label>
-        <label class="check-item"><input id="postingReviewed" type="checkbox"><span>Posting / adjustment reviewed</span></label>
-        <label class="check-item"><input id="amountReconciled" type="checkbox"><span>Amount reconciled to available synthetic evidence</span></label>
-        <label class="check-item"><input id="balanceReviewed" type="checkbox"><span>Remaining balance reviewed</span></label>
-        <label class="check-item"><input id="factHypothesis" type="checkbox"><span>Documented facts separated from unanswered questions</span></label>
-      </div>
+    <div class="distinction-grid">
+      <div><strong>Paid</strong><span>≠ correctly reconciled</span></div>
+      <div><strong>Reduced payment</strong><span>≠ explanation of underlying recovery</span></div>
+      <div><strong>Recovery posted</strong><span>≠ recovery reconciled</span></div>
+      <div><strong>Adjusted balance</strong><span>≠ closed financial workflow</span></div>
+    </div>
+  </section>
 
-      <div class="workbench-grid">
-        <label>Current owner
-          <select id="owner">
-            <option>Unassigned</option>
-            <option>Payment Posting / Cash Applications</option>
-            <option>A/R Follow-Up</option>
-            <option>Credit Balance Support</option>
-            <option>Payer Follow-Up</option>
-            <option>Revenue Cycle Support</option>
-            <option>Qualified Coding Review</option>
-            <option>Contracting / Specialist Review</option>
-          </select>
-        </label>
-        <label>Next action
-          <select id="nextAction">
-            <option>Trace recovery to original transaction</option>
-            <option>Review ERA/EOB and supporting correspondence</option>
-            <option>Verify account posting / adjustment</option>
-            <option>Route for payer follow-up</option>
-            <option>Route for credit-balance review</option>
-            <option>Route for qualified specialist review</option>
-            <option>Reconcile remaining balance</option>
-            <option>Document closure evidence</option>
-          </select>
-        </label>
-        <label>Follow-up timing
-          <select id="followUp">
-            <option>Same day</option>
-            <option>1 business day</option>
-            <option>2 business days</option>
-            <option>3 business days</option>
-            <option>No follow-up — closure verified</option>
-          </select>
-        </label>
-        <label>Potential patient-facing effect
-          <select id="patientEffect">
-            <option>Billing confusion</option>
-            <option>Unexpected balance</option>
-            <option>Additional statement</option>
-            <option>Additional call</option>
-            <option>Uncertainty about amount owed</option>
-            <option>No modeled patient-facing effect identified</option>
-          </select>
-        </label>
-      </div>
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">01</span>
+      <h2>Recovery-to-Closure Workflow</h2>
+      <p>The modeled control follows the financial signal back to its source instead of treating the later payment as an isolated number.</p>
+    </div>
 
-      <label>Work note
-        <textarea id="note" rows="4" placeholder="Document what the synthetic record supports, what remains unanswered, who owns the next action, and why."></textarea>
-      </label>
-      <label>Closure evidence
-        <textarea id="closureEvidence" rows="4" placeholder="Synthetic example: original transaction matched, remittance detail reviewed, adjustment reconciled, remaining balance reviewed, and no unresolved action remains."></textarea>
-      </label>
-
-      <div class="control-actions">
-        <button id="evaluate" class="action-button" type="button">Evaluate Reconciliation Gate</button>
-        <button id="reset" class="secondary-button" type="button">Reset</button>
-      </div>
-      <div id="result" class="status-box" aria-live="polite"></div>
+    <div class="recovery-journey-rail">
+      <div><span>01</span><strong>Recovery signal</strong></div>
+      <div><span>02</span><strong>Original transaction</strong></div>
+      <div><span>03</span><strong>Recovery explanation</strong></div>
+      <div><span>04</span><strong>Recovery method</strong></div>
+      <div><span>05</span><strong>Later payment linkage</strong></div>
+      <div><span>06</span><strong>Reconciliation</strong></div>
+      <div><span>07</span><strong>Ownership</strong></div>
+      <div><span>08</span><strong>Remaining balance</strong></div>
+      <div><span>09</span><strong>Closure</strong></div>
     </div>
 
     <div class="content-card statement-card">
-      <h2>Control Question</h2>
-      <p>If a later payment is reduced because of an earlier account, what evidence should connect the recovery to the original transaction before the adjustment is treated as fully reconciled?</p>
+      <span class="mini-label">Control question</span>
+      <p>If a later payment is reduced because of an earlier account, what evidence connects the recovery to the original transaction, and what must be reconciled before the workflow can be treated as closed?</p>
+    </div>
+  </section>
+
+  <section id="recovery" class="content-section">
+    <div class="section-intro">
+      <span class="section-number">02</span>
+      <h2>Interactive Payment Recovery Workbench</h2>
+      <p>Select a fictional recovery scenario, review the transaction chain, assign ownership, document the evidence, and test whether the simulated financial workflow is actually reconciled.</p>
     </div>
 
-    <div class="content-card">
-      <h2>Patient-to-Professional Connection</h2>
-      <p><strong>The patient sees the balance. The operations team has to understand the chain of transactions that produced it.</strong></p>
-      <p>If a recovery or adjustment is posted incorrectly or remains unresolved, a patient could experience a confusing balance, another statement, additional calls, or uncertainty about what they actually owe.</p>
+    <div class="interactive-panel payment-recovery-panel">
+      <div class="control-header-row">
+        <div>
+          <span class="mini-label">Synthetic recovery queue</span>
+          <h3>Recovery Reconciliation Control</h3>
+        </div>
+        <div id="recoveryStateChip" class="control-chip">REVIEW REQUIRED</div>
+      </div>
+
+      <div class="form-section">
+        <label>Fictional recovery scenario
+          <select id="scenarioSelect">
+            <option value="PRR-001">PRR-001 · Later payment reduced by modeled offset</option>
+            <option value="PRR-002">PRR-002 · Direct refund request linked to earlier payment</option>
+            <option value="PRR-003">PRR-003 · Adjustment / reversal with unresolved balance</option>
+            <option value="PRR-004">PRR-004 · Recovery signal with unclear source linkage</option>
+          </select>
+        </label>
+        <div id="scenarioSummary" class="status-box"></div>
+      </div>
+
+      <form id="recoveryForm">
+        <div id="linkage" class="form-section">
+          <span class="mini-label">A · Recovery signal and source linkage</span>
+          <div class="form-grid">
+            <label>Recovery Signal
+              <select id="signal">
+                <option>Reduced later payment</option>
+                <option>Adjustment on ERA/EOB</option>
+                <option>Payment reversal</option>
+                <option>Offset against later payment</option>
+                <option>Refund request</option>
+                <option>Unexplained balance change</option>
+              </select>
+            </label>
+            <label>Original Account / Claim Reference
+              <input id="accountRef" type="text">
+            </label>
+            <label>Original Payment
+              <input id="originalPayment" type="number" min="0" step="25">
+            </label>
+            <label>Recovery Amount
+              <input id="recoveryAmount" type="number" min="0" step="25">
+            </label>
+            <label>ERA/EOB Reference
+              <input id="eraRef" type="text">
+            </label>
+            <label>Later Transaction / Offset Reference
+              <input id="laterRef" type="text">
+            </label>
+          </div>
+
+          <label>Recovery Explanation
+            <textarea id="recoveryExplanation" rows="4" placeholder="Document what the synthetic source says about the recovery and what it does not establish."></textarea>
+          </label>
+
+          <div class="recovery-method-panel">
+            <span class="mini-label">Recovery method in this simulation</span>
+            <div class="method-choice-grid">
+              <label class="decision-tile"><input type="radio" name="recoveryMethod" value="Offset" checked><span><strong>Offset</strong><small>Later payment reduced to recover an earlier modeled amount.</small></span></label>
+              <label class="decision-tile"><input type="radio" name="recoveryMethod" value="Direct refund request"><span><strong>Direct refund request</strong><small>Modeled payer requests return of an earlier amount.</small></span></label>
+              <label class="decision-tile"><input type="radio" name="recoveryMethod" value="Adjustment / reversal"><span><strong>Adjustment / reversal</strong><small>Financial record changes without assuming contractual correctness.</small></span></label>
+              <label class="decision-tile"><input type="radio" name="recoveryMethod" value="Needs qualified review"><span><strong>Needs qualified review</strong><small>The source does not support a confident method classification.</small></span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">B · Evidence and reconciliation checks</span>
+          <div class="checklist-grid">
+            <label class="check-item"><input id="supportingExplanation" type="checkbox"><span>Supporting explanation available</span></label>
+            <label class="check-item"><input id="earlierAccount" type="checkbox"><span>Original account / earlier transaction reviewed</span></label>
+            <label class="check-item"><input id="laterTransactionLinked" type="checkbox"><span>Later transaction linked to original recovery</span></label>
+            <label class="check-item"><input id="postingReviewed" type="checkbox"><span>Posting / adjustment reviewed</span></label>
+            <label class="check-item"><input id="amountReconciled" type="checkbox"><span>Recovery amount reconciled to available evidence</span></label>
+            <label class="check-item"><input id="balanceReviewed" type="checkbox"><span>Remaining balance reviewed</span></label>
+            <label class="check-item"><input id="factHypothesis" type="checkbox"><span>Facts separated from unanswered questions</span></label>
+            <label class="check-item"><input id="patientImpactReviewed" type="checkbox"><span>Potential patient-facing effect reviewed</span></label>
+          </div>
+
+          <div class="reconciliation-math">
+            <div><span class="mini-label">Original payment</span><strong id="mathOriginal">$0</strong></div>
+            <div><span class="mini-label">Recovery amount</span><strong id="mathRecovery">$0</strong></div>
+            <div><span class="mini-label">Unrecovered modeled amount</span><strong id="mathRemaining">$0</strong></div>
+          </div>
+          <p class="boundary-note">These arithmetic values are synthetic reconciliation aids only. They do not determine whether a real payer recovery, offset, refund, reversal, or adjustment is contractually or legally correct.</p>
+        </div>
+
+        <div class="form-section">
+          <span class="mini-label">C · Ownership and next action</span>
+          <div class="form-grid">
+            <label>Specialist Review Needed?
+              <select id="specialistReview">
+                <option>No specialist review identified</option>
+                <option>Payment / credit-balance review</option>
+                <option>Payer follow-up review</option>
+                <option>Contracting / reimbursement specialist review</option>
+                <option>Coding-related qualified review</option>
+                <option>Other qualified review</option>
+              </select>
+            </label>
+            <label>Current Owner
+              <select id="owner">
+                <option>Unassigned</option>
+                <option>Payment Posting / Cash Applications</option>
+                <option>A/R Follow-Up</option>
+                <option>Credit Balance Support</option>
+                <option>Payer Follow-Up</option>
+                <option>Revenue Cycle Support</option>
+                <option>Qualified Specialist Review</option>
+              </select>
+            </label>
+            <label>Next Action
+              <select id="nextAction">
+                <option>None selected</option>
+                <option>Trace recovery to original transaction</option>
+                <option>Review ERA/EOB and supporting correspondence</option>
+                <option>Verify later transaction linkage</option>
+                <option>Verify account posting / adjustment</option>
+                <option>Route for payer follow-up</option>
+                <option>Route for credit-balance review</option>
+                <option>Route for qualified specialist review</option>
+                <option>Reconcile remaining balance</option>
+                <option>Document closure evidence</option>
+              </select>
+            </label>
+            <label>Follow-Up Due
+              <input id="followUpDue" type="date">
+            </label>
+          </div>
+
+          <label>Evidence / Work Note
+            <textarea id="note" rows="5" placeholder="Document what the synthetic record supports, what remains unresolved, how the later transaction links to the earlier one, who owns the next action, and when follow-up is due."></textarea>
+          </label>
+        </div>
+
+        <div id="closure" class="form-section">
+          <span class="mini-label">D · Remaining balance and closure</span>
+          <div class="form-grid">
+            <label>Remaining Balance Reviewed?
+              <select id="remainingBalanceStatus">
+                <option>Not reviewed</option>
+                <option>Reviewed — unresolved amount remains</option>
+                <option>Reviewed — no unresolved modeled amount remains</option>
+              </select>
+            </label>
+            <label>Workflow Status
+              <select id="workflowStatus">
+                <option>Open</option>
+                <option>Active follow-up</option>
+                <option>Specialist review pending</option>
+                <option>Closure verification pending</option>
+                <option>Reconciled / closure verified</option>
+              </select>
+            </label>
+          </div>
+          <label>Closure Evidence
+            <textarea id="closureEvidence" rows="5" placeholder="Synthetic example: original transaction linked, recovery explanation reviewed, later payment linkage confirmed, amount reconciled, posting and remaining balance reviewed, required follow-up completed, and no unowned action remains."></textarea>
+          </label>
+
+          <div class="control-actions">
+            <button class="action-button" type="submit">Evaluate Reconciliation Gate</button>
+            <button id="saveAction" class="secondary-button" type="button">Save Simulated Review</button>
+            <button id="reset" class="secondary-button" type="button">Reset Scenario</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="progress-track"><div id="recoveryProgress" class="progress-bar"></div></div>
+      <div id="result" class="gate-result" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">03</span>
+      <h2>What the Control Is Testing</h2>
     </div>
 
+    <div class="decision-matrix">
+      <div><span class="mini-label">Signal visible / source unclear</span><h3>Do not treat the reduced payment as self-explanatory</h3><p>Trace the event to an earlier account, payment, reference, or supporting explanation.</p></div>
+      <div><span class="mini-label">Method selected / evidence weak</span><h3>Classification is not proof</h3><p>If the synthetic evidence does not support the method, route the case for qualified review rather than assuming.</p></div>
+      <div><span class="mini-label">Amount matched / posting unknown</span><h3>Arithmetic alone is not reconciliation</h3><p>Review the account posting, later transaction, remaining balance, and ownership.</p></div>
+      <div><span class="mini-label">Action assigned / balance unresolved</span><h3>Workflow stays open</h3><p>A visible owner and next action are necessary, but closure still requires balance and evidence review.</p></div>
+      <div><span class="mini-label">Later payment reduced</span><h3>Trace backward</h3><p>The visible financial signal may occur after the original condition that created the recovery workflow.</p></div>
+      <div><span class="mini-label">All required controls verified</span><h3>Reconciled final state</h3><p>The source linkage, evidence, amount, posting, ownership, remaining balance, and closure evidence are documented in the simulation.</p></div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-intro">
+      <span class="section-number">04</span>
+      <h2>Patient-to-Professional Perspective</h2>
+    </div>
+    <div class="patient-impact-panel">
+      <div class="patient-quote-grid">
+        <blockquote>“Why did my balance change?”</blockquote>
+        <blockquote>“Why did I get another statement?”</blockquote>
+        <blockquote>“Why does this amount look different now?”</blockquote>
+      </div>
+      <p class="patient-insight"><strong>The patient sees the balance. Healthcare operations has to understand the chain of transactions that produced it.</strong></p>
+      <p>A later payment may be the point where a recovery becomes visible, not the point where the underlying financial workflow began.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
     <div class="content-card">
-      <h2>Career-Relevant Skills Practiced</h2>
-      <p>This simulation practices recognizing a financial signal, tracing it to the original account, reviewing remittance evidence, separating facts from unanswered questions, routing ownership, documenting follow-up, and verifying closure.</p>
+      <span class="mini-label">Career practice</span>
+      <h2>Remote revenue-cycle skills modeled here</h2>
+      <p>This module practices recognizing a financial signal, tracing source transactions, reviewing remittance evidence, linking later payment activity to an earlier account, documenting what is known versus unresolved, routing ownership, setting follow-up, reviewing remaining balance, and verifying closure.</p>
     </div>
 
     <div class="content-card accent-card">
-      <h2>Boundary</h2>
-      <p>This project does not determine whether a payer, contract interpretation, code, refund, offset, recoupment, or reimbursement decision is legally or financially correct. Those determinations require the appropriate qualified role and current authoritative guidance.</p>
+      <span class="mini-label">Real-world handling boundary</span>
+      <h2>Applicable payer and organizational guidance would need to be reviewed for real-world handling.</h2>
+      <p>Terms such as recovery, recoupment, offset, reversal, adjustment, refund, and cross-claim recovery may be used or implemented differently depending on the payer, organization, contract, and workflow. This student simulation does not determine whether a payer action is contractually, legally, coding-related, or financially correct.</p>
     </div>
   </section>
+
+  <section class="signature-lockup" aria-label="Kori Pickle signature">
+    <a class="signature-name" href="https://lnkd.in/p/eQuDNisW" target="_blank" rel="noreferrer">Kori Pickle</a>
+    <div class="signature-rule"></div>
+    <div class="signature-note">Patient-to-professional healthcare operations portfolio</div>
+  </section>
 </main>
+
 <footer class="site-footer">
+  <p><strong>DPIS — Denial Prevention Intelligence System™</strong></p>
   <p>Created by Kori Pickle</p>
   <p>Healthcare Operations Intelligence Engine™</p>
   <p>Student-developed · Simulated · Synthetic data only · No PHI</p>
 </footer>
+
 <script>
-const q=s=>document.querySelector(s);
-function evaluate(){
-  const evidence = q("#supportingExplanation").checked && q("#earlierAccount").checked && q("#postingReviewed").checked && q("#amountReconciled").checked && q("#balanceReviewed").checked && q("#factHypothesis").checked;
-  const owner = q("#owner").value !== "Unassigned";
-  const closure = q("#closureEvidence").value.trim().length > 0 && q("#followUp").value === "No follow-up — closure verified";
-  const result=q("#result");
-  if(evidence && owner && closure){
-    result.innerHTML="<strong>Modeled status: Reconciled / closure verified.</strong><br>The synthetic case can be treated as closed in this educational workflow.";
-  }else{
-    const missing=[];
-    if(!evidence) missing.push("transaction evidence and reconciliation review");
-    if(!owner) missing.push("clear ownership");
-    if(!closure) missing.push("documented closure evidence");
-    result.innerHTML="<strong>Modeled status: Not fully reconciled.</strong><br>Still needed: "+missing.join(", ")+".";
+const scenarios={
+  "PRR-001":{
+    summary:"A later synthetic payer payment is reduced by an offset connected to an earlier modeled overpayment. The workflow must prove the source linkage before closure.",
+    signal:"Offset against later payment",method:"Offset",account:"SYN-ACCT-1042",era:"SYN-ERA-2207",later:"SYN-PMT-3119",original:1000,recovery:300
+  },
+  "PRR-002":{
+    summary:"A direct refund request references an earlier synthetic payment. The operational task is to connect the request to the correct original transaction and route the remaining work.",
+    signal:"Refund request",method:"Direct refund request",account:"SYN-ACCT-2088",era:"SYN-NOTICE-4412",later:"SYN-REF-2088",original:1200,recovery:450
+  },
+  "PRR-003":{
+    summary:"A synthetic adjustment or reversal changes the account balance, but the remaining balance and posting logic still require review.",
+    signal:"Payment reversal",method:"Adjustment / reversal",account:"SYN-ACCT-3304",era:"SYN-ERA-7721",later:"SYN-ADJ-3304",original:800,recovery:250
+  },
+  "PRR-004":{
+    summary:"A financial change is visible, but the source transaction and recovery method are not yet supported by enough synthetic evidence.",
+    signal:"Unexplained balance change",method:"Needs qualified review",account:"SYN-ACCT-4810",era:"",later:"",original:900,recovery:200
   }
+};
+
+const q=s=>document.querySelector(s);
+const money=v=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(Number(v)||0);
+const today=()=>new Date().toISOString().slice(0,10);
+const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+
+function selectedMethod(){
+  return document.querySelector('input[name="recoveryMethod"]:checked').value;
 }
-q("#evaluate").addEventListener("click",evaluate);
-q("#reset").addEventListener("click",()=>{document.querySelectorAll("input[type=checkbox]").forEach(x=>x.checked=false);q("#owner").value="Unassigned";q("#followUp").value="Same day";q("#note").value="";q("#closureEvidence").value="";q("#result").innerHTML="";});
-evaluate();
+
+function setMethod(value){
+  const el=document.querySelector('input[name="recoveryMethod"][value="'+value+'"]');
+  if(el)el.checked=true;
+}
+
+function updateMath(){
+  const original=Number(q("#originalPayment").value)||0;
+  const recovery=Number(q("#recoveryAmount").value)||0;
+  q("#mathOriginal").textContent=money(original);
+  q("#mathRecovery").textContent=money(recovery);
+  q("#mathRemaining").textContent=money(Math.max(original-recovery,0));
+}
+
+function loadScenario(){
+  const s=scenarios[q("#scenarioSelect").value];
+  q("#scenarioSummary").innerHTML="<strong>"+q("#scenarioSelect").value+"</strong><br>"+s.summary;
+  q("#signal").value=s.signal;
+  setMethod(s.method);
+  q("#accountRef").value=s.account;
+  q("#originalPayment").value=s.original;
+  q("#recoveryAmount").value=s.recovery;
+  q("#eraRef").value=s.era;
+  q("#laterRef").value=s.later;
+  q("#recoveryExplanation").value="";
+  ["supportingExplanation","earlierAccount","laterTransactionLinked","postingReviewed","amountReconciled","balanceReviewed","factHypothesis","patientImpactReviewed"].forEach(id=>q("#"+id).checked=false);
+  q("#specialistReview").value=s.method==="Needs qualified review"?"Other qualified review":"No specialist review identified";
+  q("#owner").value="Unassigned";
+  q("#nextAction").value="None selected";
+  q("#followUpDue").value=addDays(2);
+  q("#note").value="";
+  q("#remainingBalanceStatus").value="Not reviewed";
+  q("#workflowStatus").value="Open";
+  q("#closureEvidence").value="";
+  updateMath();
+  evaluate(false);
+}
+
+function evaluate(scroll=true){
+  updateMath();
+  const sourceLink=!!q("#accountRef").value.trim() && (q("#supportingExplanation").checked || !!q("#eraRef").value.trim());
+  const explanation=!!q("#recoveryExplanation").value.trim();
+  const earlier=q("#earlierAccount").checked;
+  const later=q("#laterTransactionLinked").checked;
+  const posting=q("#postingReviewed").checked;
+  const amount=q("#amountReconciled").checked;
+  const balance=q("#balanceReviewed").checked;
+  const facts=q("#factHypothesis").checked;
+  const patient=q("#patientImpactReviewed").checked;
+  const owner=q("#owner").value!=="Unassigned";
+  const action=q("#nextAction").value!=="None selected";
+  const follow=!!q("#followUpDue").value;
+  const note=!!q("#note").value.trim();
+  const remaining=q("#remainingBalanceStatus").value;
+  const workflow=q("#workflowStatus").value;
+  const closure=!!q("#closureEvidence").value.trim();
+  const method=selectedMethod();
+  const refsSupported = method==="Direct refund request" ? !!q("#eraRef").value.trim() : method==="Offset" ? !!q("#laterRef").value.trim() : true;
+
+  const controls=[sourceLink,explanation,earlier,refsSupported,posting,amount,balance,facts,patient,owner,action,follow,note,remaining!=="Not reviewed",closure];
+  const pct=Math.round(controls.filter(Boolean).length/controls.length*100);
+  q("#recoveryProgress").style.width=pct+"%";
+
+  let state,title,body,chip;
+  if(!sourceLink || !earlier){
+    state="blocked";chip="SOURCE LINKAGE";title="Recovery signal visible — original transaction linkage is incomplete";
+    body="The later financial event should not be treated as self-explanatory. Link the recovery signal to the correct earlier synthetic account or transaction and review supporting evidence.";
+  }else if(!explanation || !refsSupported){
+    state="review";chip="EVIDENCE REVIEW";title="Recovery process is not fully supported by the current evidence";
+    body=method==="Needs qualified review"
+      ?"The model correctly preserves uncertainty. Route the case to an appropriate qualified review path instead of forcing a recovery-method classification."
+      :"Document the supporting explanation and the reference that connects this recovery method to the transaction chain.";
+  }else if(!posting || !amount || !balance){
+    state="review";chip="RECONCILIATION GAP";title="Transaction chain identified — reconciliation controls remain open";
+    body="Matching a source transaction is not enough. Review the posting or adjustment, reconcile the modeled amount, and review the remaining balance.";
+  }else if(!facts || !patient){
+    state="review";chip="EVIDENCE BOUNDARY";title="Financial review is progressing — evidence boundary still needs documentation";
+    body="Separate what the synthetic record establishes from unanswered questions and consider the potential patient-facing effect.";
+  }else if(!owner || !action || !follow || !note){
+    state="active";chip="OWNERSHIP REQUIRED";title="The financial signal is understood, but the next operational action is not fully controlled";
+    body="Assign the current owner, confirm the next action and follow-up date, and document the work note.";
+  }else if(remaining==="Reviewed — unresolved amount remains" && workflow==="Reconciled / closure verified"){
+    state="blocked";chip="CLOSURE CONFLICT";title="Closure cannot be verified while an unresolved modeled amount remains";
+    body="Keep the workflow open or route the remaining issue until the modeled balance and next action are resolved.";
+  }else if(workflow!=="Reconciled / closure verified" || !closure){
+    state="active";chip="CLOSURE PENDING";title="Reconciliation work is documented — closure is not yet verified";
+    body="The workflow remains open until the remaining balance has been reviewed, required follow-up is complete, and closure evidence is documented.";
+  }else{
+    state="closed";chip="RECONCILED";title="Modeled payment recovery workflow reconciled and closed";
+    body="The synthetic source transaction, recovery explanation, recovery method, later linkage, posting, amount, ownership, remaining balance, and closure evidence are documented.";
+  }
+
+  q("#recoveryStateChip").textContent=chip;
+  const el=q("#result");
+  el.className="gate-result "+state;
+  el.innerHTML='<span class="mini-label">Recovery control state · '+pct+'% documented</span><h3>'+title+'</h3><p>'+body+'</p><p><strong>Method in this simulation:</strong> '+method+'</p>';
+  if(scroll)el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+q("#scenarioSelect").addEventListener("change",loadScenario);
+document.querySelectorAll("#recoveryForm input, #recoveryForm select, #recoveryForm textarea").forEach(el=>el.addEventListener("change",()=>evaluate(false)));
+q("#originalPayment").addEventListener("input",()=>{updateMath();evaluate(false)});
+q("#recoveryAmount").addEventListener("input",()=>{updateMath();evaluate(false)});
+q("#recoveryForm").addEventListener("submit",e=>{e.preventDefault();evaluate(true)});
+q("#saveAction").addEventListener("click",()=>{
+  evaluate(false);
+  q("#result").insertAdjacentHTML("beforeend","<p><strong>Simulated review saved in this browser session:</strong> "+q("#accountRef").value+" · "+selectedMethod()+" · Owner: "+q("#owner").value+" · Next action: "+q("#nextAction").value+"</p>");
+});
+q("#reset").addEventListener("click",loadScenario);
+
+loadScenario();
 </script>
 </body>
 </html>
