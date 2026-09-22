@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DPIS | CARC/RARC Signal Interpretation & Routing Lab™</title>
+<meta name="description" content="Student-developed, simulated, no-PHI interactive remittance-signal interpretation and workflow-routing lab using version-dated CARC/RARC training examples.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><nav class="nav-shell"><div class="brand-mark">DPIS</div><div class="nav-links"><a href="index.html">Home</a><a href="work-queue.html">Work Queue</a><a href="root-cause-denial-map.html">Traceback</a><a href="denial-resolution-prevention-loop.html">Resolution Loop</a><a href="ar-work-queue-prioritization-control.html">A/R Queue</a></div></nav></header>
+<main>
+<section class="page-hero remittance-hero">
+<div class="eyebrow">Healthcare Operations Intelligence Engine™ · Career-Style Student Simulation</div>
+<h1>CARC/RARC Signal Interpretation & Routing Lab™</h1>
+<p class="hero-subtitle">Practice treating remittance information as a starting signal—not a substitute for evidence review, root-cause analysis, ownership, qualified review, follow-up, and closure.</p>
+<p class="hero-subtitle"><strong>Student-developed · Simulated · Synthetic data only · No PHI</strong></p>
+<div class="hero-actions"><a class="primary-button" href="#lab">Open Interactive Lab</a><a class="secondary-button" href="denial-resolution-prevention-loop.html">Continue to Resolution Loop</a></div>
+</section>
+
+<section class="content-section">
+<div class="content-card accent-card">
+<span class="mini-label">Why this control exists</span>
+<h2>A remittance code should narrow the investigation—not replace it.</h2>
+<p>CMS explains that claim-level or line-level adjustments can use a Claim Adjustment Group Code, a Claim Adjustment Reason Code (CARC), and a Remittance Advice Remark Code (RARC). CARCs provide an overall explanation for an adjustment; RARCs can add more specific information. This lab uses selected training examples only and keeps the operational question separate from coding, clinical, payer, or appeal authority.</p>
+<div class="distinction-grid">
+<div><strong>CARC identified</strong><span>≠ root cause established</span></div>
+<div><strong>Adjustment reason</strong><span>≠ complete account explanation</span></div>
+<div><strong>Coding-related signal</strong><span>≠ coding error established</span></div>
+<div><strong>Authorization-related signal</strong><span>≠ exact authorization failure established</span></div>
+</div>
+</div>
+</section>
+
+<section id="lab" class="content-section">
+<div class="section-intro"><span class="section-number">01</span><h2>Interactive Remittance Signal Lab</h2><p>Select a synthetic training scenario. Then document what the signal establishes, what remains unknown, and where the workflow should go next.</p></div>
+<div class="interactive-panel remittance-panel">
+<div class="control-header-row"><div><span class="mini-label">Synthetic remittance queue</span><h3>Signal → Evidence → Routing → Closure</h3></div><div id="rrState" class="control-chip">SIGNAL REVIEW</div></div>
+
+<div class="form-section"><label>Training scenario
+<select id="rrCase">
+<option value="DNL-007">DNL-007 · COB / other payer review signal</option>
+<option value="DNL-008">DNL-008 · Missing / incomplete claim information signal</option>
+<option value="DNL-009">DNL-009 · Authorization absent signal</option>
+<option value="DNL-010">DNL-010 · Patient / insured identification signal</option>
+</select></label>
+<div id="rrScenario" class="status-box"></div></div>
+
+<div class="remit-evidence-grid">
+<div><span class="mini-label">Group code</span><strong id="rrGroup"></strong></div>
+<div><span class="mini-label">CARC training example</span><strong id="rrCarc"></strong></div>
+<div><span class="mini-label">RARC</span><strong id="rrRarc"></strong></div>
+<div><span class="mini-label">Source/version note</span><strong>CMS/X12 public code information reviewed September 22, 2026</strong></div>
+</div>
+
+<form id="rrForm">
+<div class="form-section"><span class="mini-label">A · Evidence boundary</span>
+<label>What does the remittance information establish?<textarea id="rrEstablishes" rows="3" placeholder="Document only what the synthetic remittance signal supports."></textarea></label>
+<label>What does it NOT establish?<textarea id="rrNotEstablish" rows="3" placeholder="Example: the exact upstream root cause has not yet been proven."></textarea></label>
+<label>Earlier workflow checkpoints to review<textarea id="rrCheckpoints" rows="3" placeholder="Eligibility / COB → authorization → documentation → claim readiness → submission → payer processing..."></textarea></label>
+<label>Missing evidence<textarea id="rrMissing" rows="3" placeholder="What information is still needed before a conclusion or next action is supported?"></textarea></label>
+</div>
+
+<div class="form-section"><span class="mini-label">B · Routing and ownership</span><div class="form-grid">
+<label>Qualified review needed?<select id="rrQualified"><option value="">Select</option><option>No qualified review identified</option><option>Coding review required</option><option>Clinical / documentation review required</option><option>Payer / contract review required</option><option>Other qualified review required</option></select></label>
+<label>Operational owner<select id="rrOwner"><option value="">Select</option><option>Claims / A/R Follow-Up</option><option>Patient Access / Eligibility</option><option>Prior Authorization Support</option><option>Documentation / HIM Support</option><option>Qualified Coding Review</option><option>Payer Follow-Up</option><option>Other Qualified Review</option></select></label>
+<label>Next operational step<select id="rrAction"><option value="">Select</option><option>Review eligibility / COB evidence</option><option>Review claim / submission information</option><option>Route authorization exception</option><option>Route qualified coding review</option><option>Route documentation review</option><option>Follow up with payer</option><option>Other controlled workflow</option></select></label>
+<label>Follow-up date<input id="rrFollowup" type="date"></label>
+</div></div>
+
+<div class="form-section"><span class="mini-label">C · Closure and recurrence</span>
+<label>Closure evidence<textarea id="rrClosure" rows="3" placeholder="What would prove the routed issue reached a documented disposition with no unowned next step?"></textarea></label>
+<div class="form-grid">
+<label>Recurrence review<select id="rrRecurrence"><option value="">Select</option><option>No recurrence identified</option><option>Possible recurrence</option><option>Repeated synthetic pattern</option><option>Needs more evidence</option></select></label>
+<label>Upstream control to examine<select id="rrControl"><option value="">Select</option><option>Eligibility / COB validation</option><option>Authorization requirement detection</option><option>Documentation readiness</option><option>Claim readiness / pre-submission</option><option>Transmission / acknowledgement</option><option>Ownership / follow-up</option><option>Qualified review routing</option></select></label>
+</div></div>
+<button class="primary-button" type="button" id="rrEvaluate">Evaluate Routing Readiness</button>
+<div id="rrResult" class="gate-result review" aria-live="polite"><span class="mini-label">Current interpretation</span><h3>Evidence review not complete</h3><p>Complete the evidence boundary, routing, ownership, follow-up, closure, and recurrence fields before treating the synthetic signal as controlled.</p></div>
+</form>
+</div>
+</section>
+
+<section class="content-section">
+<div class="section-intro"><span class="section-number">02</span><h2>Cross-Project Routing</h2><p>DPIS remains the downstream control center. This lab routes upstream questions without duplicating EVIS, PARCS, or qualified-review work.</p></div>
+<div class="career-proof-grid">
+<div class="content-card"><span class="mini-label">Coverage / COB</span><h3>EVIS</h3><p>Review eligibility, coverage, payer-order, and COB readiness when the downstream signal points upstream.</p></div>
+<div class="content-card"><span class="mini-label">Authorization</span><h3>PARCS</h3><p>Review requirement detection, authorization movement, exception ownership, and closure evidence.</p></div>
+<div class="content-card"><span class="mini-label">Downstream denial / A/R</span><h3>DPIS</h3><p>Interpret the signal, trace backward, assign ownership, follow the account, verify closure, and review recurrence.</p></div>
+<div class="content-card"><span class="mini-label">Coding / documentation</span><h3>Qualified Review</h3><p>Recognize and route the signal without independently determining coding accuracy, medical necessity, modifier use, or appeal appropriateness.</p></div>
+</div>
+</section>
+
+<section class="content-section"><div class="content-card statement-card"><span class="mini-label">Career insight</span><p>A downstream adjustment should trigger two lines of inquiry: what must happen to resolve the account, and what upstream control allowed the condition to reach the claim?</p></div>
+<div class="content-card"><span class="mini-label">Source control</span><h3>Version-dated training examples</h3><p>Training examples are intentionally limited and version-dated because CARC/RARC code lists are maintained over time. For real work, current payer, organizational, CMS, X12, and applicable workflow guidance would need to be checked.</p><p class="boundary-note"><strong>Scope boundary:</strong> This lab does not reproduce a real ERA, determine liability, coding accuracy, medical necessity, coverage, reimbursement, modifier use, appeal appropriateness, or payer correctness.</p></div></section>
+
+<section class="signature-lockup" aria-label="Kori Pickle signature"><a class="signature-name" href="https://lnkd.in/p/eQuDNisW" target="_blank" rel="noreferrer">Kori Pickle</a><div class="signature-rule"></div><div class="signature-note">Patient-to-professional healthcare operations portfolio</div></section>
+</main>
+<footer class="site-footer"><p>Created by Kori Pickle</p><p>Healthcare Operations Intelligence Engine™</p><p>Student-developed · Simulated · Synthetic data only · No PHI</p></footer>
+<script>
+const rrCases={
+"DNL-007":{group:"CO · Contractual Obligation",carc:"22 · Care may be covered by another payer per coordination of benefits",rarc:"Not supplied in this synthetic scenario",summary:"A synthetic remittance adjustment points to possible other-payer / COB responsibility. The signal does not by itself establish the correct payer order or the upstream workflow failure."},
+"DNL-008":{group:"CO · Contractual Obligation",carc:"16 · Claim/service lacks information or has submission/billing error(s)",rarc:"Required for CARC 16 in real use; intentionally omitted here to create an evidence gap",summary:"The CARC is not enough to identify the missing or erroneous information. The learner must recognize that additional remark/context evidence is required before routing a specific correction."},
+"DNL-009":{group:"CO · Contractual Obligation",carc:"197 · Precertification/authorization/notification/pre-treatment absent",rarc:"Not supplied in this synthetic scenario",summary:"An authorization-related signal is visible downstream. The learner must trace requirement detection, authorization activity, service alignment, ownership, and evidence rather than assume the exact upstream failure."},
+"DNL-010":{group:"CO · Contractual Obligation",carc:"31 · Patient cannot be identified as our insured",rarc:"Not supplied in this synthetic scenario",summary:"A patient/insured identification signal is visible. The learner must review patient/member and payer evidence without assuming which specific registration, eligibility, or payer-routing step failed."}
+};
+function loadRR(){const x=rrCases[document.getElementById("rrCase").value];document.getElementById("rrGroup").textContent=x.group;document.getElementById("rrCarc").textContent=x.carc;document.getElementById("rrRarc").textContent=x.rarc;document.getElementById("rrScenario").textContent=x.summary;document.getElementById("rrState").textContent="SIGNAL REVIEW";}
+document.getElementById("rrCase").addEventListener("change",loadRR);loadRR();
+document.getElementById("rrEvaluate").addEventListener("click",()=>{
+const ids=["rrEstablishes","rrNotEstablish","rrCheckpoints","rrMissing","rrQualified","rrOwner","rrAction","rrFollowup","rrClosure","rrRecurrence","rrControl"];
+const missing=ids.filter(id=>!document.getElementById(id).value.trim());
+const result=document.getElementById("rrResult"),chip=document.getElementById("rrState");
+if(missing.length){chip.textContent="EVIDENCE GAP";result.className="gate-result review";result.querySelector("h3").textContent=missing.length+" control"+(missing.length===1?"":"s")+" still incomplete";result.querySelector("p").textContent="The signal is not ready for controlled routing/closure. Complete the evidence boundary, ownership, next action, follow-up, closure, and recurrence review fields.";}
+else{chip.textContent="ROUTING READY";result.className="gate-result closed";result.querySelector("h3").textContent="Synthetic routing pathway documented";result.querySelector("p").textContent="The remittance signal has been separated from the root-cause conclusion, with evidence needs, ownership, next action, follow-up, closure criteria, recurrence review, and an upstream control identified. This is educational workflow practice—not a payer, coding, clinical, or reimbursement determination.";}
+});
+</script>
+</body></html>
