@@ -628,3 +628,37 @@ Control question:
 > **A downstream denial should trigger two lines of inquiry: what must happen to resolve the account, and what upstream control allowed the condition to reach the claim?**
 
 The module also includes an interview-ready explanation of Kori's student workflow reasoning while preserving the boundary that the simulation does not represent professional denial-management experience or authority to make coding, modifier, medical-necessity, appeal, payer, or reimbursement determinations.
+
+
+## CARC/RARC Signal Interpretation & Routing Lab™
+
+DPIS includes a focused interactive remittance-signal lab because this adds a distinct competency without duplicating EVIS, PARCS, or the existing denial-resolution modules.
+
+The lab uses a small set of version-dated synthetic training scenarios to practice:
+
+- distinguishing a remittance adjustment signal from an established root cause,
+- documenting what the available remittance information establishes and does not establish,
+- identifying earlier workflow checkpoints that require review,
+- identifying missing evidence,
+- routing qualified review when appropriate,
+- assigning operational ownership and a next step,
+- defining follow-up and closure evidence,
+- reviewing recurrence,
+- and identifying the upstream control that should be examined.
+
+Key distinctions:
+
+- **CARC identified ≠ root cause established**
+- **Adjustment reason ≠ complete account explanation**
+- **Coding-related signal ≠ coding error established**
+- **Authorization-related signal ≠ exact authorization failure established**
+
+Control rule:
+
+> **A remittance code should narrow the investigation—not replace it.**
+
+The lab keeps DPIS as the downstream control center. Coverage/COB questions can route conceptually to EVIS; authorization questions to PARCS; and coding/documentation signals to qualified review rather than duplicating those functions inside DPIS.
+
+Training-source note: examples were checked against CMS Health Care Payment and Remittance Advice guidance and X12 public CARC/RARC information on September 22, 2026. Code lists are maintained over time, so the lab does not present its examples as permanent payer rules.
+
+Scope boundary: this is student-developed, simulated, no-PHI workflow practice. It does not reproduce a real ERA, determine liability, coding accuracy, medical necessity, coverage, reimbursement, modifier use, appeal appropriateness, or payer correctness.
