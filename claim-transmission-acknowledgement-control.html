@@ -57,6 +57,19 @@
       <span class="mini-label">Healthcare Operations Intelligence Engine™ insight</span>
       <p>A successful transmission tells you that something moved. It does not necessarily tell you where the claim is now.</p>
     </div>
+
+    <div class="content-card accent-card">
+      <span class="mini-label">Workflow-state distinction</span>
+      <h2>Rejection ≠ denial.</h2>
+      <p>In this simulation, a <strong>rejection</strong> represents a submission or payer-intake exception that requires correction or routing before it is treated as an adjudicated denial. A <strong>denial</strong> is modeled only after payer-controlled processing reaches a final disposition that routes the account into the denial workflow.</p>
+      <div class="distinction-grid">
+        <div><strong>Clearinghouse rejection</strong><span>→ hold at transmission checkpoint</span></div>
+        <div><strong>Payer-level rejection</strong><span>→ route supported intake exception</span></div>
+        <div><strong>Denied final disposition</strong><span>→ route to denial traceback / resolution workflow</span></div>
+        <div><strong>No payment visible</strong><span>≠ denial established</span></div>
+      </div>
+      <p><strong>Control question:</strong> What evidence establishes the current workflow state, and which downstream path does that evidence actually support?</p>
+    </div>
   </section>
 
   <section id="handoff" class="content-section">
