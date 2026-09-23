@@ -175,7 +175,7 @@
           <select id="caseSelect">
             <option value="TX-001">TX-001 · Clearinghouse accepted / payer acknowledgement pending</option>
             <option value="TX-002">TX-002 · Clearinghouse accepted / payer rejection received</option>
-            <option value="TX-003">TX-003 · Claim not found in payer system</option>
+            <option value="TX-003">TX-003 · “No claim on file” / conflicting handoff evidence</option>
             <option value="TX-004">TX-004 · Payer acknowledged / adjudication in process</option>
             <option value="TX-005">TX-005 · Final payer status received / closure pending</option>
             <option value="TX-006">TX-006 · Clearinghouse rejected before payer handoff</option>
@@ -473,6 +473,20 @@
       <h2>A successful clearinghouse transmission is not completed claim progression.</h2>
       <p>DPIS treats the claim as controlled only when downstream payer acknowledgement and status visibility are established, or when an exception has a visible owner, next action, follow-up timing, evidence trail, and eventual closure.</p>
     </div>
+
+    <div class="content-card accent-card">
+      <span class="mini-label">No Claim on File evidence boundary</span>
+      <h2>“No claim on file” ≠ “claim was never submitted.”</h2>
+      <p>In the simulation, a payer-side “no claim on file” response is treated as a downstream visibility signal—not a proven root cause and not an automatic instruction to resubmit.</p>
+      <div class="distinction-grid">
+        <div><strong>Internal status: submitted</strong><span>→ evidence of an internal workflow state</span></div>
+        <div><strong>Clearinghouse: accepted</strong><span>→ evidence that one transmission checkpoint passed</span></div>
+        <div><strong>Payer: no claim on file</strong><span>→ payer-side claim visibility is not established</span></div>
+        <div><strong>Resubmit immediately</strong><span>≠ automatically supported next action</span></div>
+      </div>
+      <p><strong>Investigation sequence:</strong> internal submission evidence → clearinghouse response → payer-side acknowledgement / claim presence → coverage and payer-routing evidence when relevant → ownership → follow-up → closure.</p>
+      <p><strong>Duplicate-risk control:</strong> when payer-side visibility is unclear, the simulation requires investigation and ownership before treating resubmission as the default response.</p>
+    </div>
   </section>
 
   <section class="content-section">
@@ -559,7 +573,7 @@ const cases={
     exception:"Payer-level rejection",owner:"Claims Submission Support",action:"Review payer rejection details",final:"Rejected / correction workflow required",closure:"Action in progress"
   },
   "TX-003":{
-    summary:"The modeled claim passed the clearinghouse checkpoint, but payer-side review cannot locate the claim. Payer visibility is incomplete.",
+    summary:"The internal record shows submitted and the clearinghouse shows accepted, but payer-side review reports no claim on file. This is conflicting workflow evidence: the payer response does not, by itself, prove that the claim was never submitted. Investigate the last supported checkpoint before choosing a next action.",
     ready:"Yes",transmission:"Transmitted",ch:"Accepted",chResponse:"Accepted for downstream routing",chEvidence:"Yes",
     ack:"No acknowledgement received",payerRef:"",rejection:"No",found:"No",adj:"Not established",
     exception:"Claim not found in payer system",owner:"Payer Follow-Up",action:"Locate claim in payer system",final:"Not final",closure:"Open"
