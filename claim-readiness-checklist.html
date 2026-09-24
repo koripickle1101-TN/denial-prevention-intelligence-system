@@ -98,6 +98,7 @@
             <option value="CR-004">CR-004 · Coding-related review flag</option>
             <option value="CR-005">CR-005 · Payer-specific information / attachment exception</option>
             <option value="CR-006">CR-006 · Coverage / payer-routing readiness exception</option>
+            <option value="CR-007">CR-007 · Related facility / professional claim-context mismatch</option>
           </select>
         </label>
         <label>Modeled workflow state
@@ -125,8 +126,27 @@
         </div>
 
         <div class="form-section">
-          <span class="mini-label">B · Service, authorization, and documentation</span>
+          <span class="mini-label">B · Claim context, service, authorization, and documentation</span>
+          <div class="workbench-grid">
+            <label>Claim / billing context
+              <select id="claimContext">
+                <option>Not established</option>
+                <option>Institutional / facility context</option>
+                <option>Professional context</option>
+                <option>Related claims — separate workflows</option>
+              </select>
+            </label>
+            <label>Billing entity context
+              <select id="billingEntityContext">
+                <option>Not established</option>
+                <option>Facility / institutional billing entity identified</option>
+                <option>Professional billing entity identified</option>
+                <option>Multiple related billing entities identified</option>
+              </select>
+            </label>
+          </div>
           <div class="checklist-grid">
+            <label class="check-item"><input id="claimContextVerified" type="checkbox"><span>Correct claim, billing entity, and payer-response context verified</span></label>
             <label class="check-item"><input id="providerService" type="checkbox"><span>Provider / service context reviewed</span></label>
             <label class="check-item"><input id="authReferral" type="checkbox"><span>Authorization / referral status reviewed</span></label>
             <label class="check-item"><input id="documentation" type="checkbox"><span>Documentation readiness reviewed</span></label>
@@ -190,6 +210,7 @@
                 <option>Resolve patient / member data discrepancy</option>
                 <option>Resolve COB / other insurance exception</option>
                 <option>Verify payer information</option>
+                <option>Verify claim / billing entity / payer-response context</option>
                 <option>Resolve coverage / payer-order / payer-routing exception</option>
                 <option>Complete authorization / referral follow-up</option>
                 <option>Route documentation exception</option>
@@ -292,11 +313,12 @@ const cases={
   "CR-003":{signal:"Documentation / encounter-context exception",condition:"Supporting information may be incomplete or attached to the wrong encounter context",patient:"Potential repeated records request, delay, or billing confusion"},
   "CR-004":{signal:"Coding-related review flag",condition:"A coding-related issue requires qualified review before modeled advancement",patient:"Potential claim delay, rejection, or corrected-bill experience"},
   "CR-005":{signal:"Payer-specific information / attachment exception",condition:"Required payer-specific information, attachment, or source review remains incomplete",patient:"Potential claim delay, additional request, or follow-up"},
-  "CR-006":{signal:"Coverage / payer-routing readiness exception",condition:"Coverage is identified, but payer order or the expected claim destination is not yet supported by the modeled upstream evidence",patient:"Potential payer rejection, delayed resolution, billing confusion, or another insurance-related call"}
+  "CR-006":{signal:"Coverage / payer-routing readiness exception",condition:"Coverage is identified, but payer order or the expected claim destination is not yet supported by the modeled upstream evidence",patient:"Potential payer rejection, delayed resolution, billing confusion, or another insurance-related call"},
+  "CR-007":{signal:"Related facility and professional claim workflows show different downstream states",condition:"The patient and encounter are related, but the correct claim, billing entity, and payer-response context must be established before follow-up",patient:"One part of the visit may appear resolved while another related billing workflow remains unresolved"}
 };
 
 const q=s=>document.querySelector(s);
-const checks=["patientMember","eligibility","cob","payerInfo","payerDestination","providerService","authReferral","documentation","serviceAlignment","attachments","payerSource"];
+const checks=["patientMember","eligibility","cob","payerInfo","payerDestination","claimContextVerified","providerService","authReferral","documentation","serviceAlignment","attachments","payerSource"];
 
 function updateCase(){
   const c=cases[q("#caseSelect").value];
@@ -305,7 +327,9 @@ function updateCase(){
     q("#codingFlag").value="Yes — qualified review required";
     q("#codingReview").value="Required — not yet routed";
   } else {
-    q("#codingFlag").value="No";
+    q("#claimContext").value="Not established";
+  q("#billingEntityContext").value="Not established";
+  q("#codingFlag").value="No";
     q("#codingReview").value="Not required";
   }
   if(q("#caseSelect").value==="CR-006"){
@@ -314,6 +338,15 @@ function updateCase(){
     q("#owner").value="Eligibility / Financial Clearance";
     q("#nextAction").value="Resolve coverage / payer-order / payer-routing exception";
     q("#evidenceNote").value="Synthetic routing exception: coverage is visible, but payer-order and claim-destination evidence still need review.";
+  }
+  if(q("#caseSelect").value==="CR-007"){
+    q("#claimContext").value="Related claims — separate workflows";
+    q("#billingEntityContext").value="Multiple related billing entities identified";
+    q("#claimContextVerified").checked=false;
+    q("#openException").value="Yes — unresolved";
+    q("#owner").value="Claims / Revenue Cycle Support";
+    q("#nextAction").value="Verify claim / billing entity / payer-response context";
+    q("#evidenceNote").value="Synthetic encounter contains related facility and professional billing workflows with different downstream states. Verify the specific claim, billing entity, and payer response before choosing follow-up.";
   }
   evaluate(false);
 }
