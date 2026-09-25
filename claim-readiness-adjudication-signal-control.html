@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claim Readiness & Adjudication Signal Control™ | DPIS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><nav class="nav-shell"><div class="brand-mark">DPIS</div><div class="nav-links"><a href="index.html">DPIS Home</a><a href="denial-prevention-dashboard.html">Dashboard</a><a href="root-cause-denial-map.html">Traceback</a></div></nav></header>
+<main>
+<section class="page-hero"><p class="eyebrow">Healthcare Operations Intelligence Engine™ · Interactive Student Training Lab</p><h1>Claim Readiness &amp; Adjudication Signal Control™</h1><p class="hero-subtitle">Work a synthetic account from upstream readiness through a simulated downstream payer/remittance signal. The control trains evidence review, routing, escalation, closure verification, and recurrence thinking—not coding, coverage, medical-necessity, payer, or reimbursement authority.</p></section>
+<section class="content-section">
+<div class="section-intro"><p class="eyebrow">Stage 1 · Pre-Submission Readiness</p><h2>Can the synthetic account move forward?</h2><p>Review each operational checkpoint. Unknown or unresolved items should not be silently treated as complete.</p></div>
+<div class="interactive-panel" id="gate">
+<label>Demographic / identity information
+<select id="demo"><option value="unknown">Unknown</option><option value="ready">Present / reviewed</option><option value="hold">Missing / unresolved</option></select></label>
+<label>Eligibility status / evidence
+<select id="elig"><option value="unknown">Unknown</option><option value="ready">Available / reviewed</option><option value="hold">Unresolved exception</option></select></label>
+<label>Authorization requirement / status
+<select id="auth"><option value="unknown">Unknown</option><option value="ready">Resolved / not indicated in scenario</option><option value="hold">Unresolved</option></select></label>
+<label>Required supporting documentation
+<select id="docs"><option value="unknown">Unknown</option><option value="ready">Available</option><option value="hold">Missing / incomplete signal</option></select></label>
+<label>Coding-related validation status
+<select id="coding"><option value="unknown">Unknown</option><option value="ready">Qualified-review status available</option><option value="route">Possible coding signal — qualified review required</option></select></label>
+<label>Charge / claim-information readiness
+<select id="charge"><option value="unknown">Unknown</option><option value="ready">Ready in synthetic scenario</option><option value="hold">Unresolved signal</option></select></label>
+<label>Duplicate / submission / timely-filing signal
+<select id="submit"><option value="unknown">Unknown</option><option value="ready">No unresolved signal documented</option><option value="hold">Exception requires review</option></select></label>
+<button class="primary-button" id="assess" type="button">Assess Readiness</button>
+<div class="content-card accent-card" aria-live="polite"><p class="mini-label">Training disposition</p><h2 id="decision">REVIEW REQUIRED</h2><p id="reason">Complete the checkpoints to generate a student-level routing disposition.</p></div>
+</div>
+</section>
+<section class="content-section">
+<div class="section-intro"><p class="eyebrow">Stage 2 · Downstream Signal</p><h2>What came back, and what does the evidence establish?</h2></div>
+<div class="interactive-panel">
+<label>Simulated downstream outcome
+<select id="outcome"><option>Payment / no exception selected</option><option>Adjustment signal</option><option>Denial signal</option><option>Rejection / transmission signal</option><option>Payment / reconciliation exception</option></select></label>
+<label>Remittance evidence available?
+<select id="remit"><option>No / unknown</option><option>Yes — CARC/RARC or other remittance evidence available</option></select></label>
+<label>Initial investigation route
+<select id="route"><option>Evidence review required</option><option>EVIS — eligibility / benefit workflow</option><option>PARCS — authorization workflow</option><option>Documentation workflow</option><option>Qualified coding review</option><option>Claim construction / submission</option><option>Payer processing follow-up</option><option>Payment / reconciliation</option></select></label>
+<label>Case note — evidence, not assumptions
+<textarea id="note" rows="5" placeholder="Document what the synthetic evidence establishes, what remains unknown, the owner/route, and the next action."></textarea></label>
+<button class="secondary-button" id="trace" type="button">Generate Routing Summary</button>
+<div class="content-card" aria-live="polite"><p class="mini-label">DPIS routing summary</p><p id="summary">No downstream signal has been worked yet.</p></div>
+</div>
+</section>
+<section class="content-section">
+<div class="section-intro"><p class="eyebrow">Stage 3 · Closure + Recurrence</p><h2>Routing is not resolution.</h2></div>
+<div class="review-steps"><span>Correct / route / escalate</span><span>Document ownership</span><span>Define follow-up</span><span>Verify resolution evidence</span><span>Review recurrence</span><span>Send recurring patterns to SBI for backward breakpoint analysis</span></div>
+<div class="statement-card"><p><strong>Control boundary:</strong> Coding-related signal → qualified review. Medical-necessity signal → authorized review. Contract/fee issue → appropriate financial or contract review. Coverage uncertainty → payer/authorized verification workflow. This training lab does not make those determinations.</p></div>
+</section>
+<section class="compliance-notice"><span>Student Portfolio / No PHI</span><p>Student-developed, simulated, no-PHI healthcare operations portfolio project. Synthetic training inputs only. This tool does not select CPT, HCPCS, ICD-10 or modifiers; determine medical necessity, coverage, reimbursement, contracts, patient liability, or payer correctness; or reproduce an employer work queue.</p></section>
+</main>
+<footer class="site-footer"><p>Created by Kori Pickle</p><p>Healthcare Operations Intelligence Engine™</p><p>Student-developed · Simulated · Synthetic data only · No PHI</p></footer>
+<script>
+const ids=["demo","elig","auth","docs","coding","charge","submit"];
+document.getElementById("assess").addEventListener("click",()=>{
+ const vals=ids.map(id=>document.getElementById(id).value);
+ let d="READY",r="All selected operational checkpoints are documented as ready in this synthetic review.";
+ if(vals.includes("hold")){d="HOLD / ESCALATE";r="One or more unresolved operational exceptions should be resolved or escalated before the synthetic account advances.";}
+ else if(vals.includes("route")){d="ROUTE";r="A coding-related signal requires qualified review. DPIS does not make the coding determination.";}
+ else if(vals.includes("unknown")){d="HOLD / REVIEW";r="One or more checkpoints remain unknown. Gather evidence or route the uncertainty rather than assuming readiness.";}
+ document.getElementById("decision").textContent=d;document.getElementById("reason").textContent=r;
+});
+document.getElementById("trace").addEventListener("click",()=>{
+ const o=document.getElementById("outcome").value, m=document.getElementById("remit").value, r=document.getElementById("route").value, n=document.getElementById("note").value.trim();
+ document.getElementById("summary").textContent="Signal: "+o+". Evidence: "+m+". Initial route: "+r+". "+(n?"Case note: "+n:"Document the evidence, owner, next action, and closure criteria before treating the route as resolved.");
+});
+</script>
+</body></html>
