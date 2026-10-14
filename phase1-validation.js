@@ -39,5 +39,20 @@ function downstream(){return traceback({signal:value("signal"),signalEvidence:va
 document.getElementById("assess").addEventListener("click",()=>show("readinessResult",upstream()));
 document.getElementById("trace").addEventListener("click",()=>show("traceResult",downstream()));
 document.getElementById("close").addEventListener("click",()=>show("closureResult",closure({owner:value("owner"),action:value("action"),nextAction:value("nextAction"),closureStatus:value("closureStatus"),closureNote:value("closureNote"),openException:value("openException"),upstreamStatus:upstream().status,signalStatus:downstream().status,signalEvidence:value("signalEvidence")})));
-document.getElementById("reset").addEventListener("click",()=>location.reload());
+function resetCase(){
+ // Restore the documented initial synthetic case, regardless of browser form persistence.
+ const controls=document.querySelectorAll(".lab-grid select, .lab-grid input, .lab-grid textarea");
+ controls.forEach(control=>{
+  if(control.tagName==="SELECT"){
+   const initial=Array.from(control.options).find(option=>option.defaultSelected);
+   control.selectedIndex=initial?initial.index:0;
+  }else{
+   control.value=control.defaultValue;
+  }
+ });
+ show("readinessResult",upstream());
+ show("traceResult",downstream());
+ show("closureResult",{status:"HOLD",reason:"No verified closure evidence has been provided."});
+}
+document.getElementById("reset").addEventListener("click",resetCase);
 })(typeof globalThis!=="undefined"?globalThis:this);
