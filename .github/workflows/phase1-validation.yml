@@ -1,0 +1,16 @@
+name: DPIS Phase 1 Validation
+on:
+  push:
+    branches: [phase1-end-to-end-validation, main]
+  pull_request:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Execute state transition tests
+        run: node --test tests/phase1-validation.test.cjs
