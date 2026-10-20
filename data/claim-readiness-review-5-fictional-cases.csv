@@ -1,0 +1,6 @@
+"Case ID","Existing Synthetic Signal","Existing Evidence Condition","Illustrative Responsible Queue","Student-Modeled Next Action","Existing Claim Readiness","Limitations Note"
+"DPI-001","Authorization-related denial signal","Authorization-service alignment requires review","Authorization workflow owner","Verify requirement and service alignment","Not Ready","Possible alignment gap is not proven"
+"DPI-002","Additional information required","Documentation-readiness flag remained unresolved","Documentation workflow owner","Route request for qualified documentation review","At Risk","No actual payer response assumed"
+"DPI-003","Eligibility / coverage signal","Member/coverage values conflict","Patient access owner","Check source data and fictional exception disposition","Not Ready","No coverage guarantee"
+"DPI-004","Payer-requirement signal","Requirement verification incomplete","Revenue-cycle workflow owner","Obtain qualified payer requirement review","At Risk","Do not infer payer policy"
+"DPI-005","Encounter-context signal","Encounter linkage requires review","Documentation integrity owner","Route encounter/document linkage review","Not Ready","No patient records used"
