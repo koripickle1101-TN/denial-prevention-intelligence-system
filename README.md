@@ -1,5 +1,28 @@
 # DPIS — Denial Prevention Intelligence System™
 
+## Recruiter Review — 30-Second Snapshot
+
+**Project type:** Student-developed, simulated, educational, no-PHI; not professional healthcare employment.
+
+- **Operational problem:** Unresolved upstream exceptions can appear later as claim rejections, denials, or rework.
+- **Student approach:** I developed simulated denial-prevention and claim-readiness analysis linking upstream controls to downstream exceptions.
+- **Inspect the evidence:** Project simulation, workflow logic, case-study materials, and any linked synthetic data documented below.
+- **Entry-level skills illustrated:** Claim-readiness thinking, denial-category organization, exception routing, and upstream cause hypotheses.
+- **Assumptions and limitations:** Illustrative logic does not establish actual payer denial reasons or proven prevention outcomes; confirm any proposed cause with supporting evidence.
+
+### Simple Workflow and Handoff View
+
+```text
+Identify exception → Categorize → Trace possible upstream stage → Assign review → Record corrective action → Verify disposition.
+```
+
+**Control question:** Where did the workflow first lose control? Each stage is a hypothetical administrative review step, not a clinical, payer, or compliance authorization.
+
+**Privacy and equity considerations:** All examples are fictional. In actual work, patient identifiers and coverage details require approved access and minimum-necessary handling. Language access, disability accommodations, and timely patient communication may affect safe administrative follow-up; this project does not measure those outcomes.
+
+---
+
+
 I built DPIS as a student-developed healthcare operations project to study a question that became important to me as I learned more about the revenue cycle: **when a denial or claim problem becomes visible downstream, what happened earlier that may have contributed to it?**
 
 As I work toward my Bachelor's of Science degree in Healthcare Administration at the University of Phoenix, I am especially interested in the connection between front-end workflow decisions and what patients experience later. A denial may look like a billing problem when it finally becomes visible, but an earlier issue may involve eligibility, authorization-service alignment, documentation readiness, payer requirements, claim preparation, ownership, or a handoff that was never fully resolved.
