@@ -1,5 +1,7 @@
 # DPIS — Denial Prevention Intelligence System™
 
+**Worked fictional evidence:** [Five-case denial queue reviewer guide](evidence/denial-queue-reviewer-guide.md) · [source case CSV](data/sample-denial-cases.csv). These are simulated review exercises, not actual claim work or payer outcomes.
+
 ## Recruiter Review — 30-Second Snapshot
 
 **Project type:** Student-developed, simulated, educational, no-PHI; not professional healthcare employment.
