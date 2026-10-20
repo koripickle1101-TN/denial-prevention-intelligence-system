@@ -1,5 +1,7 @@
 # DPIS — Five Fictional Claim-Readiness Review Examples
 
+**Download inspectable five-case synthetic review tracker:** [CSV](../data/claim-readiness-review-5-fictional-cases.csv). These next-action entries are an educational review exercise, not records of completed payer work.
+
 **Student-developed, simulated, educational, no-PHI.** Created as a learning exercise, not professional healthcare employment.
 
 ## Reviewer snapshot
