@@ -226,3 +226,6 @@ main>section{padding-top:clamp(2.8rem,5vw,5.5rem);padding-bottom:clamp(2.8rem,5v
 
 /* Axe-verified large text contrast correction; orange remains decorative. */
 .denial-loop-rail > div > span { color: #9A4A00; }
+
+/* Correct remaining axe-reported bundling step labels. */
+.bundling-rail span { color:#9A4A00 !important; }
